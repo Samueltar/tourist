@@ -1,0 +1,27 @@
+{
+  "name": "ancient-path-ethiopia",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "postinstall": "node -e \"const fs=require('fs'); const code=\\\"const { parse, xxhashBase64Url, xxhashBase36, xxhashBase16 } = require('@rollup/wasm-node/dist/wasm-node/bindings_wasm.js'); const swapByteOrder = new Uint8Array(new Uint32Array([1]).buffer)[0] === 0; exports.parse = (code, allowReturnOutsideFunction, jsx) => parse(code, allowReturnOutsideFunction, jsx, swapByteOrder); exports.parseAsync = async (code, allowReturnOutsideFunction, jsx, _signal) => parse(code, allowReturnOutsideFunction, jsx, swapByteOrder); exports.xxhashBase64Url = xxhashBase64Url; exports.xxhashBase36 = xxhashBase36; exports.xxhashBase16 = xxhashBase16; exports.flushLlvmCoverage = () => {};\\\"; try { fs.writeFileSync('./node_modules/rollup/dist/native.js', code); } catch(e){}\""
+  },
+  "dependencies": {
+    "framer-motion": "^11.15.0",
+    "lucide-react": "^0.460.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "react-router-dom": "^7.1.0"
+  },
+  "devDependencies": {
+    "@rollup/wasm-node": "^4.68.2",
+    "@vitejs/plugin-react": "^4.3.4",
+    "autoprefixer": "^10.4.20",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.17",
+    "vite": "^6.0.0"
+  }
+}

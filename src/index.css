@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Elegant Scrollbar ─────────────────────────── */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #F5F0E6; }
+::-webkit-scrollbar-thumb { background: #284D3C; border-radius: 3px; }
+
+/* ── Grain texture overlay ────────────────────────── */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Decorative Ethiopian border ─────────────────── */
+.ethiopian-border {
+  background-image: repeating-linear-gradient(
+    90deg,
+    #C3A16A 0px, #C3A16A 8px,
+    transparent 8px, transparent 16px,
+    #B86B48 16px, #B86B48 24px,
+    transparent 24px, transparent 32px
+  );
+  height: 3px;
+}
+
+/* ── Ken Burns ───────────────────────────────────── */
+.ken-burns {
+  animation: kenBurns 20s ease-in-out alternate infinite;
+}
+@keyframes kenBurns {
+  0%   { transform: scale(1); }
+  100% { transform: scale(1.08); }
+}
+
+/* ── Image hover reveal ──────────────────────────── */
+.image-reveal { overflow: hidden; }
+.image-reveal img {
+  transition: transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.image-reveal:hover img {
+  transform: scale(1.05);
+}
+
+/* ── Hide scrollbar for horizontal scroll ────────── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── Mesob page transition overlay ───────────────── */
+.mesob-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mesob-pattern {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    #B86B48, #C3A16A, #173D32, #E9E0D1, #B86B48
+  );
+  opacity: 0;
+  transform: scale(0) rotate(-180deg);
+}
+
+.mesob-pattern.expanding {
+  opacity: 1;
+  transform: scale(25) rotate(0deg);
+  transition: all 0.75s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mesob-pattern.lifting {
+  opacity: 0;
+  transform: scale(30) rotate(90deg);
+  transition: all 0.6s cubic-bezier(0.7, 0, 0.84, 0);
+}
