@@ -1,8 +1,8 @@
 import React from 'react'
-import { ShieldCheck, Heart, Sparkles, Award, ArrowRight, Users, Compass } from 'lucide-react'
+import { ShieldCheck, Heart, ArrowRight, Compass } from 'lucide-react'
 import { useMesob } from '../components/MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
-import { TiletBorderPrimary, TiletDivider, TiletCorner } from '../components/TiletPatterns'
+import { TiletBorderPrimary, TiletDivider } from '../components/TiletPatterns'
 
 export default function About() {
   const { navigateWithMesob } = useMesob()
@@ -11,7 +11,7 @@ export default function About() {
   const team = [
     {
       name: language === 'am' ? 'አበነዘር ሲሳይ' : 'Abenezer Sisay',
-      role: language === 'am' ? 'መሥራችና የጉዞዎች ዳይሬክተር' : 'Founder & Experience Director',
+      role: language === 'am' ? 'መሥራችና የባህላዊ ጉዞዎች ዳይሬክተር' : 'Founder & Cultural Expedition Director',
       bio: language === 'am'
         ? 'በኢትዮጵያ ተወልዶ ያደገ፣ ሀገሩንና ታሪኳን በጥልቅ የሚወድ። እውነተኛ የቅንጦት ጉዞ ማለት ውድ ቁሳቁስ ሳይሆን ከሰዎች ጋር የሚፈጠር ጥልቅ ግንኙነትና እንከን የለሽ አገልግሎት ነው ብሎ ያምናል።'
         : 'Born and raised in Ethiopia with a deep passion for storytelling, Abenezer founded Ancient Path with one guiding conviction: that true luxury in travel is not gold taps, but profound human connection and flawless, thoughtful detail.',
@@ -60,61 +60,59 @@ export default function About() {
   ]
 
   return (
-    <div className="min-h-screen bg-[#FAF8F5] text-[#1A1713] pt-24 sm:pt-28 pb-20 selection:bg-[#B58A43] selection:text-white">
+    <div className="min-h-screen bg-[#FAF8F5] dark:bg-[#0E0D0B] text-[#1A1713] dark:text-[#F5F2EB] pt-24 sm:pt-28 pb-20 selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
       {/* Editorial Header with Ethiopian Tilet Accents */}
-      <div className="relative bg-gradient-to-b from-[#F3EEE5] to-[#FAF8F5] border-b border-[#B58A43]/20 py-16 sm:py-24 overflow-hidden">
+      <div className="relative bg-gradient-to-b from-[#F3EEE5] to-[#FAF8F5] dark:from-[#161410] dark:to-[#0E0D0B] border-b border-[#B58A43]/20 py-14 sm:py-18 overflow-hidden">
         <TiletBorderPrimary className="absolute top-0 left-0 right-0 w-full text-[#B58A43] opacity-60" height={10} />
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 border border-[#B58A43]/30 text-[#B58A43] text-[11px] font-sans font-bold uppercase tracking-[0.25em] shadow-sm">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 dark:bg-[#1A1814] border border-[#B58A43]/30 text-[#B58A43] text-[11px] font-sans font-bold uppercase tracking-[0.25em] shadow-sm">
             <span>{t('aboutHeaderEyebrow')}</span>
           </div>
 
-          <h1 className="font-serif text-4xl sm:text-6xl lg:text-7xl font-normal text-[#1A1713] tracking-tight">
-            {language === 'am' ? 'የጥንታዊ ጎዳና' : 'The Ethos of'}{' '}
-            <span className="italic font-light text-[#B58A43]">
-              {language === 'am' ? 'ፍልስፍና' : 'Ancient Path'}
+          <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#1A1713] dark:text-[#F5F2EB] tracking-tight">
+            {language === 'am' ? 'የኢትዮጵያ ባህልና' : 'The Living Culture of'}{' '}
+            <span className="italic font-normal text-[#B58A43]">
+              {language === 'am' ? 'የጥንታዊ ጎዳና ፍልስፍና' : 'Ancient Path'}
             </span>
           </h1>
 
-          <p className="font-sans text-xs sm:text-base text-[#302B24]/80 max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#D1C7BA] max-w-xl mx-auto font-light leading-relaxed">
             {language === 'am'
-              ? 'ጥንታዊ ጎዳና የተመሠረተው በአንድ ቀላል እምነት ላይ ነው፡ ምርጥ ጉዞዎች የሚፈጠሩት ስለ ሀገራቸው፣ ስለ ዝርዝር ጉዳዮች እና ስለ ተጓዦቻቸው በጥልቅ በሚጨነቁ ሰዎች ነው።'
+              ? 'ጥንታዊ ጎዳና የተመሠረተው በአንድ ቀላል እምነት ላይ ነው፡ ምርጥ ጉዞዎች የሚፈጠሩት ስለ ሀገራቸውና ስለ ሕዝባቸው በጥልቅ በሚጨነቁ ሰዎች ነው።'
               : 'Ancient Path is built around a simple belief: the best journeys are created by people who care deeply about the place, the details, and the travelers moving through it.'}
           </p>
 
-          <TiletDivider className="w-56 mx-auto text-[#B58A43] pt-2 opacity-75" />
+          <TiletDivider className="w-48 mx-auto text-[#B58A43] pt-1 opacity-70" />
         </div>
       </div>
 
-      {/* Founder's Story & The Brand Genesis */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
-        <div className="bg-white rounded-3xl p-8 sm:p-14 border border-[#B58A43]/25 shadow-xl relative overflow-hidden">
-          <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none" size={32} />
-
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
-            <div className="lg:col-span-6 space-y-6">
-              <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
+      {/* Founder's Story & The Brand Genesis - Calm & Spacious */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
+        <div className="bg-white dark:bg-[#161410] rounded-3xl p-6 sm:p-12 border border-[#B58A43]/25 shadow-md">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+            <div className="lg:col-span-6 space-y-4">
+              <span className="font-sans text-xs uppercase tracking-[0.25em] text-[#B58A43] font-bold">
                 {t('aboutFoundersNote')}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] font-normal leading-tight">
+              <h2 className="font-serif text-2xl sm:text-3xl lg:text-4xl text-[#1A1713] dark:text-[#F5F2EB] font-normal leading-tight">
                 {language === 'am' ? 'ከኢትዮጵያ ሕያው ነፍስ ፍቅር' : 'Born from a love of'}{' '}
                 <span className="italic font-light text-[#B58A43]">
                   {language === 'am' ? 'የተወለደ' : "Ethiopia's living soul."}
                 </span>
               </h2>
-              <p className="font-sans text-sm text-[#302B24]/85 leading-relaxed font-light">
+              <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed font-light">
                 {language === 'am'
                   ? 'ለአያሌ ዓመታት ወደ ኢትዮጵያ የሚደረግ ጉዞ በሁለት ይከፈል ነበር፡ በችኮላ የተሞላ የቡድን አውቶቡስ ጉዞ፣ ወይም ምቾት የሌለው የወጣቶች ጉዞ። ጥልቅ ዕውቀት፣ ምርጥ ደረጃቸውን የጠበቁ ማረፊያዎችና እውነተኛ ባህላዊ ትስስር ለሚፈልጉ ተጓዦች ምቹ አማራጭ አልነበረም።'
                   : 'For decades, international travel to Ethiopia was characterized either by rigid bus package tours rushing across northern churches, or by rough budget overland treks that lacked care and refinement. There was rarely an option for travelers who sought luxury of experience—impeccable local knowledge, superb boutique accommodations, and profound cultural immersion.'}
               </p>
-              <p className="font-sans text-sm text-[#302B24]/85 leading-relaxed font-light">
+              <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed font-light">
                 {language === 'am'
                   ? 'ጥንታዊ ጎዳና ኢትዮጵያ ይህንን ክፍተት ለመሙላት በአበነዘር ሲሳይ ተመሠረተ። የኢትዮጵያን ባህላዊ የእንግዳ ተቀባይነት ሙቀት ከዓለም አቀፍ የቅንጦት ጉዞ ደረጃዎች ጋር በማጣመር ልዩ ተሞክሮ እናቀርባለን።'
                   : 'Ancient Path Ethiopia was founded by Abenezer Sisay to bridge this divide. We combine the warmth of traditional Ethiopian hospitality with the exacting standards of the world’s finest bespoke travel design.'}
               </p>
-              <div className="pt-2">
-                <blockquote className="border-l-2 border-[#B58A43] pl-4 italic font-serif text-lg text-[#1A1713]">
+              <div className="pt-1">
+                <blockquote className="border-l-2 border-[#B58A43] pl-4 italic font-serif text-base sm:text-lg text-[#1A1713] dark:text-[#F5F2EB]">
                   {language === 'am'
                     ? '"የምንሸጠው የቱሪስት ፕሮግራም አይደለም። የምንጋብዝዎት ወደ ሀገራችን ሕያው ትውስታ ውስጥ ነው።"'
                     : '"We don\'t sell tourist itineraries. We invite you into the living memory of our homeland."'}
@@ -123,18 +121,18 @@ export default function About() {
             </div>
 
             <div className="lg:col-span-6">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#B58A43]/30">
+              <div className="relative rounded-2xl overflow-hidden shadow-lg border border-[#B58A43]/30">
                 <img
                   src="https://res.cloudinary.com/dw1ohipim/image/upload/v1786286004/zmtnjnikbbfhqz06ea5j.jpg"
                   alt="Gondar Castle Architecture"
-                  className="w-full h-[440px] object-cover"
+                  className="w-full h-[380px] object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                <div className="absolute bottom-6 left-6 right-6 text-white">
-                  <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-bold">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-transparent" />
+                <div className="absolute bottom-5 left-5 right-5 text-white">
+                  <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-bold block mb-1">
                     {language === 'am' ? 'ታሪካዊ መሠረት' : 'Historical Grounding'}
                   </span>
-                  <p className="font-serif text-lg text-white font-medium mt-1">
+                  <p className="font-serif text-base text-white font-medium">
                     {language === 'am'
                       ? 'የ17ኛው ክፍለ ዘመን የጎንደር ፋሲል ግቢ — የአፍሪካ ሉዓላዊ ሥልጣኔ ሕያው ምስክር።'
                       : "Gondar's 17th-century Royal Enclosure, a testament to sovereign African civilization."}
@@ -146,34 +144,33 @@ export default function About() {
         </div>
       </section>
 
-      {/* Three Pillars */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
+      {/* Three Pillars - Simple & Calming */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24">
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <span className="font-sans text-xs uppercase tracking-[0.25em] text-[#B58A43] font-bold">
             {language === 'am' ? 'እንዴት እንጓዛለን' : 'How We Travel'}
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] font-normal mt-1">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] dark:text-[#F5F2EB] font-normal mt-1">
             {language === 'am' ? 'መሠረታዊ መርሆዎቻችን' : 'Our Guiding Pillars'}
           </h2>
-          <TiletDivider className="w-48 mx-auto text-[#B58A43] pt-2 opacity-60" />
+          <TiletDivider className="w-40 mx-auto text-[#B58A43] pt-1 opacity-60" />
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {pillars.map((pillar, i) => {
             const Icon = pillar.icon
             return (
               <div
                 key={i}
-                className="bg-white rounded-2xl p-8 border border-[#B58A43]/20 shadow-sm space-y-4 hover:border-[#B58A43] transition-all relative overflow-hidden"
+                className="bg-white dark:bg-[#161410] rounded-2xl p-6 border border-[#B58A43]/20 shadow-xs space-y-3 hover:border-[#B58A43] transition-all"
               >
-                <TiletCorner position="top-right" className="text-[#B58A43]/20 pointer-events-none" size={24} />
-                <div className="w-12 h-12 rounded-xl bg-[#FAF8F5] border border-[#B58A43]/40 text-[#B58A43] flex items-center justify-center shadow-sm">
-                  <Icon className="w-6 h-6" />
+                <div className="w-10 h-10 rounded-xl bg-[#FAF8F5] dark:bg-[#1A1814] border border-[#B58A43]/40 text-[#B58A43] flex items-center justify-center shadow-xs">
+                  <Icon className="w-5 h-5" />
                 </div>
-                <h3 className="font-serif text-xl font-semibold text-[#1A1713]">
+                <h3 className="font-serif text-xl font-semibold text-[#1A1713] dark:text-[#F5F2EB]">
                   {pillar.title}
                 </h3>
-                <p className="font-sans text-xs text-[#302B24]/80 leading-relaxed font-light">
+                <p className="font-sans text-xs text-[#302B24]/75 dark:text-[#D1C7BA] leading-relaxed font-light">
                   {pillar.description}
                 </p>
               </div>
@@ -183,42 +180,42 @@ export default function About() {
       </section>
 
       {/* The Team */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 sm:mt-28">
-        <div className="text-center max-w-2xl mx-auto mb-14">
-          <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-16 sm:mt-24">
+        <div className="text-center max-w-xl mx-auto mb-10">
+          <span className="font-sans text-xs uppercase tracking-[0.25em] text-[#B58A43] font-bold">
             {language === 'am' ? 'በተግባር ላይ' : 'On the Ground'}
           </span>
-          <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] font-normal mt-1">
+          <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] dark:text-[#F5F2EB] font-normal mt-1">
             {language === 'am' ? 'ከጥንታዊ ጎዳና ጀርባ ያሉ ባለሙያዎች' : 'The People Behind Ancient Path'}
           </h2>
-          <p className="text-xs text-[#302B24]/70 mt-2 font-light">
+          <p className="text-xs text-[#302B24]/70 dark:text-[#D1C7BA] mt-2 font-light">
             {language === 'am'
               ? 'ለእያንዳንዱ እንግዳ ጥንቃቄ የተሞላበት አገልግሎት የሚሰጡ የወሰኑ ባለሙያዎች።'
               : 'A small, proactive team working closely together with shared responsibility for every guest.'}
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {team.map((member, i) => (
             <div
               key={i}
-              className="bg-white rounded-2xl overflow-hidden border border-[#B58A43]/20 shadow-sm hover:shadow-xl transition-all"
+              className="bg-white dark:bg-[#161410] rounded-2xl overflow-hidden border border-[#B58A43]/20 shadow-xs hover:shadow-md transition-all"
             >
-              <div className="h-64 overflow-hidden">
+              <div className="h-60 overflow-hidden">
                 <img
                   src={member.image}
                   alt={member.name}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="p-6 space-y-2">
+              <div className="p-5 space-y-1.5">
                 <span className="block text-[10px] uppercase tracking-wider text-[#B58A43] font-bold">
                   {member.role}
                 </span>
-                <h3 className="font-serif text-2xl text-[#1A1713] font-medium">
+                <h3 className="font-serif text-xl text-[#1A1713] dark:text-[#F5F2EB] font-medium">
                   {member.name}
                 </h3>
-                <p className="font-sans text-xs text-[#302B24]/75 leading-relaxed pt-1 font-light">
+                <p className="font-sans text-xs text-[#302B24]/75 dark:text-[#D1C7BA] leading-relaxed pt-1 font-light">
                   {member.bio}
                 </p>
               </div>
@@ -228,30 +225,27 @@ export default function About() {
       </section>
 
       {/* Call to Action */}
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-24 text-center">
-        <div className="bg-white text-[#1A1713] rounded-3xl p-10 sm:p-14 shadow-xl border border-[#B58A43]/30 space-y-6 relative overflow-hidden">
-          <TiletCorner position="top-left" className="text-[#B58A43]/30 pointer-events-none" size={36} />
-          <TiletCorner position="bottom-right" className="text-[#B58A43]/30 pointer-events-none" size={36} />
-
-          <h3 className="font-serif text-3xl sm:text-4xl font-normal text-[#1A1713]">
+      <section className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 mt-20 text-center">
+        <div className="bg-white dark:bg-[#161410] text-[#1A1713] dark:text-[#F5F2EB] rounded-2xl p-8 sm:p-12 shadow-md border border-[#B58A43]/30 space-y-4">
+          <h3 className="font-serif text-2xl sm:text-3xl font-normal text-[#1A1713] dark:text-[#F5F2EB]">
             {language === 'am' ? 'ኢትዮጵያን ከእኛ ጋር ለማሰስ ዝግጁ ነዎት?' : 'Ready to discover Ethiopia with us?'}
           </h3>
-          <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 max-w-xl mx-auto leading-relaxed font-light">
+          <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#D1C7BA] max-w-lg mx-auto leading-relaxed font-light">
             {language === 'am'
               ? 'የጉዞ ፕሮግራምዎን ማዘጋጀት እንጀምር። ለሁሉም ጥያቄዎች በ24 ሰዓት ውስጥ ግላዊ ምላሽ እንሰጣለን።'
               : 'Let us begin crafting your itinerary. We respond to all inquiries within 24 hours with a thoughtful, personalized preliminary design.'}
           </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3">
             <button
               onClick={() => navigateWithMesob('/book')}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#B58A43] to-[#916B2D] hover:from-[#C49A50] hover:to-[#B58A43] text-white text-xs font-bold uppercase tracking-widest shadow-md transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-7 py-3 rounded-full bg-gradient-to-r from-[#B58A43] to-[#9E7432] hover:from-[#C49A50] hover:to-[#B58A43] text-white text-xs font-bold uppercase tracking-widest shadow-md transition-all flex items-center justify-center gap-2"
             >
               <span>{t('curateJourney')}</span>
               <ArrowRight className="w-4 h-4" />
             </button>
             <button
               onClick={() => navigateWithMesob('/contact')}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full border border-[#B58A43]/50 text-[#1A1713] text-xs font-semibold uppercase tracking-widest hover:bg-[#FAF8F5] transition-all"
+              className="w-full sm:w-auto px-7 py-3 rounded-full border border-[#B58A43]/40 text-[#1A1713] dark:text-[#F5F2EB] text-xs font-semibold uppercase tracking-widest hover:bg-[#FAF8F5] dark:hover:bg-[#1A1814] transition-all"
             >
               {language === 'am' ? 'ቡድናችንን ያነጋግሩ' : 'Contact Our Team'}
             </button>

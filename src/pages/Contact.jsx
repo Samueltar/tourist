@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Mail, Phone, MessageCircle, MapPin, Send, CheckCircle2, Clock } from 'lucide-react'
 import { useLanguage } from '../context/LanguageContext'
-import { TiletBorderPrimary, TiletDivider, TiletCorner } from '../components/TiletPatterns'
+import { TiletBorderPrimary, TiletDivider } from '../components/TiletPatterns'
 
 export default function Contact() {
   const { t, language } = useLanguage()
@@ -58,7 +58,6 @@ export default function Contact() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 bg-white rounded-3xl p-8 sm:p-12 border border-[#B58A43]/25 shadow-xl relative overflow-hidden">
-          <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none" size={32} />
 
           {/* Left Column: Direct Concierge Contacts */}
           <div className="lg:col-span-5 space-y-8 lg:border-r lg:border-[#B58A43]/20 lg:pr-10">

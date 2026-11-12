@@ -2,7 +2,6 @@ import React from 'react'
 import { Heart, Clock, MapPin, ArrowRight, Eye } from 'lucide-react'
 import { useMesob } from './MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
-import { TiletCorner } from './TiletPatterns'
 
 export default function TourCard({
   tour,
@@ -20,32 +19,20 @@ export default function TourCard({
   }
 
   const categoryBadgeMap = {
-    historical: 'border-[#B58A43] text-[#B58A43] bg-[#FAF8F5]',
-    wildlife: 'border-[#284D3C] text-[#284D3C] bg-[#FAF8F5]',
-    cultural: 'border-[#B86B48] text-[#B86B48] bg-[#FAF8F5]',
-    spiritual: 'border-[#B58A43] text-[#B58A43] bg-[#FAF8F5]',
-    adventure: 'border-[#9E5536] text-[#9E5536] bg-[#FAF8F5]',
-    city: 'border-[#302B24] text-[#302B24] bg-[#FAF8F5]',
-    nature: 'border-[#284D3C] text-[#284D3C] bg-[#FAF8F5]',
+    historical: 'border-[#B58A43] text-[#B58A43] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#DDC28D]',
+    wildlife: 'border-[#284D3C] text-[#284D3C] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#72A287]',
+    cultural: 'border-[#B86B48] text-[#B86B48] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#DDA287]',
+    spiritual: 'border-[#B58A43] text-[#B58A43] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#DDC28D]',
+    adventure: 'border-[#9E5536] text-[#9E5536] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#DDA287]',
+    city: 'border-[#302B24] text-[#302B24] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#E8E2D5]',
+    nature: 'border-[#284D3C] text-[#284D3C] bg-[#FAF8F5] dark:bg-[#1E1B16] dark:text-[#72A287]',
   }
 
   const badgeStyle = categoryBadgeMap[tour.category] || 'border-[#B58A43] text-[#B58A43] bg-[#FAF8F5]'
 
   if (layout === 'horizontal') {
     return (
-      <div className="group bg-white rounded-3xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row relative">
-        {/* Tilet Corner Accents on Featured Cards */}
-        {featured && (
-          <>
-            <div className="absolute top-2 left-2 z-20 pointer-events-none">
-              <TiletCorner position="top-left" className="w-6 h-6 text-[#B58A43]" />
-            </div>
-            <div className="absolute top-2 right-2 z-20 pointer-events-none">
-              <TiletCorner position="top-right" className="w-6 h-6 text-[#B58A43]" />
-            </div>
-          </>
-        )}
-
+      <div className="group bg-white dark:bg-[#161411] rounded-3xl overflow-hidden border border-[#B58A43]/25 dark:border-[#B58A43]/30 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col md:flex-row relative">
         {/* Image Container with Gold Border Frame */}
         <div className="relative md:w-2/5 h-64 md:h-auto overflow-hidden cursor-pointer p-2.5 sm:p-3" onClick={handleCardClick}>
           <div className="w-full h-full rounded-2xl overflow-hidden relative border border-[#B58A43]/30">
@@ -62,7 +49,7 @@ export default function TourCard({
               <span className={`px-3 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${badgeStyle}`}>
                 {tour.category}
               </span>
-              <span className="px-2.5 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[#302B24] text-[10px] font-bold flex items-center gap-1 border border-[#B58A43]/30">
+              <span className="px-2.5 py-0.5 rounded-full bg-white/90 dark:bg-[#1E1B16]/90 backdrop-blur-md text-[#302B24] dark:text-[#F5F2EB] text-[10px] font-bold flex items-center gap-1 border border-[#B58A43]/30">
                 <Clock className="w-3 h-3 text-[#B58A43]" />
                 {tour.duration}
               </span>
@@ -75,7 +62,7 @@ export default function TourCard({
                   e.stopPropagation()
                   onQuickView(tour)
                 }}
-                className="p-2 rounded-full bg-white/90 hover:bg-white text-[#302B24] border border-[#B58A43]/30 backdrop-blur-sm transition-transform hover:scale-110 shadow-xs"
+                className="p-2 rounded-full bg-white/90 dark:bg-[#1E1B16]/90 hover:bg-white text-[#302B24] dark:text-[#F5F2EB] border border-[#B58A43]/30 backdrop-blur-sm transition-transform hover:scale-110 shadow-xs"
                 title="Quick preview"
               >
                 <Eye className="w-3.5 h-3.5 text-[#B58A43]" />
@@ -88,7 +75,7 @@ export default function TourCard({
                 className={`p-2 rounded-full backdrop-blur-sm transition-transform hover:scale-110 shadow-xs border ${
                   isSaved
                     ? 'bg-[#B58A43] text-white border-[#B58A43]'
-                    : 'bg-white/90 hover:bg-white text-[#302B24] border-[#B58A43]/30'
+                    : 'bg-white/90 dark:bg-[#1E1B16]/90 hover:bg-white text-[#302B24] dark:text-[#F5F2EB] border-[#B58A43]/30'
                 }`}
                 title={isSaved ? 'Remove from saved' : 'Save journey'}
               >
@@ -108,12 +95,12 @@ export default function TourCard({
 
             <h3
               onClick={handleCardClick}
-              className="font-serif text-2xl sm:text-3xl font-semibold text-[#302B24] group-hover:text-[#B58A43] transition-colors cursor-pointer leading-tight mb-3"
+              className="font-serif text-2xl sm:text-3xl font-semibold text-[#302B24] dark:text-[#F5F2EB] group-hover:text-[#B58A43] transition-colors cursor-pointer leading-tight mb-3"
             >
               {tour.title}
             </h3>
 
-            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 leading-relaxed mb-4 line-clamp-2">
+            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#E8E2D5]/75 leading-relaxed mb-4 line-clamp-2">
               {tour.summary}
             </p>
 
@@ -121,7 +108,7 @@ export default function TourCard({
             {tour.highlights && (
               <div className="space-y-1.5 mb-6">
                 {tour.highlights.slice(0, 3).map((hl, i) => (
-                  <div key={i} className="flex items-start gap-2 text-xs text-[#302B24]/75">
+                  <div key={i} className="flex items-start gap-2 text-xs text-[#302B24]/75 dark:text-[#E8E2D5]/75">
                     <span className="w-1.5 h-1.5 rotate-45 bg-[#B58A43] mt-1.5 shrink-0" />
                     <span className="line-clamp-1">{hl}</span>
                   </div>
@@ -133,7 +120,7 @@ export default function TourCard({
           {/* Card Footer */}
           <div className="pt-4 border-t border-[#B58A43]/20 flex items-center justify-between">
             <div>
-              <span className="block text-[10px] uppercase tracking-wider text-[#302B24]/60 font-medium">
+              <span className="block text-[10px] uppercase tracking-wider text-[#302B24]/60 dark:text-[#E8E2D5]/60 font-medium">
                 {language === 'am' ? 'የጉዞ ዓይነት' : 'Experience Style'}
               </span>
               <span className="text-xs font-bold text-[#B58A43]">
@@ -143,10 +130,10 @@ export default function TourCard({
 
             <button
               onClick={handleCardClick}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#302B24] hover:bg-[#B58A43] text-white text-xs font-semibold uppercase tracking-wider transition-colors shadow-xs"
+              className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FAF8F5] dark:bg-[#1E1B16] hover:bg-[#B58A43] hover:text-white text-[#B58A43] border border-[#B58A43]/30 text-xs font-bold uppercase tracking-wider transition-colors shadow-xs"
             >
-              <span>{t('exploreItinerary')}</span>
-              <ArrowRight className="w-3.5 h-3.5 text-[#DDC28D]" />
+              <span>{t('explore')}</span>
+              <ArrowRight className="w-3.5 h-3.5 text-[#B58A43] group-hover:text-white" />
             </button>
           </div>
         </div>
@@ -156,19 +143,7 @@ export default function TourCard({
 
   // Default Editorial Vertical Layout
   return (
-    <div className="group bg-white rounded-3xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1 relative">
-      {/* Tilet Corner Accents on Featured Cards */}
-      {featured && (
-        <>
-          <div className="absolute top-2 left-2 z-20 pointer-events-none">
-            <TiletCorner position="top-left" className="w-6 h-6 text-[#B58A43]" />
-          </div>
-          <div className="absolute top-2 right-2 z-20 pointer-events-none">
-            <TiletCorner position="top-right" className="w-6 h-6 text-[#B58A43]" />
-          </div>
-        </>
-      )}
-
+    <div className="group bg-white dark:bg-[#161411] rounded-3xl overflow-hidden border border-[#B58A43]/25 dark:border-[#B58A43]/30 shadow-sm hover:shadow-xl transition-all duration-500 flex flex-col h-full transform hover:-translate-y-1 relative">
       {/* Image Container with Gold Border Accent */}
       <div className="relative h-64 sm:h-72 overflow-hidden cursor-pointer shrink-0 p-2.5 sm:p-3" onClick={handleCardClick}>
         <div className="w-full h-full rounded-2xl overflow-hidden relative border border-[#B58A43]/30">
@@ -185,7 +160,7 @@ export default function TourCard({
             <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider border backdrop-blur-md ${badgeStyle}`}>
               {tour.category}
             </span>
-            <span className="px-2 py-0.5 rounded-full bg-white/90 backdrop-blur-md text-[#302B24] text-[10px] font-bold flex items-center gap-1 border border-[#B58A43]/30">
+            <span className="px-2 py-0.5 rounded-full bg-white/90 dark:bg-[#1E1B16]/90 backdrop-blur-md text-[#302B24] dark:text-[#F5F2EB] text-[10px] font-bold flex items-center gap-1 border border-[#B58A43]/30">
               <Clock className="w-3 h-3 text-[#B58A43]" />
               {tour.duration}
             </span>
@@ -198,7 +173,7 @@ export default function TourCard({
                 e.stopPropagation()
                 onQuickView(tour)
               }}
-              className="p-2 rounded-full bg-white/90 hover:bg-white text-[#302B24] border border-[#B58A43]/30 backdrop-blur-sm transition-transform hover:scale-110 shadow-xs"
+              className="p-2 rounded-full bg-white/90 dark:bg-[#1E1B16]/90 hover:bg-white text-[#302B24] dark:text-[#F5F2EB] border border-[#B58A43]/30 backdrop-blur-sm transition-transform hover:scale-110 shadow-xs"
               title="Quick view"
             >
               <Eye className="w-3.5 h-3.5 text-[#B58A43]" />
@@ -211,7 +186,7 @@ export default function TourCard({
               className={`p-2 rounded-full backdrop-blur-sm transition-transform hover:scale-110 shadow-xs border ${
                 isSaved
                   ? 'bg-[#B58A43] text-white border-[#B58A43]'
-                  : 'bg-white/90 hover:bg-white text-[#302B24] border-[#B58A43]/30'
+                  : 'bg-white/90 dark:bg-[#1E1B16]/90 hover:bg-white text-[#302B24] dark:text-[#F5F2EB] border-[#B58A43]/30'
               }`}
               title={isSaved ? 'Remove from saved' : 'Save to wishlist'}
             >
@@ -232,12 +207,12 @@ export default function TourCard({
         <div>
           <h3
             onClick={handleCardClick}
-            className="font-serif text-xl sm:text-2xl font-semibold text-[#302B24] group-hover:text-[#B58A43] transition-colors cursor-pointer leading-snug mb-2 line-clamp-2"
+            className="font-serif text-xl sm:text-2xl font-semibold text-[#302B24] dark:text-[#F5F2EB] group-hover:text-[#B58A43] transition-colors cursor-pointer leading-snug mb-2 line-clamp-2"
           >
             {tour.title}
           </h3>
 
-          <p className="font-sans text-xs text-[#302B24]/75 leading-relaxed line-clamp-3 mb-4">
+          <p className="font-sans text-xs text-[#302B24]/75 dark:text-[#E8E2D5]/75 leading-relaxed line-clamp-3 mb-4">
             {tour.summary}
           </p>
 
@@ -245,7 +220,7 @@ export default function TourCard({
           {tour.highlights && (
             <div className="space-y-1.5 mb-5">
               {tour.highlights.slice(0, 2).map((hl, i) => (
-                <div key={i} className="flex items-center gap-2 text-[11px] text-[#302B24]/70">
+                <div key={i} className="flex items-center gap-2 text-[11px] text-[#302B24]/70 dark:text-[#E8E2D5]/70">
                   <span className="w-1.5 h-1.5 rotate-45 bg-[#B58A43] shrink-0" />
                   <span className="truncate">{hl}</span>
                 </div>
@@ -257,7 +232,7 @@ export default function TourCard({
         {/* Footer actions */}
         <div className="pt-4 border-t border-[#B58A43]/20 flex items-center justify-between">
           <div>
-            <span className="block text-[9px] uppercase tracking-wider text-[#302B24]/50 font-bold">
+            <span className="block text-[9px] uppercase tracking-wider text-[#302B24]/50 dark:text-[#E8E2D5]/50 font-bold">
               {language === 'am' ? 'ደረጃ' : 'Format'}
             </span>
             <span className="text-xs font-bold text-[#B58A43]">
@@ -267,7 +242,7 @@ export default function TourCard({
 
           <button
             onClick={handleCardClick}
-            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FAF8F5] hover:bg-[#B58A43] hover:text-white text-[#B58A43] border border-[#B58A43]/30 text-xs font-bold uppercase tracking-wider transition-colors shadow-xs"
+            className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#FAF8F5] dark:bg-[#1E1B16] hover:bg-[#B58A43] hover:text-white text-[#B58A43] border border-[#B58A43]/30 text-xs font-bold uppercase tracking-wider transition-colors shadow-xs"
           >
             <span>{t('explore')}</span>
             <ArrowRight className="w-3.5 h-3.5 text-[#B58A43] group-hover:text-white" />

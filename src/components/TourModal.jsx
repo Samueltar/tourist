@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { X, Heart, Clock, MapPin, Check, ArrowRight, Sparkles } from 'lucide-react'
 import { useMesob } from './MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
-import { TiletCorner, TiletBorderPrimary } from './TiletPatterns'
+import { TiletBorderPrimary } from './TiletPatterns'
 
 export default function TourModal({
   tour,

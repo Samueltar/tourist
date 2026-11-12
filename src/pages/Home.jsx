@@ -8,7 +8,6 @@ import {
   TiletBorderPrimary,
   TiletDivider,
   TiletMotif,
-  TiletCorner,
   TiletBackgroundPattern,
 } from '../components/TiletPatterns'
 import EthiopiaMap from '../components/EthiopiaMap'
@@ -45,20 +44,6 @@ export default function Home({
           {/* Radiant white, ivory & gold gradient scrim for text readability */}
           <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0E0D0B] via-white/50 dark:via-[#0E0D0B]/60 to-black/30" />
           <div className="absolute inset-0 bg-gradient-to-r from-white/80 dark:from-[#0E0D0B]/85 via-transparent to-white/70 dark:to-[#0E0D0B]/75" />
-        </div>
-
-        {/* Hero Corner Tilet Ornaments */}
-        <div className="absolute top-20 left-6 sm:left-12 z-10 pointer-events-none opacity-60">
-          <TiletCorner position="top-left" className="w-12 h-12 text-[#B58A43]" />
-        </div>
-        <div className="absolute top-20 right-6 sm:right-12 z-10 pointer-events-none opacity-60">
-          <TiletCorner position="top-right" className="w-12 h-12 text-[#B58A43]" />
-        </div>
-        <div className="absolute bottom-12 left-6 sm:left-12 z-10 pointer-events-none opacity-60">
-          <TiletCorner position="bottom-left" className="w-12 h-12 text-[#B58A43]" />
-        </div>
-        <div className="absolute bottom-12 right-6 sm:right-12 z-10 pointer-events-none opacity-60">
-          <TiletCorner position="bottom-right" className="w-12 h-12 text-[#B58A43]" />
         </div>
 
         {/* Hero Content Container */}
@@ -184,14 +169,6 @@ export default function Home({
 
             {/* Right Asymmetric Image Composition with Tilet Framing */}
             <div className="lg:col-span-5 relative">
-              {/* Tilet Corner Ornaments around Image Frame */}
-              <div className="absolute -top-3 -left-3 z-20 pointer-events-none">
-                <TiletCorner position="top-left" className="w-8 h-8 text-[#B58A43]" />
-              </div>
-              <div className="absolute -top-3 -right-3 z-20 pointer-events-none">
-                <TiletCorner position="top-right" className="w-8 h-8 text-[#B58A43]" />
-              </div>
-
               <div className="relative z-10 rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white">
                 <div className="rounded-2xl overflow-hidden relative">
                   <img
@@ -353,13 +330,6 @@ export default function Home({
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10 group-hover:from-black/90 transition-colors" />
 
-                  {/* Corner Accent on First Card */}
-                  {idx === 0 && (
-                    <div className="absolute top-2 right-2 pointer-events-none">
-                      <TiletCorner position="top-right" className="w-6 h-6 text-[#DDC28D]" />
-                    </div>
-                  )}
-
                   {/* Region Tag at Top */}
                   <div className="absolute top-4 left-4">
                     <span className="px-3 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40 shadow-xs">
@@ -420,14 +390,6 @@ export default function Home({
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Visual Left: Mesob & Coffee Ceremony Photography with Gold Tilet Frame */}
             <div className="lg:col-span-6 relative">
-              {/* Tilet Corner Ornaments */}
-              <div className="absolute -top-3 -left-3 z-20 pointer-events-none">
-                <TiletCorner position="top-left" className="w-8 h-8 text-[#B58A43]" />
-              </div>
-              <div className="absolute -top-3 -right-3 z-20 pointer-events-none">
-                <TiletCorner position="top-right" className="w-8 h-8 text-[#B58A43]" />
-              </div>
-
               <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white">
                 <div className="rounded-2xl overflow-hidden relative">
                   <img

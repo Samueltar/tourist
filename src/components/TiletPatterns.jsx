@@ -103,9 +103,17 @@ export function TiletBorderPrimary({ className = '', height = 24, variant = 'gol
    Repeatable motif used in hero corners, featured card frames,
    and subtle watermark backgrounds.
 */
-export function TiletMotif({ className = 'w-10 h-10', color = '#B58A43', secondaryColor = '#C49A50' }) {
+export function TiletMotif({ className = '', color = '#B58A43', secondaryColor = '#C49A50', size = 36 }) {
   return (
-    <svg viewBox="0 0 60 60" fill="none" className={className} xmlns="http://www.w3.org/2000/svg">
+    <svg
+      width={size}
+      height={size}
+      style={{ width: `${size}px`, height: `${size}px`, maxWidth: `${size}px`, maxHeight: `${size}px` }}
+      viewBox="0 0 60 60"
+      fill="none"
+      className={`select-none ${className}`}
+      xmlns="http://www.w3.org/2000/svg"
+    >
       {/* Outer Stepped Diamond */}
       <polygon
         points="30,2 58,30 30,58 2,30"
@@ -183,7 +191,7 @@ export function TiletDivider({ className = '', variant = 'gold' }) {
    90-degree decorative corner ornament used on featured destination cards,
    editorial hero frames, and quote boxes.
 */
-export function TiletCorner({ className = 'w-8 h-8 text-[#B58A43]', position = 'top-left' }) {
+export function TiletCorner({ className = '', position = 'top-left', size = 32 }) {
   const rotationMap = {
     'top-left': 'rotate-0',
     'top-right': 'rotate-90',
@@ -191,11 +199,21 @@ export function TiletCorner({ className = 'w-8 h-8 text-[#B58A43]', position = '
     'bottom-left': '-rotate-90',
   }
 
+  const posMap = {
+    'top-left': 'top-2.5 left-2.5',
+    'top-right': 'top-2.5 right-2.5',
+    'bottom-right': 'bottom-2.5 right-2.5',
+    'bottom-left': 'bottom-2.5 left-2.5',
+  }
+
   return (
     <svg
+      width={size}
+      height={size}
       viewBox="0 0 40 40"
       fill="none"
-      className={`${className} ${rotationMap[position]} select-none`}
+      style={{ width: `${size}px`, height: `${size}px`, maxWidth: `${size}px`, maxHeight: `${size}px` }}
+      className={`absolute ${posMap[position] || 'top-2.5 left-2.5'} pointer-events-none select-none ${rotationMap[position]} text-[#B58A43] ${className}`}
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >

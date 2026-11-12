@@ -4,7 +4,7 @@ import { Check, Sparkles, Send, CheckCircle2, Heart, ArrowRight, ShieldCheck } f
 import { tours, destinations } from '../data/tours'
 import { useMesob } from '../components/MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
-import { TiletBorderPrimary, TiletDivider, TiletCorner } from '../components/TiletPatterns'
+import { TiletBorderPrimary, TiletDivider } from '../components/TiletPatterns'
 
 export default function Book() {
   const [searchParams] = useSearchParams()
@@ -131,7 +131,6 @@ export default function Book() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8">
         <div className="bg-white rounded-3xl p-6 sm:p-12 border border-[#B58A43]/25 shadow-xl relative overflow-hidden">
-          <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none" size={32} />
 
           {submitted ? (
             <div className="text-center py-12 space-y-5 animate-scale-in">

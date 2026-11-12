@@ -4,7 +4,7 @@ import { destinations } from '../data/tours'
 import { useMesob } from './MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
 import { useTheme } from '../context/ThemeContext'
-import { TiletBorderPrimary, TiletCorner, TiletMotif } from './TiletPatterns'
+import { TiletBorderPrimary, TiletMotif } from './TiletPatterns'
 
 export default function EthiopiaMap() {
   const { navigateWithMesob } = useMesob()
@@ -28,14 +28,6 @@ export default function EthiopiaMap() {
 
   return (
     <div className="bg-[#FAF8F5] text-[#302B24] rounded-3xl p-6 sm:p-10 lg:p-12 border border-[#B58A43]/30 shadow-xl overflow-hidden relative">
-      {/* Corner Tilet Ornaments */}
-      <div className="absolute top-3 left-3 pointer-events-none opacity-40">
-        <TiletCorner position="top-left" className="w-8 h-8 text-[#B58A43]" />
-      </div>
-      <div className="absolute top-3 right-3 pointer-events-none opacity-40">
-        <TiletCorner position="top-right" className="w-8 h-8 text-[#B58A43]" />
-      </div>
-
       {/* Header Bar */}
       <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6 mb-8 relative z-10 border-b border-[#B58A43]/20 pb-6">
         <div>
@@ -252,11 +244,6 @@ export default function EthiopiaMap() {
         <div className="lg:col-span-5">
           {activePin ? (
             <div className="bg-white rounded-3xl p-6 sm:p-7 border border-[#B58A43]/40 shadow-lg space-y-5 animate-scale-in relative">
-              {/* Corner Ornament */}
-              <div className="absolute top-2 right-2 pointer-events-none opacity-30">
-                <TiletCorner position="top-right" className="w-6 h-6 text-[#B58A43]" />
-              </div>
-
               {/* Destination Image & Badge */}
               <div className="relative h-44 rounded-2xl overflow-hidden border border-[#B58A43]/30">
                 <img

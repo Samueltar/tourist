@@ -13,19 +13,24 @@ export const translations = {
   en: {
     // Header & Nav
     brandName: 'ANCIENT PATH',
-    brandTagline: 'ETHIOPIA • BEYOND THE EXPECTED',
-    navJourneys: 'Journeys',
+    brandTagline: 'CULTURAL TOURS IN ETHIOPIA',
+    navCulturalTours: 'Cultural Tours',
     navDestinations: 'Destinations',
-    navEthos: 'The Ethos',
-    navStories: 'Stories',
-    navPracticalities: 'Practicalities',
-    navContact: 'Contact',
+    navLivingCulture: 'Living Culture',
+    navJournal: 'Field Journal',
+    navGuide: 'Travel Guide',
+    navInquire: 'Inquire',
+    navJourneys: 'Cultural Tours',
+    navEthos: 'Living Culture',
+    navStories: 'Field Journal',
+    navPracticalities: 'Travel Guide',
+    navContact: 'Inquire',
     curateJourney: 'Curate Journey',
     saved: 'Saved',
 
     // Hero
     liveIndicator: 'Addis Ababa • Gateway to 3,000 Years of Heritage',
-    heroEyebrow: 'Ancient Path Ethiopia',
+    heroEyebrow: 'Cultural Tours in Ethiopia',
     heroTitle1: 'Beyond the',
     heroTitle2: 'Expected.',
     heroSubtitle:
@@ -173,19 +178,24 @@ export const translations = {
   am: {
     // Header & Nav
     brandName: 'ጥንታዊ ጎዳና',
-    brandTagline: 'ኢትዮጵያ • ከተጠበቀው በላይ',
-    navJourneys: 'ጉዞዎች',
+    brandTagline: 'የኢትዮጵያ ባህላዊ ጉዞዎች',
+    navCulturalTours: 'ባህላዊ ጉዞዎች',
     navDestinations: 'መዳረሻዎች',
-    navEthos: 'ፍልስፍናችን',
-    navStories: 'ታሪኮች',
-    navPracticalities: 'ጠቃሚ መረጃ',
+    navLivingCulture: 'ሕያው ባህል',
+    navJournal: 'የመስክ ማስታወሻ',
+    navGuide: 'የጉዞ መመሪያ',
+    navInquire: 'ያግኙን',
+    navJourneys: 'ባህላዊ ጉዞዎች',
+    navEthos: 'ሕያው ባህል',
+    navStories: 'የመስክ ማስታወሻ',
+    navPracticalities: 'የጉዞ መመሪያ',
     navContact: 'ያግኙን',
     curateJourney: 'ጉዞ ይንደፉ',
     saved: 'የተመረጡ',
 
     // Hero
     liveIndicator: 'አዲስ አበባ • የ3,000 ዓመታት ታሪክ መግቢያ',
-    heroEyebrow: 'ጥንታዊ ጎዳና ኢትዮጵያ',
+    heroEyebrow: 'የኢትዮጵያ ባህላዊ ጉዞዎች',
     heroTitle1: 'ከተጠበቀው',
     heroTitle2: 'በላይ።',
     heroSubtitle:
