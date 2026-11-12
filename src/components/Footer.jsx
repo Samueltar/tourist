@@ -47,8 +47,8 @@ export default function Footer() {
             </h2>
             <p className="font-sans text-sm text-[#302B24]/80 dark:text-[#E8E2D5]/80 max-w-xl leading-relaxed pt-1 font-light">
               {language === 'am'
-                ? 'ጎብኚው (The Tourist) በቅኝ ግዛት ባልተገዛችው ታሪካዊት ምድር ውስጥ ጥንቃቄ የተሞላባቸው የግል ጉዞዎችን ያዘጋጃል። ከ12ኛው ክፍለ ዘመን የላሊበላ ፍልፍል አብያተ ክርስቲያናት አንስቶ እስከ ስሜን ተራሮች እና የኦሞ ሸለቆ ድረስ ከእውነተኛው የሀገራችን መንፈስ ጋር እናገናኝዎታለን።'
-                : 'The Tourist (ጎብኚው) — Cultural Tours in Ethiopia crafts private, thoughtful journeys across a land that was never colonized. From the 12th-century subterranean churches of Lalibela to the dramatic heights of the Simien range and the living cultures of the Omo Valley, we connect travelers to the authentic soul of Ethiopia.'}
+                ? 'ጎብኚው (The Tourist) በጥንታዊቷ የኢትዮጵያ ምድር ውስጥ ጥንቃቄ የተሞላባቸው የግል ጉዞዎችን ያዘጋጃል። ከላሊበላ ፍልፍል አብያተ ክርስቲያናት አንስቶ እስከ ስሜን ተራሮችና የኦሞ ሸለቆ ድረስ እውነተኛውን የሀገራችንን ባህል ያሳውቅዎታል።'
+                : 'The Tourist (ጎብኚው) crafts private, thoughtfully paced journeys across Ethiopia. From Lalibela’s rock churches to the high Simien escarpments and Omo cultural valleys, we bring you into authentic, living history.'}
             </p>
           </div>
 
@@ -272,8 +272,8 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2.5">
                 <Mail className="w-4 h-4 text-[#B58A43] shrink-0" />
-                <a href="mailto:journeys@ancientpathethiopia.com" className="hover:text-[#B58A43] transition-colors">
-                  journeys@ancientpathethiopia.com
+                <a href="mailto:concierge@thetouristethiopia.com" className="hover:text-[#B58A43] transition-colors">
+                  concierge@thetouristethiopia.com
                 </a>
               </li>
               <li className="flex items-center gap-2.5">

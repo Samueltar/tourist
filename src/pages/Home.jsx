@@ -125,7 +125,7 @@ export default function Home({
       <TiletBorderPrimary height={20} className="border-y border-[#B58A43]/30 bg-[#FAF8F5]" />
 
       {/* ── 2. EDITORIAL STATEMENT / MANIFESTO (PURE WHITE & GOLD) ───── */}
-      <section className="relative py-20 sm:py-28 bg-white overflow-hidden">
+      <section className="relative py-20 sm:py-28 bg-white dark:bg-[#0E0D0B] overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Left Narrative */}
@@ -135,16 +135,16 @@ export default function Home({
                 <span>{t('ethosEyebrow')}</span>
               </div>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] leading-tight">
                 {t('ethosTitle1')}<br />
                 <span className="italic font-normal text-[#B58A43]">{t('ethosTitle2')}</span>
               </h2>
 
-              <p className="font-sans text-sm sm:text-base text-[#302B24]/85 leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-[#302B24]/85 dark:text-[#D1C7BA] leading-relaxed">
                 {t('ethosBody')}
               </p>
 
-              <blockquote className="border-l-3 border-[#B58A43] pl-5 italic font-serif text-lg sm:text-xl text-[#302B24] py-1 bg-[#FAF8F5]/50 rounded-r-xl">
+              <blockquote className="border-l-3 border-[#B58A43] pl-5 italic font-serif text-lg sm:text-xl text-[#302B24] dark:text-[#F5F2EB] py-1 bg-[#FAF8F5]/50 dark:bg-[#1A1814]/50 rounded-r-xl">
                 {t('ethosQuote')}
               </blockquote>
 
@@ -157,7 +157,7 @@ export default function Home({
                   />
                 </div>
                 <div>
-                  <span className="block font-serif text-base font-bold text-[#302B24]">
+                  <span className="block font-serif text-base font-bold text-[#302B24] dark:text-[#F5F2EB]">
                     {t('ethosAuthor')}
                   </span>
                   <span className="block font-sans text-xs text-[#B58A43] uppercase tracking-wider font-semibold">
@@ -169,7 +169,7 @@ export default function Home({
 
             {/* Right Asymmetric Image Composition with Tilet Framing */}
             <div className="lg:col-span-5 relative">
-              <div className="relative z-10 rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white">
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white dark:bg-[#161410]">
                 <div className="rounded-2xl overflow-hidden relative">
                   <img
                     src="https://res.cloudinary.com/dw1ohipim/image/upload/v1784044760/uaxjuqytkud5kywfxamz.jpg"
@@ -191,12 +191,12 @@ export default function Home({
               </div>
 
               {/* Decorative accent card floating in background */}
-              <div className="absolute -bottom-6 -left-6 z-20 bg-white text-[#302B24] p-5 rounded-2xl shadow-xl max-w-xs border border-[#B58A43]/40 hidden sm:block">
+              <div className="absolute -bottom-6 -left-6 z-20 bg-white dark:bg-[#161410] text-[#302B24] dark:text-[#F5F2EB] p-5 rounded-2xl shadow-xl max-w-xs border border-[#B58A43]/40 hidden sm:block">
                 <div className="flex items-center gap-2 text-[#B58A43] mb-1.5 text-xs font-bold uppercase tracking-wider">
                   <ShieldCheck className="w-4 h-4 text-[#B58A43]" />
                   <span>{t('thoughtfulBadge')}</span>
                 </div>
-                <p className="text-xs text-[#302B24]/80 leading-relaxed">
+                <p className="text-xs text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed">
                   {t('thoughtfulBadgeDesc')}
                 </p>
               </div>
@@ -206,7 +206,7 @@ export default function Home({
       </section>
 
       {/* ── 3. FEATURED CURATED JOURNEYS (WARM IVORY & GOLD TILET ACCENTS) ─ */}
-      <section className="py-20 sm:py-28 bg-[#F8F5EE] border-y border-[#B58A43]/20 relative">
+      <section className="py-20 sm:py-28 bg-[#F8F5EE] dark:bg-[#12110E] border-y border-[#B58A43]/20 relative">
         <TiletBackgroundPattern className="opacity-[0.03]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -216,7 +216,7 @@ export default function Home({
               <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
                 {t('curatedEyebrow')}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] mt-1">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] mt-1">
                 {t('curatedTitle')} <span className="italic font-normal text-[#B58A43]">{t('curatedTitleHighlight')}</span>
               </h2>
             </div>
@@ -236,7 +236,7 @@ export default function Home({
                   className={`px-4 py-2 rounded-full text-xs font-sans uppercase tracking-wider font-semibold transition-all border ${
                     activeCategory === cat.id
                       ? 'bg-[#B58A43] text-white border-[#B58A43] shadow-xs'
-                      : 'bg-white text-[#302B24]/75 border-[#B58A43]/30 hover:border-[#B58A43] hover:text-[#B58A43]'
+                      : 'bg-white dark:bg-[#1A1814] text-[#302B24]/75 dark:text-[#D1C7BA] border-[#B58A43]/30 hover:border-[#B58A43] hover:text-[#B58A43]'
                   }`}
                 >
                   {cat.label}
@@ -263,7 +263,7 @@ export default function Home({
           <div className="mt-14 text-center">
             <button
               onClick={() => navigateWithMesob('/tours')}
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#302B24] hover:bg-[#B58A43] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full bg-[#302B24] dark:bg-[#B58A43] hover:bg-[#B58A43] dark:hover:bg-[#C49A50] text-white text-xs font-bold uppercase tracking-widest transition-all shadow-md hover:shadow-lg"
             >
               <span>{t('viewAllJourneys')}</span>
               <ArrowRight className="w-4 h-4 text-[#DDC28D]" />
@@ -276,21 +276,21 @@ export default function Home({
       <TiletDivider className="py-2" />
 
       {/* ── 4. DESTINATION DISCOVERY MATRIX (PURE WHITE & INTERACTIVE MAP) ─ */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-20 sm:py-28 bg-white dark:bg-[#0E0D0B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-14">
             <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
               {t('destEyebrow')}
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] mt-1">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] mt-1">
               {t('destTitle')} <span className="italic font-normal text-[#B58A43]">{t('destTitleHighlight')}</span>
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 mt-3 leading-relaxed">
+            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#D1C7BA] mt-3 leading-relaxed">
               {t('destSubtitle')}
             </p>
 
             {/* Region Tabs */}
-            <div className="mt-8 inline-flex p-1.5 rounded-full bg-[#FAF8F5] border border-[#B58A43]/30 shadow-xs">
+            <div className="mt-8 inline-flex p-1.5 rounded-full bg-[#FAF8F5] dark:bg-[#1A1814] border border-[#B58A43]/30 shadow-xs">
               {[
                 { id: 'all', label: t('allRegions') },
                 { id: 'north', label: t('theNorth') },
@@ -304,7 +304,7 @@ export default function Home({
                   className={`px-4 py-1.5 rounded-full text-xs font-sans uppercase tracking-wider font-bold transition-all ${
                     activeRegionTab === tab.id
                       ? 'bg-[#B58A43] text-white shadow-xs'
-                      : 'text-[#302B24]/70 hover:text-[#B58A43]'
+                      : 'text-[#302B24]/70 dark:text-[#D1C7BA] hover:text-[#B58A43]'
                   }`}
                 >
                   {tab.label}
@@ -319,7 +319,7 @@ export default function Home({
               <div
                 key={dest.id}
                 onClick={() => navigateWithMesob(`/destinations/${dest.id}`)}
-                className="group relative rounded-3xl overflow-hidden cursor-pointer h-96 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 border border-[#B58A43]/30 p-1.5 bg-white"
+                className="group relative rounded-3xl overflow-hidden cursor-pointer h-96 shadow-sm hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-1 border border-[#B58A43]/30 p-1.5 bg-white dark:bg-[#161410]"
               >
                 <div className="w-full h-full rounded-2xl overflow-hidden relative">
                   <img
@@ -332,7 +332,7 @@ export default function Home({
 
                   {/* Region Tag at Top */}
                   <div className="absolute top-4 left-4">
-                    <span className="px-3 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40 shadow-xs">
+                    <span className="px-3 py-0.5 rounded-full bg-white/95 dark:bg-[#1A1814]/95 backdrop-blur-md text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40 shadow-xs">
                       {dest.region} Ethiopia
                     </span>
                   </div>
@@ -380,17 +380,17 @@ export default function Home({
       </section>
 
       {/* Prominent Horizontal Tilet Border */}
-      <TiletBorderPrimary height={20} className="border-y border-[#B58A43]/30 bg-[#FAF8F5]" />
+      <TiletBorderPrimary height={20} className="border-y border-[#B58A43]/30 bg-[#FAF8F5] dark:bg-[#12110E]" />
 
       {/* ── 5. THE LIVING RITUAL SPOTLIGHT: THE BUNA CEREMONY & MESOB ── */}
-      <section className="py-20 sm:py-28 bg-[#F8F5EE] relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-[#F8F5EE] dark:bg-[#12110E] relative overflow-hidden">
         <TiletBackgroundPattern className="opacity-[0.035]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
             {/* Visual Left: Mesob & Coffee Ceremony Photography with Gold Tilet Frame */}
             <div className="lg:col-span-6 relative">
-              <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white">
+              <div className="relative rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1.5 bg-white dark:bg-[#161410]">
                 <div className="rounded-2xl overflow-hidden relative">
                   <img
                     src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
@@ -412,9 +412,9 @@ export default function Home({
               </div>
 
               {/* Decorative Corner Badge */}
-              <div className="absolute -bottom-4 -right-4 bg-white text-[#302B24] p-4 rounded-2xl shadow-xl border border-[#B58A43]/40 text-center hidden sm:block">
+              <div className="absolute -bottom-4 -right-4 bg-white dark:bg-[#161410] text-[#302B24] dark:text-[#F5F2EB] p-4 rounded-2xl shadow-xl border border-[#B58A43]/40 text-center hidden sm:block">
                 <span className="block font-serif text-2xl font-bold text-[#B58A43]">1,000+</span>
-                <span className="block text-[9px] uppercase tracking-wider font-sans font-semibold text-[#302B24]/70">
+                <span className="block text-[9px] uppercase tracking-wider font-sans font-semibold text-[#302B24]/70 dark:text-[#D1C7BA]">
                   {language === 'am' ? 'የቡና ሥነ-ሥርዓት ታሪክ' : 'Years of Buna Ritual'}
                 </span>
               </div>
@@ -426,34 +426,34 @@ export default function Home({
                 {t('bunaEyebrow')}
               </span>
 
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] leading-tight">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] leading-tight">
                 {t('bunaTitle')} <span className="italic font-normal text-[#B58A43]">{t('bunaTitleHighlight')}</span>
               </h2>
 
-              <p className="font-sans text-sm sm:text-base text-[#302B24]/85 leading-relaxed">
+              <p className="font-sans text-sm sm:text-base text-[#302B24]/85 dark:text-[#D1C7BA] leading-relaxed">
                 {t('bunaBody')}
               </p>
 
               <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-[#B58A43]/25 shadow-xs">
-                  <span className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#B58A43] text-[#B58A43] flex items-center justify-center font-serif font-bold shrink-0">
+                <div className="flex items-start gap-3 bg-white dark:bg-[#161410] p-4 rounded-2xl border border-[#B58A43]/25 shadow-xs">
+                  <span className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#1A1814] border border-[#B58A43] text-[#B58A43] flex items-center justify-center font-serif font-bold shrink-0">
                     1
                   </span>
                   <div>
-                    <h4 className="font-serif text-base text-[#302B24] font-bold">{t('gurshaTitle')}</h4>
-                    <p className="text-xs text-[#302B24]/75 mt-0.5 leading-relaxed">
+                    <h4 className="font-serif text-base text-[#302B24] dark:text-[#F5F2EB] font-bold">{t('gurshaTitle')}</h4>
+                    <p className="text-xs text-[#302B24]/75 dark:text-[#D1C7BA] mt-0.5 leading-relaxed">
                       {t('gurshaDesc')}
                     </p>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-3 bg-white p-4 rounded-2xl border border-[#B58A43]/25 shadow-xs">
-                  <span className="w-8 h-8 rounded-full bg-[#FAF8F5] border border-[#B58A43] text-[#B58A43] flex items-center justify-center font-serif font-bold shrink-0">
+                <div className="flex items-start gap-3 bg-white dark:bg-[#161410] p-4 rounded-2xl border border-[#B58A43]/25 shadow-xs">
+                  <span className="w-8 h-8 rounded-full bg-[#FAF8F5] dark:bg-[#1A1814] border border-[#B58A43] text-[#B58A43] flex items-center justify-center font-serif font-bold shrink-0">
                     2
                   </span>
                   <div>
-                    <h4 className="font-serif text-base text-[#302B24] font-bold">{t('threeRoundsTitle')}</h4>
-                    <p className="text-xs text-[#302B24]/75 mt-0.5 leading-relaxed">
+                    <h4 className="font-serif text-base text-[#302B24] dark:text-[#F5F2EB] font-bold">{t('threeRoundsTitle')}</h4>
+                    <p className="text-xs text-[#302B24]/75 dark:text-[#D1C7BA] mt-0.5 leading-relaxed">
                       {t('threeRoundsDesc')}
                     </p>
                   </div>
@@ -478,14 +478,14 @@ export default function Home({
       <TiletDivider className="py-2" />
 
       {/* ── 6. EDITORIAL STORIES / JOURNAL DISPATCHES (PURE WHITE) ───── */}
-      <section className="py-20 sm:py-28 bg-white">
+      <section className="py-20 sm:py-28 bg-white dark:bg-[#0E0D0B]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
             <div>
               <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
                 {t('journalEyebrow')}
               </span>
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] mt-1">
+              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] mt-1">
                 {t('journalTitle')} <span className="italic font-normal text-[#B58A43]">{t('journalTitleHighlight')}</span>
               </h2>
             </div>
@@ -504,7 +504,7 @@ export default function Home({
               <article
                 key={post.id}
                 onClick={() => navigateWithMesob(`/journal/${post.id}`)}
-                className="group cursor-pointer flex flex-col bg-white rounded-3xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 p-1.5"
+                className="group cursor-pointer flex flex-col bg-white dark:bg-[#161410] rounded-3xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 p-1.5"
               >
                 <div className="relative h-56 overflow-hidden rounded-2xl border border-[#B58A43]/20">
                   <img
@@ -514,7 +514,7 @@ export default function Home({
                     loading="lazy"
                   />
                   <div className="absolute top-3 left-3">
-                    <span className="px-3 py-0.5 rounded-full bg-white/95 backdrop-blur-md text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/30">
+                    <span className="px-3 py-0.5 rounded-full bg-white/95 dark:bg-[#1A1814]/95 backdrop-blur-md text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/30">
                       {post.category}
                     </span>
                   </div>
@@ -522,17 +522,17 @@ export default function Home({
 
                 <div className="p-6 flex-1 flex flex-col justify-between">
                   <div>
-                    <div className="flex items-center gap-2 text-[11px] text-[#302B24]/60 mb-2">
+                    <div className="flex items-center gap-2 text-[11px] text-[#302B24]/60 dark:text-[#D1C7BA]/70 mb-2">
                       <span>{post.date}</span>
                       <span>•</span>
                       <span>{post.readTime}</span>
                     </div>
 
-                    <h3 className="font-serif text-xl font-semibold text-[#302B24] group-hover:text-[#B58A43] transition-colors leading-snug">
+                    <h3 className="font-serif text-xl font-semibold text-[#302B24] dark:text-[#F5F2EB] group-hover:text-[#B58A43] transition-colors leading-snug">
                       {post.title}
                     </h3>
 
-                    <p className="font-sans text-xs text-[#302B24]/75 mt-2.5 line-clamp-3 leading-relaxed">
+                    <p className="font-sans text-xs text-[#302B24]/75 dark:text-[#D1C7BA] mt-2.5 line-clamp-3 leading-relaxed">
                       {post.excerpt}
                     </p>
                   </div>
@@ -549,7 +549,7 @@ export default function Home({
       </section>
 
       {/* ── 6.5. VOICES FROM THE PATH (GUEST PERSPECTIVES) ── */}
-      <section className="py-20 sm:py-24 bg-[#FAF8F5] border-t border-[#B58A43]/20 relative">
+      <section className="py-20 sm:py-24 bg-[#FAF8F5] dark:bg-[#12110E] border-t border-[#B58A43]/20 relative">
         <TiletBackgroundPattern className="opacity-[0.025]" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -557,61 +557,67 @@ export default function Home({
             <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
               {t('guestEyebrow')}
             </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] mt-1">
+            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#302B24] dark:text-[#F5F2EB] mt-1">
               {t('guestTitle')} <span className="italic font-normal text-[#B58A43]">{t('guestTitleHighlight')}</span>
             </h2>
-            <p className="font-sans text-xs sm:text-sm text-[#302B24]/70 mt-2">
+            <p className="font-sans text-xs sm:text-sm text-[#302B24]/70 dark:text-[#D1C7BA] mt-2">
               {t('guestSubtitle')}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
+            <div className="bg-white dark:bg-[#161410] rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
               <div className="space-y-4">
                 <div className="flex text-[#B58A43] text-sm">★★★★★</div>
-                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] leading-relaxed">
-                  "Lalibela was transcendent, but what truly elevated our expedition was The Tourist's access. Chanting with priests before dawn, sleeping at Limalimo above the cloud canyons, and Abenezer's gentle mastery of every detail."
+                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] dark:text-[#F5F2EB] leading-relaxed">
+                  {language === 'am'
+                    ? '"በላሊበላ የንጋት ጸሎት ማዳመጥ እና በሊማሊሞ ተራሮች ላይ ማረፍ የማይረሳ ተሞክሮ ነበር። የጎብኚው ቡድን እንክብካቤና አቀባበል እጅግ አስደናቂ ነው።"'
+                    : '"Chanting with priests before dawn in Lalibela and sleeping above the cloud canyons at Limalimo was unforgettable. The Tourist\'s access and personal care were extraordinary."'}
                 </blockquote>
               </div>
               <div className="pt-4 border-t border-[#B58A43]/20">
-                <span className="block font-serif text-base font-bold text-[#302B24]">
+                <span className="block font-serif text-base font-bold text-[#302B24] dark:text-[#F5F2EB]">
                   Lady Camilla & Lord Edward St. John
                 </span>
-                <span className="block text-[11px] text-[#302B24]/60 uppercase tracking-wider font-semibold">
+                <span className="block text-[11px] text-[#302B24]/60 dark:text-[#D1C7BA]/70 uppercase tracking-wider font-semibold">
                   London, UK • Ancient Kingdoms (14 Days)
                 </span>
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
+            <div className="bg-white dark:bg-[#161410] rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
               <div className="space-y-4">
                 <div className="flex text-[#B58A43] text-sm">★★★★★</div>
-                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] leading-relaxed">
-                  "Tracking the Ethiopian Wolf across the afro-alpine plateau with Daniel was world-class guiding. Truly ethical, dignified cultural exchanges in the Omo that completely avoided the tourist-bus feeling."
+                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] dark:text-[#F5F2EB] leading-relaxed">
+                  {language === 'am'
+                    ? '"በባሌ ተራሮች የቀይ ቀበሮዎችን ጉዞ ከዳንኤል ጋር ማሰስ ታላቅ ደስታ ነበር። በኦሞ ሸለቆ ያደረግነው የባህል ግንኙነት በሙሉ ክብርና ወዳጅነት የተመሠረተ ነው።"'
+                    : '"Tracking the rare Ethiopian Wolf in Bale with Daniel was world-class guiding. Truly ethical, respectful cultural exchanges in the Omo that avoided crowded buses."'}
                 </blockquote>
               </div>
               <div className="pt-4 border-t border-[#B58A43]/20">
-                <span className="block font-serif text-base font-bold text-[#302B24]">
+                <span className="block font-serif text-base font-bold text-[#302B24] dark:text-[#F5F2EB]">
                   Markus & Astrid Helfenstein
                 </span>
-                <span className="block text-[11px] text-[#302B24]/60 uppercase tracking-wider font-semibold">
+                <span className="block text-[11px] text-[#302B24]/60 dark:text-[#D1C7BA]/70 uppercase tracking-wider font-semibold">
                   Zurich, Switzerland • Bale & Omo Expeditions
                 </span>
               </div>
             </div>
 
-            <div className="bg-white rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
+            <div className="bg-white dark:bg-[#161410] rounded-3xl p-8 border border-[#B58A43]/30 shadow-sm flex flex-col justify-between space-y-6 relative overflow-hidden">
               <div className="space-y-4">
                 <div className="flex text-[#B58A43] text-sm">★★★★★</div>
-                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] leading-relaxed">
-                  "Standing on the rim of the active Erta Ale lava lake under the desert stars was one of the most unforgettable moments of our lives. The expedition logistics, camp chef, and safety were utterly impeccable."
+                <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] dark:text-[#F5F2EB] leading-relaxed">
+                  {language === 'am'
+                    ? '"በኤርታሌ ንቁ የእሳተ ገሞራ ሐይቅ ዳርቻ በከዋክብት ሥር መቆም በሕይወታችን ውስጥ ከታዩት አስደናቂ ትዕይንቶች አንዱ ነው። የጉዞው አደረጃጀትና ደህንነት እንከን የለሽ ነበር።"'
+                    : '"Standing on the rim of Erta Ale\'s active lava lake under desert stars was breathtaking. The expedition logistics, camp chef, and safety were utterly impeccable."'}
                 </blockquote>
               </div>
               <div className="pt-4 border-t border-[#B58A43]/20">
-                <span className="block font-serif text-base font-bold text-[#302B24]">
+                <span className="block font-serif text-base font-bold text-[#302B24] dark:text-[#F5F2EB]">
                   Dr. Julian & Vivienne Sato
                 </span>
-                <span className="block text-[11px] text-[#302B24]/60 uppercase tracking-wider font-semibold">
+                <span className="block text-[11px] text-[#302B24]/60 dark:text-[#D1C7BA]/70 uppercase tracking-wider font-semibold">
                   Tokyo & New York • Danakil & Harar
                 </span>
               </div>
@@ -621,10 +627,10 @@ export default function Home({
       </section>
 
       {/* Prominent Repeating Tilet Border before CTA */}
-      <TiletBorderPrimary height={20} className="border-y border-[#B58A43]/30 bg-[#FAF8F5]" />
+      <TiletBorderPrimary height={20} className="border-y border-[#B58A43]/30 bg-[#FAF8F5] dark:bg-[#12110E]" />
 
       {/* ── 7. PRIVATE BESPOKE CURATION CTA BANNER (WARM IVORY & GOLD) ───── */}
-      <section className="py-20 sm:py-28 bg-[#F8F5EE] text-[#302B24] relative overflow-hidden">
+      <section className="py-20 sm:py-28 bg-[#F8F5EE] dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] relative overflow-hidden">
         <TiletBackgroundPattern className="opacity-[0.04]" />
 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 space-y-6">
@@ -637,7 +643,7 @@ export default function Home({
             <span className="italic font-normal text-[#B58A43]">{t('ctaTitleHighlight')}</span>
           </h2>
 
-          <p className="font-sans text-sm sm:text-base text-[#302B24]/80 max-w-2xl mx-auto leading-relaxed">
+          <p className="font-sans text-sm sm:text-base text-[#302B24]/80 dark:text-[#D1C7BA] max-w-2xl mx-auto leading-relaxed">
             {t('ctaSubtitle')}
           </p>
 
@@ -650,7 +656,7 @@ export default function Home({
             </button>
             <button
               onClick={() => navigateWithMesob('/contact')}
-              className="w-full sm:w-auto px-8 py-4 rounded-full border border-[#B58A43] hover:bg-white text-[#302B24] font-sans text-xs uppercase tracking-widest font-bold transition-all shadow-xs"
+              className="w-full sm:w-auto px-8 py-4 rounded-full border border-[#B58A43] hover:bg-white dark:hover:bg-[#1A1814] text-[#302B24] dark:text-[#F5F2EB] font-sans text-xs uppercase tracking-widest font-bold transition-all shadow-xs"
             >
               {t('speakConciergeBtn')}
             </button>

@@ -103,13 +103,8 @@ export default function About() {
               </h2>
               <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed font-light">
                 {language === 'am'
-                  ? 'ለአያሌ ዓመታት ወደ ኢትዮጵያ የሚደረግ ጉዞ በሁለት ይከፈል ነበር፡ በችኮላ የተሞላ የቡድን አውቶቡስ ጉዞ፣ ወይም ምቾት የሌለው የወጣቶች ጉዞ። ጥልቅ ዕውቀት፣ ምርጥ ደረጃቸውን የጠበቁ ማረፊያዎችና እውነተኛ ባህላዊ ትስስር ለሚፈልጉ ተጓዦች ምቹ አማራጭ አልነበረም።'
-                  : 'For decades, international travel to Ethiopia was characterized either by rigid bus package tours rushing across northern churches, or by rough budget overland treks that lacked care and refinement. There was rarely an option for travelers who sought luxury of experience—impeccable local knowledge, superb boutique accommodations, and profound cultural immersion.'}
-              </p>
-              <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed font-light">
-                {language === 'am'
-                  ? 'ጎብኚው (The Tourist) ይህንን ክፍተት ለመሙላት በአበነዘር ሲሳይ ተመሠረተ። የኢትዮጵያን ባህላዊ የእንግዳ ተቀባይነት ሙቀት ከዓለም አቀፍ የቅንጦት ጉዞ ደረጃዎች ጋር በማጣመር ልዩ ተሞክሮ እናቀርባለን።'
-                  : 'The Tourist (ጎብኚው) was founded by Abenezer Sisay to bridge this divide. We combine the warmth of traditional Ethiopian hospitality with the exacting standards of the world’s finest bespoke travel design.'}
+                  ? 'በአበነዘር ሲሳይ የተመሠረተው ጎብኚው (The Tourist) የተፈጠረው የሀገራችንን ጥልቅ ባህል በጥንቃቄና በምቾት ለመጎብኘት ለሚሹ ተጓዦች ነው። እውነተኛውን የኢትዮጵያ እንግዳ ተቀባይነት ከጥራት ካለው የግል ጉዞ ጋር እናጣምራለን።'
+                  : 'Founded by Abenezer Sisay, The Tourist (ጎብኚው) was created for travelers who seek authentic cultural depth over crowded tour buses. We combine genuine Ethiopian hospitality with private, thoughtfully paced bespoke travel design.'}
               </p>
               <div className="pt-1">
                 <blockquote className="border-l-2 border-[#B58A43] pl-4 italic font-serif text-base sm:text-lg text-[#1A1713] dark:text-[#F5F2EB]">
