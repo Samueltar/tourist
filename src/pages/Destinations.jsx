@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
-import { MapPin, Compass, ArrowRight, Mountain, Sun, CloudRain } from 'lucide-react'
+import { MapPin, Compass, ArrowRight, Mountain, Sun, CloudRain, Grid, Map } from 'lucide-react'
 import { destinations } from '../data/tours'
 import { useMesob } from '../components/MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
 import { TiletBorderPrimary, TiletDivider, TiletCorner } from '../components/TiletPatterns'
+import EthiopiaMap from '../components/EthiopiaMap'
 
 export default function Destinations() {
   const { navigateWithMesob } = useMesob()
   const { t, language } = useLanguage()
   const [selectedRegion, setSelectedRegion] = useState('all')
+  const [viewMode, setViewMode] = useState('grid') // 'grid' | 'map'
 
   const regions = [
     { id: 'all', label: t('allRegions') },
@@ -49,100 +51,139 @@ export default function Destinations() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
-        {/* Region Filter Bar */}
-        <div className="bg-white rounded-2xl shadow-lg border border-[#B58A43]/25 p-4 sm:p-5 flex flex-wrap items-center justify-center gap-2 relative">
-          {regions.map((reg) => (
+        {/* Controls Card: Region Filter Bar + View Mode Toggle */}
+        <div className="bg-white rounded-2xl shadow-lg border border-[#B58A43]/25 p-4 sm:p-5 flex flex-col md:flex-row items-center justify-between gap-4 relative">
+          {/* Region Pills */}
+          <div className="flex flex-wrap items-center justify-center gap-2">
+            {regions.map((reg) => (
+              <button
+                key={reg.id}
+                onClick={() => {
+                  setSelectedRegion(reg.id)
+                  if (viewMode === 'map') setViewMode('grid')
+                }}
+                className={`px-4 sm:px-5 py-2 rounded-full text-xs font-sans uppercase tracking-wider font-semibold transition-all ${
+                  selectedRegion === reg.id && viewMode === 'grid'
+                    ? 'bg-[#1A1713] text-[#FAF8F5] shadow'
+                    : 'bg-[#FAF8F5] border border-[#B58A43]/20 text-[#302B24]/80 hover:bg-[#EFE7D9] hover:text-[#1A1713]'
+                }`}
+              >
+                {reg.label}
+              </button>
+            ))}
+          </div>
+
+          {/* View Mode Switcher */}
+          <div className="flex items-center gap-1.5 p-1 bg-[#FAF8F5] rounded-xl border border-[#B58A43]/30 shrink-0">
             <button
-              key={reg.id}
-              onClick={() => setSelectedRegion(reg.id)}
-              className={`px-5 py-2 rounded-full text-xs font-sans uppercase tracking-wider font-semibold transition-all ${
-                selectedRegion === reg.id
-                  ? 'bg-[#1A1713] text-[#FAF8F5] shadow'
-                  : 'bg-[#FAF8F5] border border-[#B58A43]/20 text-[#302B24]/80 hover:bg-[#EFE7D9] hover:text-[#1A1713]'
+              onClick={() => setViewMode('grid')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all ${
+                viewMode === 'grid'
+                  ? 'bg-white text-[#1A1713] shadow-xs border border-[#B58A43]/30'
+                  : 'text-[#302B24]/65 hover:text-[#1A1713]'
               }`}
             >
-              {reg.label}
+              <Grid className="w-3.5 h-3.5 text-[#B58A43]" />
+              <span>{language === 'am' ? 'ካርዶች' : 'Cards'}</span>
             </button>
-          ))}
+            <button
+              onClick={() => setViewMode('map')}
+              className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-lg text-xs font-sans uppercase tracking-wider font-semibold transition-all ${
+                viewMode === 'map'
+                  ? 'bg-white text-[#1A1713] shadow-xs border border-[#B58A43]/30'
+                  : 'text-[#302B24]/65 hover:text-[#1A1713]'
+              }`}
+            >
+              <Map className="w-3.5 h-3.5 text-[#B58A43]" />
+              <span>{language === 'am' ? 'በይነ-መረብ ካርታ' : 'Interactive Map'}</span>
+            </button>
+          </div>
         </div>
 
-        {/* Destination Cards Grid */}
-        <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredDestinations.map((dest) => (
-            <div
-              key={dest.id}
-              onClick={() => navigateWithMesob(`/destinations/${dest.id}`)}
-              className="group bg-white rounded-2xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col transform hover:-translate-y-1 relative"
-            >
-              <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none z-10" size={24} />
+        {/* View Mode: Map or Grid */}
+        {viewMode === 'map' ? (
+          <div className="mt-10 animate-fade-in">
+            <EthiopiaMap />
+          </div>
+        ) : (
+          /* Destination Cards Grid */
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {filteredDestinations.map((dest) => (
+              <div
+                key={dest.id}
+                onClick={() => navigateWithMesob(`/destinations/${dest.id}`)}
+                className="group bg-white rounded-2xl overflow-hidden border border-[#B58A43]/25 shadow-sm hover:shadow-xl transition-all duration-500 cursor-pointer flex flex-col transform hover:-translate-y-1 relative"
+              >
+                <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none z-10" size={24} />
 
-              {/* Image Container */}
-              <div className="relative h-64 overflow-hidden">
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
+                {/* Image Container */}
+                <div className="relative h-64 overflow-hidden">
+                  <img
+                    src={dest.image}
+                    alt={dest.name}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/30" />
 
-                <div className="absolute top-4 left-4">
-                  <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#1A1713] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40 shadow-sm">
-                    {dest.region}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-4 left-4 right-4 text-white">
-                  <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-medium">
-                    {dest.tagline}
-                  </span>
-                  <h3 className="font-serif text-2xl font-normal text-white group-hover:text-[#DDC28D] transition-colors mt-0.5">
-                    {dest.name}
-                  </h3>
-                </div>
-              </div>
-
-              {/* Content */}
-              <div className="p-6 flex-1 flex flex-col justify-between">
-                <div>
-                  <p className="font-sans text-xs text-[#302B24]/80 leading-relaxed line-clamp-3 mb-4 font-light">
-                    {dest.summary}
-                  </p>
-
-                  {/* Fast Facts Bar */}
-                  <div className="bg-[#FAF8F5] rounded-xl p-3 border border-[#B58A43]/20 space-y-1.5 text-[11px] text-[#302B24]/80 mb-4">
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#302B24]/60">{t('altitude')}:</span>
-                      <span className="font-semibold text-[#1A1713]">{dest.altitude}</span>
-                    </div>
-                    <div className="flex items-center justify-between">
-                      <span className="text-[#302B24]/60">{t('bestSeason')}:</span>
-                      <span className="font-semibold text-[#1A1713] truncate max-w-[170px]">{dest.bestTimeToVisit}</span>
-                    </div>
+                  <div className="absolute top-4 left-4">
+                    <span className="px-3 py-1 rounded-full bg-white/90 backdrop-blur-md text-[#1A1713] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40 shadow-sm">
+                      {dest.region}
+                    </span>
                   </div>
 
-                  {/* Highlights */}
-                  {dest.highlights && (
-                    <div className="space-y-1.5 mb-4">
-                      {dest.highlights.slice(0, 3).map((hl, i) => (
-                        <div key={i} className="flex items-center gap-2 text-[11px] text-[#302B24]/75">
-                          <span className="w-1.5 h-1.5 rounded-full bg-[#B58A43] shrink-0" />
-                          <span className="truncate">{hl}</span>
-                        </div>
-                      ))}
-                    </div>
-                  )}
+                  <div className="absolute bottom-4 left-4 right-4 text-white">
+                    <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-medium">
+                      {dest.tagline}
+                    </span>
+                    <h3 className="font-serif text-2xl font-normal text-white group-hover:text-[#DDC28D] transition-colors mt-0.5">
+                      {dest.name}
+                    </h3>
+                  </div>
                 </div>
 
-                {/* Footer action */}
-                <div className="pt-4 border-t border-[#B58A43]/15 flex items-center justify-between text-xs text-[#B58A43] font-bold uppercase tracking-wider group-hover:text-[#916B2D]">
-                  <span>{language === 'am' ? 'ክልሉን ያስሱ' : 'Explore Region'}</span>
-                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                {/* Content */}
+                <div className="p-6 flex-1 flex flex-col justify-between">
+                  <div>
+                    <p className="font-sans text-xs text-[#302B24]/80 leading-relaxed line-clamp-3 mb-4 font-light">
+                      {dest.summary}
+                    </p>
+
+                    {/* Fast Facts Bar */}
+                    <div className="bg-[#FAF8F5] rounded-xl p-3 border border-[#B58A43]/20 space-y-1.5 text-[11px] text-[#302B24]/80 mb-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#302B24]/60">{t('altitude')}:</span>
+                        <span className="font-semibold text-[#1A1713]">{dest.altitude}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-[#302B24]/60">{t('bestSeason')}:</span>
+                        <span className="font-semibold text-[#1A1713] truncate max-w-[170px]">{dest.bestTimeToVisit}</span>
+                      </div>
+                    </div>
+
+                    {/* Highlights */}
+                    {dest.highlights && (
+                      <div className="space-y-1.5 mb-4">
+                        {dest.highlights.slice(0, 3).map((hl, i) => (
+                          <div key={i} className="flex items-center gap-2 text-[11px] text-[#302B24]/75">
+                            <span className="w-1.5 h-1.5 rounded-full bg-[#B58A43] shrink-0" />
+                            <span className="truncate">{hl}</span>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+
+                  {/* Footer action */}
+                  <div className="pt-4 border-t border-[#B58A43]/15 flex items-center justify-between text-xs text-[#B58A43] font-bold uppercase tracking-wider group-hover:text-[#916B2D]">
+                    <span>{language === 'am' ? 'ክልሉን ያስሱ' : 'Explore Region'}</span>
+                    <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
-        </div>
+            ))}
+          </div>
+        )}
       </div>
     </div>
   )

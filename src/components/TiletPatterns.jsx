@@ -123,7 +123,8 @@ export function TiletMotif({ className = 'w-10 h-10', color = '#B58A43', seconda
       {/* Central Solid Diamond */}
       <polygon
         points="30,15 45,30 30,45 15,30"
-        fill="#F8F5EE"
+        fill="currentColor"
+        fillOpacity="0.12"
         stroke={color}
         strokeWidth="1.2"
       />

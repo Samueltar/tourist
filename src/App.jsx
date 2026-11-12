@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
 import { LanguageProvider } from './context/LanguageContext'
+import { ThemeProvider } from './context/ThemeContext'
 import { MesobProvider } from './components/MesobTransition'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -61,17 +62,18 @@ export default function App() {
 
   return (
     <Router>
-      <LanguageProvider>
-        <MesobProvider>
-          <div className="flex flex-col min-h-screen bg-white text-[#302B24] font-sans antialiased selection:bg-[#B58A43] selection:text-white">
-            {/* Header Navigation with Mesob Transition & Bilingual Support */}
-            <Navbar
-              savedCount={savedTourIds.length}
-              onOpenWishlist={() => setWishlistOpen(true)}
-            />
+      <ThemeProvider>
+        <LanguageProvider>
+          <MesobProvider>
+            <div className="flex flex-col min-h-screen bg-[#FAF8F5] dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] font-sans antialiased selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
+              {/* Header Navigation with Mesob Transition & Bilingual Support */}
+              <Navbar
+                savedCount={savedTourIds.length}
+                onOpenWishlist={() => setWishlistOpen(true)}
+              />
 
-            {/* Main Route Content */}
-            <main className="flex-1">
+              {/* Main Route Content */}
+              <main className="flex-1">
               <Routes>
                 <Route
                   path="/"
@@ -150,6 +152,7 @@ export default function App() {
           </div>
         </MesobProvider>
       </LanguageProvider>
-    </Router>
-  )
+    </ThemeProvider>
+  </Router>
+)
 }

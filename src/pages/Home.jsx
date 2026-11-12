@@ -32,9 +32,9 @@ export default function Home({
     : destinations.filter((d) => d.region.toLowerCase() === activeRegionTab.toLowerCase())
 
   return (
-    <div className="min-h-screen bg-white text-[#302B24] overflow-x-hidden selection:bg-[#B58A43] selection:text-white">
+    <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
       {/* ── 1. HERO SECTION (EDITORIAL WHITE, GOLD & DESTINATION BACKDROP) ─── */}
-      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F8F5EE]">
+      <section className="relative min-h-[92vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#F8F5EE] dark:bg-[#0E0D0B]">
         {/* Destination Photography with Radiant Editorial Lighting */}
         <div className="absolute inset-0 z-0">
           <img
@@ -43,8 +43,8 @@ export default function Home({
             className="w-full h-full object-cover ken-burns brightness-[0.82] contrast-[1.02]"
           />
           {/* Radiant white, ivory & gold gradient scrim for text readability */}
-          <div className="absolute inset-0 bg-gradient-to-t from-white via-white/45 to-black/30" />
-          <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-transparent to-white/70" />
+          <div className="absolute inset-0 bg-gradient-to-t from-white dark:from-[#0E0D0B] via-white/50 dark:via-[#0E0D0B]/60 to-black/30" />
+          <div className="absolute inset-0 bg-gradient-to-r from-white/80 dark:from-[#0E0D0B]/85 via-transparent to-white/70 dark:to-[#0E0D0B]/75" />
         </div>
 
         {/* Hero Corner Tilet Ornaments */}

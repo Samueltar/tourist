@@ -21,9 +21,9 @@ export default function Footer() {
   }
 
   return (
-    <footer className="relative bg-[#F8F5EE] text-[#302B24] overflow-hidden border-t border-[#B58A43]/20">
+    <footer className="relative bg-[#F8F5EE] dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-hidden border-t border-[#B58A43]/20 dark:border-[#B58A43]/30 transition-colors duration-300">
       {/* Prominent Repeating Gold Ethiopian Tilet Ornamental Band across Footer Top */}
-      <TiletBorderPrimary height={20} className="border-b border-[#B58A43]/30 bg-white" />
+      <TiletBorderPrimary height={20} className="border-b border-[#B58A43]/30 bg-white dark:bg-[#161410]" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-16 sm:pt-20 pb-12">
         {/* Top Editorial Banner */}

@@ -3,11 +3,13 @@ import { MapPin, ArrowRight, Compass, Sparkles } from 'lucide-react'
 import { destinations } from '../data/tours'
 import { useMesob } from './MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
+import { useTheme } from '../context/ThemeContext'
 import { TiletBorderPrimary, TiletCorner, TiletMotif } from './TiletPatterns'
 
 export default function EthiopiaMap() {
   const { navigateWithMesob } = useMesob()
   const { t, language } = useLanguage()
+  const { isDark } = useTheme()
   const [activePin, setActivePin] = useState(destinations[1]) // Default Lalibela
   const [activeCircuit, setActiveCircuit] = useState('all')
 
@@ -97,7 +99,7 @@ export default function EthiopiaMap() {
                  C 400 600, 320 620, 260 570
                  C 200 520, 180 440, 200 360
                  C 220 280, 240 180, 280 140 Z"
-              fill="#F8F5EE"
+              fill={isDark ? '#181612' : '#F8F5EE'}
               stroke="#B58A43"
               strokeWidth="2"
               strokeDasharray="4 4"
@@ -110,7 +112,7 @@ export default function EthiopiaMap() {
                  C 500 290, 480 380, 440 430
                  C 400 480, 350 460, 330 390
                  C 310 320, 290 220, 330 180 Z"
-              fill="#EFE7D9"
+              fill={isDark ? '#242019' : '#EFE7D9'}
               stroke="#B58A43"
               strokeWidth="1.5"
             />

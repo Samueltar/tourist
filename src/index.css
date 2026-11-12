@@ -6,8 +6,16 @@
 html {
   font-family: 'Manrope', 'Noto Sans Ethiopic', system-ui, sans-serif;
   scroll-behavior: smooth;
-  background-color: #FFFFFF;
+  background-color: #FAF8F5;
   color: #302B24;
+  color-scheme: light;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+html.dark {
+  background-color: #0E0D0B;
+  color: #F5F2EB;
+  color-scheme: dark;
 }
 
 h1, h2, h3, .font-serif {
@@ -19,6 +27,105 @@ h1, h2, h3, .font-serif {
 ::-webkit-scrollbar-track { background: #F8F5EE; }
 ::-webkit-scrollbar-thumb { background: #B58A43; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #9E7432; }
+
+html.dark ::-webkit-scrollbar-track { background: #14120F; }
+html.dark ::-webkit-scrollbar-thumb { background: #C49A50; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #DDC28D; }
+
+/* ── Ethiopian Dark Mode Palette & Surfaces ────── */
+/* The gold Tilet patterns, borders, dividers and accents stay radiant gold in both modes */
+
+.dark body {
+  background-color: #0E0D0B;
+  color: #F5F2EB;
+}
+
+/* Background conversions */
+.dark .bg-\[\#FAF8F5\],
+.dark .bg-\[\#F5F0E6\],
+.dark .bg-\[\#F8F5EE\] {
+  background-color: #0E0D0B !important;
+}
+
+.dark .bg-\[\#F3EEE5\],
+.dark .bg-\[\#EFE7D9\],
+.dark .bg-\[\#E9E0D1\] {
+  background-color: #161410 !important;
+}
+
+.dark .from-\[\#F3EEE5\] {
+  --tw-gradient-from: #161410 !important;
+}
+
+.dark .to-\[\#FAF8F5\] {
+  --tw-gradient-to: #0E0D0B !important;
+}
+
+.dark .bg-white {
+  background-color: #161410 !important;
+}
+
+.dark .bg-white\/80,
+.dark .bg-white\/90 {
+  background-color: rgba(22, 20, 16, 0.9) !important;
+}
+
+/* Text color conversions */
+.dark .text-\[\#1A1713\],
+.dark .text-\[\#202622\],
+.dark .text-\[\#302B24\] {
+  color: #F5F2EB !important;
+}
+
+.dark .text-\[\#302B24\]\/85,
+.dark .text-\[\#302B24\]\/80,
+.dark .text-\[\#302B24\]\/75,
+.dark .text-\[\#302B24\]\/70,
+.dark .text-\[\#202622\]\/85,
+.dark .text-\[\#202622\]\/80,
+.dark .text-\[\#202622\]\/75,
+.dark .text-\[\#202622\]\/70 {
+  color: #D1C7BA !important;
+}
+
+.dark .text-\[\#302B24\]\/65,
+.dark .text-\[\#302B24\]\/60,
+.dark .text-\[\#302B24\]\/45,
+.dark .text-\[\#202622\]\/60,
+.dark .text-\[\#202622\]\/50 {
+  color: #9E9382 !important;
+}
+
+/* Borders in dark mode - retaining golden elegance */
+.dark .border-\[\#B58A43\]\/15,
+.dark .border-\[\#B58A43\]\/20,
+.dark .border-\[\#B58A43\]\/25,
+.dark .border-\[\#B58A43\]\/30,
+.dark .border-\[\#C3A16A\]\/20,
+.dark .border-\[\#C3A16A\]\/30 {
+  border-color: rgba(196, 154, 80, 0.3) !important;
+}
+
+/* Form inputs & controls in dark mode */
+.dark input,
+.dark select,
+.dark textarea {
+  background-color: #1A1713 !important;
+  color: #F5F2EB !important;
+  border-color: rgba(196, 154, 80, 0.35) !important;
+}
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+  color: #8C806E !important;
+}
+
+/* Shadow styling in dark mode */
+.dark .shadow-lg,
+.dark .shadow-xl,
+.dark .shadow-2xl {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6) !important;
+}
 
 /* ── Grain texture overlay ────────────────────────── */
 .grain-overlay::before {

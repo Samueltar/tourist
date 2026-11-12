@@ -48,9 +48,9 @@ export default function TourModal({
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-white border-2 border-[#B58A43]/40 w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl flex flex-col relative animate-scale-in max-h-[90vh]">
+      <div className="bg-white dark:bg-[#14120F] text-[#302B24] dark:text-[#F5F2EB] border-2 border-[#B58A43]/40 w-full max-w-3xl rounded-3xl overflow-hidden shadow-2xl flex flex-col relative animate-scale-in max-h-[90vh]">
         {/* Top Tilet Border Accent */}
-        <TiletBorderPrimary height={14} className="border-b border-[#B58A43]/30 bg-[#FAF8F5]" />
+        <TiletBorderPrimary height={14} className="border-b border-[#B58A43]/30 bg-[#FAF8F5] dark:bg-[#1A1814]" />
 
         {/* Top Image Banner */}
         <div className="relative h-60 sm:h-72 w-full shrink-0 overflow-hidden">
@@ -152,7 +152,7 @@ export default function TourModal({
         </div>
 
         {/* Modal Sticky Bottom Actions */}
-        <div className="p-4 sm:p-5 bg-[#FAF8F5] border-t border-[#B58A43]/20 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
+        <div className="p-4 sm:p-5 bg-[#FAF8F5] dark:bg-[#1A1814] border-t border-[#B58A43]/20 dark:border-[#B58A43]/30 flex flex-col sm:flex-row items-center justify-between gap-3 shrink-0">
           <div>
             <span className="block text-[10px] uppercase tracking-widest text-[#302B24]/60 font-semibold">
               {t('pricingGuidance')}
