@@ -228,7 +228,7 @@ export default function Footer() {
             <ul className="space-y-2.5 text-xs text-[#302B24]/80 dark:text-[#E8E2D5]/80 font-light">
               <li>
                 <button onClick={() => navigateWithMesob('/about')} className="hover:text-[#B58A43] transition-colors text-left">
-                  {language === 'am' ? 'ስለ ጥንታዊ ጎዳና እና ቡድናችን' : 'Living Culture & Ethos'}
+                  {language === 'am' ? 'ስለ ጎብኚው እና ቡድናችን' : 'About The Tourist & Team'}
                 </button>
               </li>
               <li>
