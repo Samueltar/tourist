@@ -1,9 +1,10 @@
 import React, { useState, useMemo } from 'react'
-import { Search, SlidersHorizontal, Grid, List, Sparkles, Clock, MapPin, X } from 'lucide-react'
+import { Search, Grid, List, Sparkles, Clock, MapPin, X, Compass, ArrowRight } from 'lucide-react'
 import { tours } from '../data/tours'
 import TourCard from '../components/TourCard'
 import { useMesob } from '../components/MesobTransition'
-import { EthiopianDivider } from '../components/EthiopianPattern'
+import { useLanguage } from '../context/LanguageContext'
+import { TiletBorderPrimary, TiletDivider, TiletCorner } from '../components/TiletPatterns'
 
 export default function Tours({
   savedTourIds = [],
@@ -11,36 +12,34 @@ export default function Tours({
   onSelectTourModal = () => {},
 }) {
   const { navigateWithMesob } = useMesob()
+  const { t, language } = useLanguage()
   const [searchQuery, setSearchQuery] = useState('')
   const [selectedCategory, setSelectedCategory] = useState('all')
   const [selectedDuration, setSelectedDuration] = useState('all')
-  const [layoutMode, setLayoutMode] = useState('grid') // 'grid' | 'list'
+  const [layoutMode, setLayoutMode] = useState('grid')
 
   const categories = [
-    { id: 'all', label: 'All Styles' },
-    { id: 'historical', label: 'Historical' },
-    { id: 'wildlife', label: 'Wildlife & Nature' },
-    { id: 'cultural', label: 'Cultural & Tribal' },
-    { id: 'spiritual', label: 'Spiritual' },
-    { id: 'adventure', label: 'Adventure' },
-    { id: 'city', label: 'City Escape' },
+    { id: 'all', label: language === 'am' ? 'ሁሉም ዓይነቶች' : 'All Styles' },
+    { id: 'historical', label: language === 'am' ? 'ታሪካዊ' : 'Historical' },
+    { id: 'wildlife', label: language === 'am' ? 'ዱር አራዊት' : 'Wildlife & Nature' },
+    { id: 'cultural', label: language === 'am' ? 'ባህላዊ' : 'Cultural & Tribal' },
+    { id: 'spiritual', label: language === 'am' ? 'መንፈሳዊ' : 'Spiritual' },
+    { id: 'adventure', label: language === 'am' ? 'ጀብዱ' : 'Adventure' },
+    { id: 'city', label: language === 'am' ? 'የከተማ እረፍት' : 'City Escape' },
   ]
 
   const durations = [
-    { id: 'all', label: 'Any Duration' },
-    { id: 'short', label: 'Short (1–5 Days)' },
-    { id: 'medium', label: 'Medium (6–10 Days)' },
-    { id: 'long', label: 'Epic (11–15 Days)' },
+    { id: 'all', label: language === 'am' ? 'ማንኛውም ቆይታ' : 'Any Duration' },
+    { id: 'short', label: language === 'am' ? 'አጭር (1–5 ቀናት)' : 'Short (1–5 Days)' },
+    { id: 'medium', label: language === 'am' ? 'መካከለኛ (6–10 ቀናት)' : 'Medium (6–10 Days)' },
+    { id: 'long', label: language === 'am' ? 'ረጅም (11–15 ቀናት)' : 'Epic (11–15 Days)' },
   ]
 
   const filteredTours = useMemo(() => {
     return tours.filter((tour) => {
-      // Category match
       if (selectedCategory !== 'all' && tour.category !== selectedCategory) {
         return false
       }
-
-      // Duration match
       if (selectedDuration === 'short' && (tour.daysCount > 5 || !tour.daysCount)) {
         return false
       }
@@ -50,8 +49,6 @@ export default function Tours({
       if (selectedDuration === 'long' && tour.daysCount < 11) {
         return false
       }
-
-      // Search match
       if (searchQuery.trim()) {
         const query = searchQuery.toLowerCase()
         const matchTitle = tour.title.toLowerCase().includes(query)
@@ -62,7 +59,6 @@ export default function Tours({
           return false
         }
       }
-
       return true
     })
   }, [selectedCategory, selectedDuration, searchQuery])
@@ -74,39 +70,46 @@ export default function Tours({
   }
 
   return (
-    <div className="min-h-screen bg-[#F5F0E6] text-[#202622] pt-24 sm:pt-28 pb-20 selection:bg-[#B86B48] selection:text-white">
-      {/* Editorial Header Banner */}
-      <div className="bg-[#173D32] text-[#F5F0E6] py-16 sm:py-20 relative overflow-hidden">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3">
-          <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#C3A16A] font-semibold">
-            Handcrafted Expeditions
-          </span>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-light tracking-tight">
-            Curated <span className="italic font-normal text-[#C3A16A]">Journeys</span>
-          </h1>
-          <p className="font-sans text-xs sm:text-sm text-[#E9E0D1]/85 max-w-2xl mx-auto font-light leading-relaxed">
-            Every itinerary in our collection is 100% private, carefully paced, and escorted by senior local scholars and naturalists. 
-            Select an established journey or customize any element to suit your preferences.
-          </p>
-        </div>
+    <div className="min-h-screen bg-[#FAF8F5] text-[#1A1713] pt-24 sm:pt-28 pb-20 selection:bg-[#B58A43] selection:text-white">
+      {/* Editorial Header Banner with Ethiopian Tilet Accents */}
+      <div className="relative bg-gradient-to-b from-[#F3EEE5] to-[#FAF8F5] border-b border-[#B58A43]/20 py-16 sm:py-20 overflow-hidden">
+        <TiletBorderPrimary className="absolute top-0 left-0 right-0 w-full text-[#B58A43] opacity-60" height={10} />
 
-        {/* Subtle decorative background circles */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full border border-[#C3A16A]/10 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-4">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/80 border border-[#B58A43]/30 text-[#B58A43] text-[11px] font-sans font-bold uppercase tracking-[0.25em] shadow-sm">
+            <span>{t('toursHeaderEyebrow')}</span>
+          </div>
+
+          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1713] tracking-tight">
+            {language === 'am' ? 'የተመረጡ' : 'Curated'}{' '}
+            <span className="italic font-light text-[#B58A43]">
+              {language === 'am' ? 'ጉዞዎች' : 'Journeys'}
+            </span>
+          </h1>
+
+          <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 max-w-2xl mx-auto font-light leading-relaxed">
+            {t('toursHeaderDesc')}
+          </p>
+
+          <TiletDivider className="w-56 mx-auto text-[#B58A43] pt-2 opacity-75" />
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6">
         {/* Filter and Search Bar Card */}
-        <div className="bg-white rounded-2xl shadow-lg border border-[#C3A16A]/30 p-5 sm:p-6 space-y-5">
+        <div className="bg-white rounded-2xl shadow-lg border border-[#B58A43]/25 p-5 sm:p-6 space-y-5 relative">
+          <TiletCorner position="top-right" className="text-[#B58A43]/30 pointer-events-none" size={28} />
+
           <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-center">
             {/* Search Input */}
             <div className="md:col-span-6 relative">
-              <Search className="w-4 h-4 text-[#C3A16A] absolute left-4 top-1/2 -translate-y-1/2" />
+              <Search className="w-4 h-4 text-[#B58A43] absolute left-4 top-1/2 -translate-y-1/2" />
               <input
                 type="text"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                placeholder="Search by destination, keyword, monastery, or wildlife..."
-                className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-[#C3A16A]/30 bg-[#F5F0E6]/30 text-xs text-[#202622] placeholder-[#202622]/50 focus:outline-none focus:border-[#173D32] transition-colors"
+                placeholder={t('searchPlaceholder')}
+                className="w-full pl-11 pr-4 py-2.5 rounded-xl border border-[#B58A43]/30 bg-[#FAF8F5] text-xs text-[#1A1713] placeholder-[#302B24]/45 focus:outline-none focus:border-[#B58A43] focus:ring-1 focus:ring-[#B58A43] transition-colors"
               />
               {searchQuery && (
                 <button
@@ -123,7 +126,7 @@ export default function Tours({
               <select
                 value={selectedDuration}
                 onChange={(e) => setSelectedDuration(e.target.value)}
-                className="w-full px-4 py-2.5 rounded-xl border border-[#C3A16A]/30 bg-[#F5F0E6]/30 text-xs text-[#202622] focus:outline-none focus:border-[#173D32]"
+                className="w-full px-4 py-2.5 rounded-xl border border-[#B58A43]/30 bg-[#FAF8F5] text-xs text-[#1A1713] focus:outline-none focus:border-[#B58A43]"
               >
                 {durations.map((d) => (
                   <option key={d.id} value={d.id}>
@@ -139,8 +142,8 @@ export default function Tours({
                 onClick={() => setLayoutMode('grid')}
                 className={`p-2.5 rounded-lg border transition-colors ${
                   layoutMode === 'grid'
-                    ? 'bg-[#173D32] text-[#F5F0E6] border-[#173D32]'
-                    : 'bg-white text-[#202622]/60 border-[#C3A16A]/30 hover:bg-[#F5F0E6]'
+                    ? 'bg-[#1A1713] text-[#FAF8F5] border-[#1A1713]'
+                    : 'bg-white text-[#302B24]/60 border-[#B58A43]/30 hover:bg-[#FAF8F5]'
                 }`}
                 title="Grid view"
                 aria-label="Grid view"
@@ -151,8 +154,8 @@ export default function Tours({
                 onClick={() => setLayoutMode('list')}
                 className={`p-2.5 rounded-lg border transition-colors ${
                   layoutMode === 'list'
-                    ? 'bg-[#173D32] text-[#F5F0E6] border-[#173D32]'
-                    : 'bg-white text-[#202622]/60 border-[#C3A16A]/30 hover:bg-[#F5F0E6]'
+                    ? 'bg-[#1A1713] text-[#FAF8F5] border-[#1A1713]'
+                    : 'bg-white text-[#302B24]/60 border-[#B58A43]/30 hover:bg-[#FAF8F5]'
                 }`}
                 title="Detailed list view"
                 aria-label="Detailed list view"
@@ -163,16 +166,16 @@ export default function Tours({
           </div>
 
           {/* Category Filter Pills */}
-          <div className="pt-2 border-t border-[#C3A16A]/20 flex flex-wrap items-center justify-between gap-2">
+          <div className="pt-3 border-t border-[#B58A43]/15 flex flex-wrap items-center justify-between gap-2">
             <div className="flex flex-wrap gap-1.5">
               {categories.map((cat) => (
                 <button
                   key={cat.id}
                   onClick={() => setSelectedCategory(cat.id)}
-                  className={`px-3 py-1.5 rounded-full text-[11px] font-sans uppercase tracking-wider font-semibold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-full text-[11px] font-sans uppercase tracking-wider font-semibold transition-all ${
                     selectedCategory === cat.id
-                      ? 'bg-[#173D32] text-[#F5F0E6] shadow-sm'
-                      : 'bg-[#F5F0E6] text-[#202622]/70 hover:bg-[#E9E0D1] hover:text-[#173D32]'
+                      ? 'bg-[#1A1713] text-[#FAF8F5] shadow-sm'
+                      : 'bg-[#FAF8F5] border border-[#B58A43]/20 text-[#302B24]/80 hover:bg-[#EFE7D9] hover:text-[#1A1713]'
                   }`}
                 >
                   {cat.label}
@@ -180,8 +183,10 @@ export default function Tours({
               ))}
             </div>
 
-            <div className="text-[11px] text-[#202622]/60 font-sans">
-              Showing <strong className="text-[#173D32]">{filteredTours.length}</strong> journeys
+            <div className="text-[11px] text-[#302B24]/70 font-sans">
+              {language === 'am' ? 'የሚታዩት' : 'Showing'}{' '}
+              <strong className="text-[#B58A43] font-bold">{filteredTours.length}</strong>{' '}
+              {language === 'am' ? 'ጉዞዎች' : 'journeys'}
             </div>
           </div>
         </div>
@@ -217,29 +222,30 @@ export default function Tours({
               </div>
             )
           ) : (
-            <div className="text-center py-20 bg-white rounded-2xl border border-[#C3A16A]/30 p-8 space-y-4">
-              <div className="w-16 h-16 rounded-full bg-[#E9E0D1]/60 flex items-center justify-center mx-auto text-[#B86B48]">
-                <Search className="w-8 h-8 opacity-50" />
+            <div className="text-center py-20 bg-white rounded-2xl border border-[#B58A43]/25 p-8 space-y-4">
+              <div className="w-16 h-16 rounded-full bg-[#FAF8F5] border border-[#B58A43]/30 flex items-center justify-center mx-auto text-[#B58A43]">
+                <Search className="w-7 h-7 opacity-50" />
               </div>
-              <h3 className="font-serif text-2xl text-[#173D32] font-semibold">
-                No matching journeys found
+              <h3 className="font-serif text-2xl text-[#1A1713] font-semibold">
+                {t('noToursFound')}
               </h3>
-              <p className="text-xs text-[#202622]/70 max-w-md mx-auto leading-relaxed">
-                We couldn't find an itinerary matching your current search criteria. 
-                Reset your filters or allow our concierges to tailor-make a journey specifically for you.
+              <p className="text-xs text-[#302B24]/70 max-w-md mx-auto leading-relaxed">
+                {language === 'am'
+                  ? 'በመረጡት መስፈርት የተገኘ ጉዞ የለም። እባክዎ ምርጫዎን ያጽዱ ወይም ልዩ ጉዞ እንዲዘጋጅልዎ ይጠይቁ።'
+                  : "We couldn't find an itinerary matching your current search criteria. Reset your filters or allow our concierges to tailor-make a journey specifically for you."}
               </p>
               <div className="flex items-center justify-center gap-3 pt-2">
                 <button
                   onClick={handleResetFilters}
-                  className="px-5 py-2.5 rounded-full border border-[#173D32] text-[#173D32] text-xs font-semibold uppercase tracking-wider hover:bg-[#173D32] hover:text-white transition-colors"
+                  className="px-5 py-2.5 rounded-full border border-[#1A1713] text-[#1A1713] text-xs font-semibold uppercase tracking-wider hover:bg-[#1A1713] hover:text-white transition-colors"
                 >
-                  Reset All Filters
+                  {t('resetFilters')}
                 </button>
                 <button
                   onClick={() => navigateWithMesob('/book')}
-                  className="px-5 py-2.5 rounded-full bg-[#B86B48] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#a35c3b] transition-colors"
+                  className="px-5 py-2.5 rounded-full bg-[#B58A43] text-white text-xs font-semibold uppercase tracking-wider hover:bg-[#916B2D] transition-colors"
                 >
-                  Plan Custom Itinerary
+                  {language === 'am' ? 'ብጁ ጉዞ ያዘጋጁ' : 'Plan Custom Itinerary'}
                 </button>
               </div>
             </div>
@@ -247,24 +253,32 @@ export default function Tours({
         </div>
 
         {/* Custom Tailor-Made Banner at bottom of tours list */}
-        <div className="mt-20 bg-gradient-to-r from-[#173D32] to-[#284D3C] text-[#F5F0E6] rounded-2xl p-8 sm:p-12 shadow-xl border border-[#C3A16A]/30 flex flex-col md:flex-row items-center justify-between gap-8">
-          <div className="space-y-2 max-w-xl text-center md:text-left">
-            <span className="text-[10px] uppercase tracking-[0.3em] text-[#C3A16A] font-bold">
-              Private Curation
+        <div className="mt-20 bg-white text-[#1A1713] rounded-2xl p-8 sm:p-12 shadow-xl border border-[#B58A43]/30 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden">
+          <TiletCorner position="top-left" className="text-[#B58A43]/25 pointer-events-none" size={36} />
+          <TiletCorner position="bottom-right" className="text-[#B58A43]/25 pointer-events-none" size={36} />
+
+          <div className="space-y-2 max-w-xl text-center md:text-left relative z-10">
+            <span className="text-[10px] uppercase tracking-[0.3em] text-[#B58A43] font-bold">
+              {language === 'am' ? 'የግል ብጁ ዝግጅት' : 'Private Curation'}
             </span>
-            <h3 className="font-serif text-2xl sm:text-3xl text-white font-medium">
-              Prefer a completely customized route?
+            <h3 className="font-serif text-2xl sm:text-3xl text-[#1A1713] font-medium">
+              {language === 'am'
+                ? 'ሙሉ በሙሉ እንደ ፍላጎትዎ የተዘጋጀ ጉዞ ይፈልጋሉ?'
+                : 'Prefer a completely customized route?'}
             </h3>
-            <p className="font-sans text-xs sm:text-sm text-[#E9E0D1]/80 leading-relaxed font-light">
-              Every itinerary can be adjusted in length, accommodation tier, private flight inclusions, or special cultural access.
+            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 leading-relaxed font-light">
+              {language === 'am'
+                ? 'እያንዳንዱ የጉዞ መስመር በቆይታ ጊዜ፣ በማረፊያ ደረጃ፣ በግል በረራ ወይም በልዩ ባህላዊ ተደራሽነት እንደ ፍላጎትዎ ሊስተካከል ይችላል።'
+                : 'Every itinerary can be adjusted in length, accommodation tier, private flight inclusions, or special cultural access.'}
             </p>
           </div>
 
           <button
             onClick={() => navigateWithMesob('/book')}
-            className="px-7 py-3.5 rounded-full bg-[#B86B48] hover:bg-[#a35c3b] text-white font-sans text-xs uppercase tracking-widest font-bold shadow-lg transition-all shrink-0"
+            className="px-8 py-3.5 rounded-full bg-gradient-to-r from-[#B58A43] to-[#916B2D] hover:from-[#C49A50] hover:to-[#B58A43] text-white font-sans text-xs uppercase tracking-widest font-bold shadow-md transition-all shrink-0 flex items-center gap-2 relative z-10"
           >
-            Design Your Own Journey
+            <span>{language === 'am' ? 'የራስዎን ጉዞ ይንደፉ' : 'Design Your Own Journey'}</span>
+            <ArrowRight className="w-4 h-4" />
           </button>
         </div>
       </div>

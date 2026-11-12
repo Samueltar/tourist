@@ -2,32 +2,33 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ── Elegant Scrollbar ─────────────────────────── */
+/* ── Typography Settings ───────────────────────── */
+html {
+  font-family: 'Manrope', 'Noto Sans Ethiopic', system-ui, sans-serif;
+  scroll-behavior: smooth;
+  background-color: #FFFFFF;
+  color: #302B24;
+}
+
+h1, h2, h3, .font-serif {
+  font-family: 'Cormorant Garamond', 'Noto Serif Ethiopic', Georgia, serif;
+}
+
+/* ── White & Heritage Gold Scrollbar ───────────── */
 ::-webkit-scrollbar { width: 6px; }
-::-webkit-scrollbar-track { background: #F5F0E6; }
-::-webkit-scrollbar-thumb { background: #284D3C; border-radius: 3px; }
+::-webkit-scrollbar-track { background: #F8F5EE; }
+::-webkit-scrollbar-thumb { background: #B58A43; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #9E7432; }
 
 /* ── Grain texture overlay ────────────────────────── */
 .grain-overlay::before {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.03;
+  opacity: 0.025;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
   pointer-events: none;
   z-index: 1;
-}
-
-/* ── Decorative Ethiopian border ─────────────────── */
-.ethiopian-border {
-  background-image: repeating-linear-gradient(
-    90deg,
-    #C3A16A 0px, #C3A16A 8px,
-    transparent 8px, transparent 16px,
-    #B86B48 16px, #B86B48 24px,
-    transparent 24px, transparent 32px
-  );
-  height: 3px;
 }
 
 /* ── Ken Burns ───────────────────────────────────── */
@@ -69,7 +70,7 @@
   border-radius: 50%;
   background: conic-gradient(
     from 0deg,
-    #B86B48, #C3A16A, #173D32, #E9E0D1, #B86B48
+    #B58A43, #DDC28D, #F8F5EE, #C49A50, #B58A43
   );
   opacity: 0;
   transform: scale(0) rotate(-180deg);

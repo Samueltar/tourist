@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom'
+import { LanguageProvider } from './context/LanguageContext'
 import { MesobProvider } from './components/MesobTransition'
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -60,93 +61,95 @@ export default function App() {
 
   return (
     <Router>
-      <MesobProvider>
-        <div className="flex flex-col min-h-screen bg-[#F5F0E6] text-[#202622] font-sans antialiased selection:bg-[#B86B48] selection:text-white">
-          {/* Header Navigation with Mesob Page Transition support */}
-          <Navbar
-            savedCount={savedTourIds.length}
-            onOpenWishlist={() => setWishlistOpen(true)}
-          />
+      <LanguageProvider>
+        <MesobProvider>
+          <div className="flex flex-col min-h-screen bg-white text-[#302B24] font-sans antialiased selection:bg-[#B58A43] selection:text-white">
+            {/* Header Navigation with Mesob Transition & Bilingual Support */}
+            <Navbar
+              savedCount={savedTourIds.length}
+              onOpenWishlist={() => setWishlistOpen(true)}
+            />
 
-          {/* Main Route Content */}
-          <main className="flex-1">
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <Home
-                    savedTourIds={savedTourIds}
-                    onToggleSaveTour={handleToggleSaveTour}
-                    onSelectTourModal={(tour) => setModalTour(tour)}
-                  />
-                }
-              />
-              <Route
-                path="/tours"
-                element={
-                  <Tours
-                    savedTourIds={savedTourIds}
-                    onToggleSaveTour={handleToggleSaveTour}
-                    onSelectTourModal={(tour) => setModalTour(tour)}
-                  />
-                }
-              />
-              <Route
-                path="/tours/:id"
-                element={
-                  <TourDetail
-                    savedTourIds={savedTourIds}
-                    onToggleSaveTour={handleToggleSaveTour}
-                    onSelectTourModal={(tour) => setModalTour(tour)}
-                  />
-                }
-              />
-              <Route path="/destinations" element={<Destinations />} />
-              <Route
-                path="/destinations/:id"
-                element={
-                  <DestinationDetail
-                    savedTourIds={savedTourIds}
-                    onToggleSaveTour={handleToggleSaveTour}
-                    onSelectTourModal={(tour) => setModalTour(tour)}
-                  />
-                }
-              />
-              <Route path="/about" element={<About />} />
-              <Route path="/journal" element={<Journal />} />
-              <Route path="/journal/:slug" element={<JournalDetail />} />
-              <Route path="/faqs" element={<Faqs />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/book" element={<Book />} />
-              <Route path="*" element={<Navigate to="/" replace />} />
-            </Routes>
-          </main>
+            {/* Main Route Content */}
+            <main className="flex-1">
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <Home
+                      savedTourIds={savedTourIds}
+                      onToggleSaveTour={handleToggleSaveTour}
+                      onSelectTourModal={(tour) => setModalTour(tour)}
+                    />
+                  }
+                />
+                <Route
+                  path="/tours"
+                  element={
+                    <Tours
+                      savedTourIds={savedTourIds}
+                      onToggleSaveTour={handleToggleSaveTour}
+                      onSelectTourModal={(tour) => setModalTour(tour)}
+                    />
+                  }
+                />
+                <Route
+                  path="/tours/:id"
+                  element={
+                    <TourDetail
+                      savedTourIds={savedTourIds}
+                      onToggleSaveTour={handleToggleSaveTour}
+                      onSelectTourModal={(tour) => setModalTour(tour)}
+                    />
+                  }
+                />
+                <Route path="/destinations" element={<Destinations />} />
+                <Route
+                  path="/destinations/:id"
+                  element={
+                    <DestinationDetail
+                      savedTourIds={savedTourIds}
+                      onToggleSaveTour={handleToggleSaveTour}
+                      onSelectTourModal={(tour) => setModalTour(tour)}
+                    />
+                  }
+                />
+                <Route path="/about" element={<About />} />
+                <Route path="/journal" element={<Journal />} />
+                <Route path="/journal/:slug" element={<JournalDetail />} />
+                <Route path="/faqs" element={<Faqs />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/book" element={<Book />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+              </Routes>
+            </main>
 
-          {/* Editorial Footer */}
-          <Footer />
+            {/* Editorial White & Gold Footer */}
+            <Footer />
 
-          {/* Wishlist Drawer */}
-          <WishlistDrawer
-            isOpen={wishlistOpen}
-            onClose={() => setWishlistOpen(false)}
-            savedTours={savedToursList}
-            onRemoveTour={handleRemoveFromWishlist}
-            onOpenTourModal={(tour) => {
-              setWishlistOpen(false)
-              setModalTour(tour)
-            }}
-          />
+            {/* Wishlist Drawer */}
+            <WishlistDrawer
+              isOpen={wishlistOpen}
+              onClose={() => setWishlistOpen(false)}
+              savedTours={savedToursList}
+              onRemoveTour={handleRemoveFromWishlist}
+              onOpenTourModal={(tour) => {
+                setWishlistOpen(false)
+                setModalTour(tour)
+              }}
+            />
 
-          {/* Tour Quick Preview Modal */}
-          <TourModal
-            tour={modalTour}
-            isOpen={!!modalTour}
-            onClose={() => setModalTour(null)}
-            isSaved={modalTour ? savedTourIds.includes(modalTour.id) : false}
-            onToggleSave={handleToggleSaveTour}
-          />
-        </div>
-      </MesobProvider>
+            {/* Tour Quick Preview Modal */}
+            <TourModal
+              tour={modalTour}
+              isOpen={!!modalTour}
+              onClose={() => setModalTour(null)}
+              isSaved={modalTour ? savedTourIds.includes(modalTour.id) : false}
+              onToggleSave={handleToggleSaveTour}
+            />
+          </div>
+        </MesobProvider>
+      </LanguageProvider>
     </Router>
   )
 }

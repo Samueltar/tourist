@@ -1,6 +1,8 @@
 import React, { useEffect } from 'react'
 import { X, Heart, Clock, Trash2, ArrowRight, Compass } from 'lucide-react'
 import { useMesob } from './MesobTransition'
+import { useLanguage } from '../context/LanguageContext'
+import { TiletBorderPrimary, TiletDivider } from './TiletPatterns'
 
 export default function WishlistDrawer({
   isOpen,
@@ -10,6 +12,7 @@ export default function WishlistDrawer({
   onOpenTourModal,
 }) {
   const { navigateWithMesob } = useMesob()
+  const { t } = useLanguage()
 
   useEffect(() => {
     if (isOpen) {
@@ -42,16 +45,21 @@ export default function WishlistDrawer({
       role="dialog"
       aria-modal="true"
     >
-      <div className="bg-[#F5F0E6] border-l border-[#C3A16A]/30 w-full max-w-md h-full flex flex-col shadow-2xl relative animate-slide-right">
+      <div className="bg-[#FAF8F5] border-l border-[#B58A43]/30 w-full max-w-md h-full flex flex-col shadow-2xl relative animate-slide-right">
+        {/* Top Gold Tilet Strip */}
+        <TiletBorderPrimary className="w-full text-[#B58A43] opacity-80" height={10} />
+
         {/* Drawer Header */}
-        <div className="p-5 sm:p-6 border-b border-[#C3A16A]/20 flex items-center justify-between bg-white">
+        <div className="p-5 sm:p-6 border-b border-[#B58A43]/20 flex items-center justify-between bg-white">
           <div className="flex items-center gap-2.5">
-            <Heart className="w-5 h-5 text-[#B86B48] fill-[#B86B48]" />
+            <div className="w-9 h-9 rounded-full bg-[#FAF8F5] border border-[#B58A43]/40 flex items-center justify-center text-[#B58A43]">
+              <Heart className="w-4 h-4 fill-[#B58A43]" />
+            </div>
             <div>
-              <h3 className="font-serif text-xl font-bold text-[#173D32]">
-                Saved Journeys
+              <h3 className="font-serif text-xl font-bold text-[#1A1713]">
+                {t('wishlistTitle')}
               </h3>
-              <span className="text-[10px] uppercase tracking-wider text-[#202622]/60">
+              <span className="text-[10px] uppercase tracking-wider text-[#302B24]/70 font-semibold">
                 {savedTours.length} {savedTours.length === 1 ? 'itinerary' : 'itineraries'} shortlisted
               </span>
             </div>
@@ -59,7 +67,7 @@ export default function WishlistDrawer({
 
           <button
             onClick={onClose}
-            className="p-2 rounded-full text-[#202622]/60 hover:text-[#173D32] hover:bg-[#E9E0D1]/60 transition-colors"
+            className="p-2 rounded-full text-[#302B24]/60 hover:text-[#1A1713] hover:bg-[#EFE7D9] transition-colors"
             aria-label="Close wishlist drawer"
           >
             <X className="w-5 h-5" />
@@ -72,7 +80,7 @@ export default function WishlistDrawer({
             savedTours.map((tour) => (
               <div
                 key={tour.id}
-                className="bg-white border border-[#C3A16A]/20 rounded-xl p-3.5 flex items-center gap-3.5 group shadow-sm hover:border-[#C3A16A] transition-all"
+                className="bg-white border border-[#B58A43]/25 hover:border-[#B58A43] rounded-xl p-3.5 flex items-center gap-3.5 group shadow-sm hover:shadow-md transition-all"
               >
                 {/* Thumbnail */}
                 <img
@@ -87,11 +95,11 @@ export default function WishlistDrawer({
                   className="flex-1 min-w-0 cursor-pointer"
                   onClick={() => handleViewTour(tour.id)}
                 >
-                  <h4 className="font-serif text-sm font-semibold text-[#173D32] group-hover:text-[#B86B48] transition-colors truncate">
+                  <h4 className="font-serif text-sm font-semibold text-[#1A1713] group-hover:text-[#B58A43] transition-colors truncate">
                     {tour.title}
                   </h4>
-                  <div className="flex items-center gap-1 text-[11px] text-[#202622]/60 mt-1">
-                    <Clock className="w-3 h-3 text-[#C3A16A]" />
+                  <div className="flex items-center gap-1.5 text-[11px] text-[#302B24]/70 mt-1">
+                    <Clock className="w-3 h-3 text-[#B58A43]" />
                     <span>{tour.duration}</span>
                     <span>•</span>
                     <span className="capitalize">{tour.category}</span>
@@ -101,7 +109,7 @@ export default function WishlistDrawer({
                 {/* Remove button */}
                 <button
                   onClick={() => onRemoveTour(tour.id)}
-                  className="p-2 text-[#202622]/40 hover:text-red-600 transition-colors shrink-0"
+                  className="p-2 text-[#302B24]/40 hover:text-red-600 transition-colors shrink-0"
                   title="Remove from saved"
                 >
                   <Trash2 className="w-4 h-4" />
@@ -110,24 +118,24 @@ export default function WishlistDrawer({
             ))
           ) : (
             <div className="text-center py-16 space-y-3 px-4">
-              <div className="w-16 h-16 rounded-full bg-[#E9E0D1]/50 border border-[#C3A16A]/30 flex items-center justify-center mx-auto text-[#B86B48]">
-                <Heart className="w-8 h-8 opacity-40" />
+              <div className="w-16 h-16 rounded-full bg-white border border-[#B58A43]/30 flex items-center justify-center mx-auto text-[#B58A43] shadow-sm">
+                <Heart className="w-7 h-7 opacity-40 text-[#B58A43]" />
               </div>
-              <h4 className="font-serif text-lg text-[#173D32] font-semibold">
-                Your shortlist is empty
+              <h4 className="font-serif text-lg text-[#1A1713] font-semibold">
+                {t('shortlistEmpty')}
               </h4>
-              <p className="text-xs text-[#202622]/70 leading-relaxed max-w-xs mx-auto">
-                Explore our curated journeys and click the heart icon on any itinerary to save and compare your favorites.
+              <p className="text-xs text-[#302B24]/75 leading-relaxed max-w-xs mx-auto">
+                {t('shortlistEmptyDesc')}
               </p>
               <button
                 onClick={() => {
                   onClose()
                   navigateWithMesob('/tours')
                 }}
-                className="mt-2 inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#173D32] text-[#F5F0E6] text-xs font-semibold uppercase tracking-wider"
+                className="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#1A1713] hover:bg-[#B58A43] text-[#FAF8F5] text-xs font-semibold uppercase tracking-wider transition-colors shadow-sm"
               >
-                <Compass className="w-3.5 h-3.5 text-[#C3A16A]" />
-                <span>Browse All Journeys</span>
+                <Compass className="w-3.5 h-3.5 text-[#B58A43]" />
+                <span>{t('browseAllJourneys')}</span>
               </button>
             </div>
           )}
@@ -135,16 +143,16 @@ export default function WishlistDrawer({
 
         {/* Drawer Footer */}
         {savedTours.length > 0 && (
-          <div className="p-5 bg-white border-t border-[#C3A16A]/20 space-y-2.5">
+          <div className="p-5 bg-white border-t border-[#B58A43]/20 space-y-2.5">
             <button
               onClick={handlePlanWithSaved}
-              className="w-full py-3.5 bg-gradient-to-r from-[#B86B48] to-[#9E5536] hover:from-[#c2734f] hover:to-[#B86B48] text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 shadow-md transition-all"
+              className="w-full py-3.5 bg-gradient-to-r from-[#B58A43] to-[#916B2D] hover:from-[#C49A50] hover:to-[#B58A43] text-white font-sans font-bold text-xs uppercase tracking-widest rounded-xl flex items-center justify-center gap-2 shadow-md transition-all"
             >
-              <span>Plan Trip With Saved ({savedTours.length})</span>
+              <span>{t('planWithSaved')} ({savedTours.length})</span>
               <ArrowRight className="w-4 h-4" />
             </button>
-            <p className="text-center text-[10px] text-[#202622]/60">
-              Our travel designers will weave your selected highlights into one bespoke itinerary.
+            <p className="text-center text-[10px] text-[#302B24]/70">
+              {t('bespokeSummary')}
             </p>
           </div>
         )}
