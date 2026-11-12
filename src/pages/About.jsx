@@ -14,7 +14,7 @@ export default function About() {
       role: language === 'am' ? 'መሥራችና የባህላዊ ጉዞዎች ዳይሬክተር' : 'Founder & Cultural Expedition Director',
       bio: language === 'am'
         ? 'በኢትዮጵያ ተወልዶ ያደገ፣ ሀገሩንና ታሪኳን በጥልቅ የሚወድ። እውነተኛ የቅንጦት ጉዞ ማለት ውድ ቁሳቁስ ሳይሆን ከሰዎች ጋር የሚፈጠር ጥልቅ ግንኙነትና እንከን የለሽ አገልግሎት ነው ብሎ ያምናል።'
-        : 'Born and raised in Ethiopia with a deep passion for storytelling, Abenezer founded Ancient Path with one guiding conviction: that true luxury in travel is not gold taps, but profound human connection and flawless, thoughtful detail.',
+        : 'Born and raised in Ethiopia with a deep passion for storytelling, Abenezer founded The Tourist (ጎብኚው) with one guiding conviction: that true luxury in travel is not gold taps, but profound human connection and flawless, thoughtful detail.',
       image: 'https://images.unsplash.com/photo-1544735716-392fe2489ffa?auto=format&fit=crop&w=400&q=80',
     },
     {
@@ -73,14 +73,14 @@ export default function About() {
           <h1 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#1A1713] dark:text-[#F5F2EB] tracking-tight">
             {language === 'am' ? 'የኢትዮጵያ ባህልና' : 'The Living Culture of'}{' '}
             <span className="italic font-normal text-[#B58A43]">
-              {language === 'am' ? 'የጥንታዊ ጎዳና ፍልስፍና' : 'Ancient Path'}
+              {language === 'am' ? 'የጎብኚው ፍልስፍና' : 'The Tourist'}
             </span>
           </h1>
 
           <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#D1C7BA] max-w-xl mx-auto font-light leading-relaxed">
             {language === 'am'
-              ? 'ጥንታዊ ጎዳና የተመሠረተው በአንድ ቀላል እምነት ላይ ነው፡ ምርጥ ጉዞዎች የሚፈጠሩት ስለ ሀገራቸውና ስለ ሕዝባቸው በጥልቅ በሚጨነቁ ሰዎች ነው።'
-              : 'Ancient Path is built around a simple belief: the best journeys are created by people who care deeply about the place, the details, and the travelers moving through it.'}
+              ? 'ጎብኚው (The Tourist) የተመሠረተው በአንድ ቀላል እምነት ላይ ነው፡ ምርጥ ጉዞዎች የሚፈጠሩት ስለ ሀገራቸውና ስለ ሕዝባቸው በጥልቅ በሚጨነቁ ሰዎች ነው።'
+              : 'The Tourist (ጎብኚው) is built around a simple belief: the best journeys are created by people who care deeply about the place, the details, and the travelers moving through it.'}
           </p>
 
           <TiletDivider className="w-48 mx-auto text-[#B58A43] pt-1 opacity-70" />
@@ -108,8 +108,8 @@ export default function About() {
               </p>
               <p className="font-sans text-xs sm:text-sm text-[#302B24]/80 dark:text-[#D1C7BA] leading-relaxed font-light">
                 {language === 'am'
-                  ? 'ጥንታዊ ጎዳና ኢትዮጵያ ይህንን ክፍተት ለመሙላት በአበነዘር ሲሳይ ተመሠረተ። የኢትዮጵያን ባህላዊ የእንግዳ ተቀባይነት ሙቀት ከዓለም አቀፍ የቅንጦት ጉዞ ደረጃዎች ጋር በማጣመር ልዩ ተሞክሮ እናቀርባለን።'
-                  : 'Ancient Path Ethiopia was founded by Abenezer Sisay to bridge this divide. We combine the warmth of traditional Ethiopian hospitality with the exacting standards of the world’s finest bespoke travel design.'}
+                  ? 'ጎብኚው (The Tourist) ይህንን ክፍተት ለመሙላት በአበነዘር ሲሳይ ተመሠረተ። የኢትዮጵያን ባህላዊ የእንግዳ ተቀባይነት ሙቀት ከዓለም አቀፍ የቅንጦት ጉዞ ደረጃዎች ጋር በማጣመር ልዩ ተሞክሮ እናቀርባለን።'
+                  : 'The Tourist (ጎብኚው) was founded by Abenezer Sisay to bridge this divide. We combine the warmth of traditional Ethiopian hospitality with the exacting standards of the world’s finest bespoke travel design.'}
               </p>
               <div className="pt-1">
                 <blockquote className="border-l-2 border-[#B58A43] pl-4 italic font-serif text-base sm:text-lg text-[#1A1713] dark:text-[#F5F2EB]">
@@ -186,7 +186,7 @@ export default function About() {
             {language === 'am' ? 'በተግባር ላይ' : 'On the Ground'}
           </span>
           <h2 className="font-serif text-3xl sm:text-4xl text-[#1A1713] dark:text-[#F5F2EB] font-normal mt-1">
-            {language === 'am' ? 'ከጥንታዊ ጎዳና ጀርባ ያሉ ባለሙያዎች' : 'The People Behind Ancient Path'}
+            {language === 'am' ? 'ከጎብኚው ጀርባ ያሉ ባለሙያዎች' : 'The People Behind The Tourist (ጎብኚው)'}
           </h2>
           <p className="text-xs text-[#302B24]/70 dark:text-[#D1C7BA] mt-2 font-light">
             {language === 'am'

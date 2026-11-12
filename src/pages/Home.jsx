@@ -570,7 +570,7 @@ export default function Home({
               <div className="space-y-4">
                 <div className="flex text-[#B58A43] text-sm">★★★★★</div>
                 <blockquote className="font-serif italic text-base sm:text-lg text-[#302B24] leading-relaxed">
-                  "Lalibela was transcendent, but what truly elevated our expedition was Ancient Path's access. Chanting with priests before dawn, sleeping at Limalimo above the cloud canyons, and Abenezer's gentle mastery of every detail."
+                  "Lalibela was transcendent, but what truly elevated our expedition was The Tourist's access. Chanting with priests before dawn, sleeping at Limalimo above the cloud canyons, and Abenezer's gentle mastery of every detail."
                 </blockquote>
               </div>
               <div className="pt-4 border-t border-[#B58A43]/20">

@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useCallback, useRef } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
+import { useLanguage } from '../context/LanguageContext'
 
 const MesobTransitionContext = createContext({
   navigateWithMesob: () => {},
@@ -65,6 +66,7 @@ export function MesobProvider({ children }) {
  */
 function NetelaTransition({ state }) {
   const isCovering = state === 'covering'
+  const { language } = useLanguage()
 
   return (
     <div
@@ -115,13 +117,13 @@ function NetelaTransition({ state }) {
             </div>
 
             <span className="font-serif italic text-3xl sm:text-4xl text-[#1A1713] tracking-wide">
-              በነጠላ ነፋስ...
+              {language === 'am' ? 'በነጠላ ነፋስ...' : 'Woven with Heritage'}
             </span>
             <span className="font-serif text-lg sm:text-xl text-[#302B24] mt-1 font-light">
-              Woven with Heritage & Grace
+              {language === 'am' ? 'የተፈተለ ባህልና ውበት' : 'The Living Culture of Ethiopia'}
             </span>
             <span className="font-sans text-[10px] uppercase tracking-[0.35em] text-[#B58A43] font-bold mt-2">
-              Cultural Tours in Ethiopia
+              {language === 'am' ? 'ጎብኚው • የኢትዮጵያ ባህላዊ ጉዞዎች' : 'The Tourist • Cultural Tours in Ethiopia'}
             </span>
           </div>
 
@@ -151,6 +153,7 @@ function NetelaTransition({ state }) {
  */
 function MesobCurtain({ state }) {
   const isCovering = state === 'covering'
+  const { language } = useLanguage()
 
   return (
     <div
@@ -264,10 +267,10 @@ function MesobCurtain({ state }) {
         {/* Editorial Text Caption */}
         <div className="mt-4 text-center">
           <span className="block font-serif italic text-2xl sm:text-3xl text-[#1A1713] dark:text-[#F5F2EB] tracking-wide">
-            የመሶብ ማዕድ...
+            {language === 'am' ? 'የመሶብ ማዕድ...' : 'The Sacred Table'}
           </span>
           <span className="block mt-1 font-sans text-[11px] uppercase tracking-[0.3em] text-[#B58A43] font-bold">
-            Cultural Tours in Ethiopia
+            {language === 'am' ? 'ጎብኚው • የኢትዮጵያ ባህላዊ ጉዞዎች' : 'The Tourist • Cultural Tours in Ethiopia'}
           </span>
         </div>
       </div>

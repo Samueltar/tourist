@@ -40,9 +40,9 @@ export default function Contact() {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1713] tracking-tight">
-            {language === 'am' ? 'ከጥንታዊ ጎዳና ጋር' : 'Connect with'}{' '}
+            {language === 'am' ? 'ከጎብኚው ጋር' : 'Connect with'}{' '}
             <span className="italic font-light text-[#B58A43]">
-              {language === 'am' ? 'ይገናኙ' : 'Ancient Path'}
+              {language === 'am' ? 'ይገናኙ' : 'The Tourist (ጎብኚው)'}
             </span>
           </h1>
 

@@ -11,7 +11,7 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const location = useLocation()
   const { navigateWithMesob } = useMesob()
-  const { language, toggleLanguage, t } = useLanguage()
+  const { language, setLanguage, toggleLanguage, t } = useLanguage()
   const { theme, toggleTheme, isDark } = useTheme()
 
   useEffect(() => {
@@ -26,12 +26,13 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
     setMobileMenuOpen(false)
   }, [location.pathname])
 
+  // Real, related, intuitive navbar names
   const navLinks = [
-    { label: t('navJourneys'), href: '/tours' },
+    { label: t('navTours'), href: '/tours' },
     { label: t('navDestinations'), href: '/destinations' },
-    { label: t('navEthos'), href: '/about' },
-    { label: t('navStories'), href: '/journal' },
-    { label: t('navPracticalities'), href: '/faqs' },
+    { label: t('navAbout'), href: '/about' },
+    { label: t('navJournal'), href: '/journal' },
+    { label: t('navGuide'), href: '/faqs' },
     { label: t('navContact'), href: '/contact' },
   ]
 
@@ -58,11 +59,11 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
 
         {/* Main Navbar Bar */}
         <div className="max-w-7xl mx-auto w-full px-4 sm:px-6 lg:px-8 py-3.5 sm:py-4 flex items-center justify-between">
-          {/* Brand Logo & Editorial Wordmark */}
+          {/* Brand Logo & Wordmark — ጎብኚው (The Tourist in English) */}
           <button
             onClick={() => handleNavClick('/')}
             className="flex items-center gap-3 text-left focus:outline-none group select-none"
-            aria-label="Ancient Path Ethiopia Home"
+            aria-label="The Tourist — ጎብኚው"
           >
             {/* Elegant Gold Emblem */}
             <div className="w-10 h-10 sm:w-11 sm:h-11 rounded-full border-2 border-[#B58A43] flex items-center justify-center bg-[#FAF8F5] dark:bg-[#1E1B16] group-hover:bg-[#B58A43]/15 transition-colors relative shadow-sm">
@@ -84,7 +85,7 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
             </div>
           </button>
 
-          {/* Desktop Navigation Links */}
+          {/* Desktop Navigation Links with Clear, Real Related Names */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2" aria-label="Main Navigation">
             {navLinks.map((link) => {
               const isActive = location.pathname === link.href
@@ -109,6 +110,34 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
 
           {/* Right Action Icons: Language Toggle + Theme Toggle + Wishlist + CTA */}
           <div className="flex items-center gap-2 sm:gap-3">
+            {/* Segmented Language Selector (EN | አማ) — Explicit, Foolproof */}
+            <div className="flex items-center rounded-full border border-[#B58A43]/40 bg-[#FAF8F5] dark:bg-[#1E1B16] p-0.5 shadow-xs">
+              <button
+                type="button"
+                onClick={() => setLanguage('en')}
+                className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all ${
+                  language === 'en'
+                    ? 'bg-[#B58A43] text-white shadow-xs'
+                    : 'text-[#302B24]/70 dark:text-[#E8E2D5]/70 hover:text-[#B58A43]'
+                }`}
+                aria-label="Switch to English"
+              >
+                EN
+              </button>
+              <button
+                type="button"
+                onClick={() => setLanguage('am')}
+                className={`px-2.5 py-1 rounded-full text-[11px] font-bold transition-all ${
+                  language === 'am'
+                    ? 'bg-[#B58A43] text-white shadow-xs'
+                    : 'text-[#302B24]/70 dark:text-[#E8E2D5]/70 hover:text-[#B58A43]'
+                }`}
+                aria-label="Switch to Amharic (አማርኛ)"
+              >
+                አማ
+              </button>
+            </div>
+
             {/* Dark / Light Mode Switcher Pill */}
             <button
               onClick={toggleTheme}
@@ -129,25 +158,12 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
               )}
             </button>
 
-            {/* Language Switcher Pill (EN / አማ) */}
-            <button
-              onClick={toggleLanguage}
-              className="px-2.5 py-1.5 rounded-full border border-[#B58A43]/40 hover:border-[#B58A43] bg-[#FAF8F5] dark:bg-[#1E1B16] text-xs font-semibold flex items-center gap-1.5 transition-all text-[#302B24] dark:text-[#F5F2EB] shadow-xs hover:shadow-sm"
-              title={language === 'en' ? 'Switch to Amharic (አማርኛ)' : 'Switch to English'}
-              aria-label="Toggle language"
-            >
-              <Globe className="w-3.5 h-3.5 text-[#B58A43]" />
-              <span className="text-[11px] font-bold text-[#B58A43]">
-                {language === 'en' ? 'አማርኛ' : 'EN'}
-              </span>
-            </button>
-
             {/* Wishlist Counter Pill */}
             <button
               onClick={onOpenWishlist}
               className="relative p-2 sm:px-3 sm:py-1.5 rounded-full border border-[#B58A43]/30 hover:border-[#B58A43] bg-[#FAF8F5] dark:bg-[#1E1B16] hover:bg-white dark:hover:bg-[#25221C] text-[#302B24] dark:text-[#F5F2EB] transition-all flex items-center gap-2 text-xs shadow-xs"
-              title="View Saved Journeys"
-              aria-label={`Wishlist with ${savedCount} saved journeys`}
+              title="View Saved Tours"
+              aria-label={`Wishlist with ${savedCount} saved tours`}
             >
               <Heart
                 className={`w-3.5 h-3.5 ${
@@ -164,7 +180,7 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
               )}
             </button>
 
-            {/* Curate Journey CTA Button */}
+            {/* Book a Tour CTA Button */}
             <button
               onClick={() => handleNavClick('/book')}
               className="hidden sm:inline-flex items-center gap-1.5 px-4 py-2 rounded-full bg-gradient-to-r from-[#B58A43] to-[#9E7432] hover:from-[#c49a50] hover:to-[#B58A43] text-white font-sans text-xs uppercase tracking-widest font-bold shadow-md hover:shadow-lg transition-all duration-300 transform hover:-translate-y-0.5"
@@ -185,7 +201,7 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
         </div>
       </header>
 
-      {/* Mobile Drawer Navigation (White/Ivory/Dark & Gold Tilet theme) */}
+      {/* Mobile Drawer Navigation */}
       {mobileMenuOpen && (
         <div className="fixed inset-0 z-50 lg:hidden flex flex-col bg-white dark:bg-[#0E0D0B] animate-fade-in text-[#302B24] dark:text-[#F5F2EB]">
           {/* Top Tilet Band inside Drawer */}
@@ -226,19 +242,35 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
                 <span className="w-2 h-2 rounded-full bg-[#B58A43]" />
               </button>
 
-              {/* Language Switcher */}
-              <button
-                onClick={toggleLanguage}
-                className="p-3 bg-[#FAF8F5] dark:bg-[#161411] rounded-xl border border-[#B58A43]/25 flex items-center justify-between"
-              >
+              {/* Segmented Language Selector in Mobile Drawer */}
+              <div className="p-2 bg-[#FAF8F5] dark:bg-[#161411] rounded-xl border border-[#B58A43]/25 flex items-center justify-between">
                 <span className="text-xs font-semibold text-[#302B24]/80 dark:text-[#F5F2EB]/80 flex items-center gap-1.5">
                   <Globe className="w-4 h-4 text-[#B58A43]" />
-                  <span>{language === 'en' ? 'አማርኛ' : 'EN'}</span>
+                  <span>Lang</span>
                 </span>
-                <span className="px-2 py-0.5 rounded-full bg-[#B58A43] text-white text-[10px] font-bold">
-                  {language === 'en' ? 'አማርኛ' : 'EN'}
-                </span>
-              </button>
+                <div className="flex items-center rounded-lg border border-[#B58A43]/30 p-0.5 bg-white dark:bg-[#1E1B16]">
+                  <button
+                    onClick={() => setLanguage('en')}
+                    className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
+                      language === 'en'
+                        ? 'bg-[#B58A43] text-white'
+                        : 'text-[#302B24]/70 dark:text-[#E8E2D5]/70'
+                    }`}
+                  >
+                    EN
+                  </button>
+                  <button
+                    onClick={() => setLanguage('am')}
+                    className={`px-2 py-0.5 rounded text-[10px] font-bold transition-all ${
+                      language === 'am'
+                        ? 'bg-[#B58A43] text-white'
+                        : 'text-[#302B24]/70 dark:text-[#E8E2D5]/70'
+                    }`}
+                  >
+                    አማ
+                  </button>
+                </div>
+              </div>
             </div>
 
             {navLinks.map((link) => (

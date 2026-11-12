@@ -11,36 +11,38 @@ export const useLanguage = () => useContext(LanguageContext)
 
 export const translations = {
   en: {
-    // Header & Nav
-    brandName: 'ANCIENT PATH',
+    // Header & Nav - Real, Intuitive, Industry-Standard Names
+    brandName: 'THE TOURIST',
     brandTagline: 'CULTURAL TOURS IN ETHIOPIA',
-    navCulturalTours: 'Cultural Tours',
+    navTours: 'Tours',
     navDestinations: 'Destinations',
-    navLivingCulture: 'Living Culture',
-    navJournal: 'Field Journal',
+    navAbout: 'About Us',
+    navJournal: 'Travel Journal',
     navGuide: 'Travel Guide',
-    navInquire: 'Inquire',
-    navJourneys: 'Cultural Tours',
-    navEthos: 'Living Culture',
-    navStories: 'Field Journal',
+    navContact: 'Contact Us',
+    // Aliases to guarantee backwards compatibility
+    navCulturalTours: 'Tours',
+    navJourneys: 'Tours',
+    navLivingCulture: 'About Us',
+    navEthos: 'About Us',
+    navStories: 'Travel Journal',
     navPracticalities: 'Travel Guide',
-    navContact: 'Inquire',
-    curateJourney: 'Curate Journey',
-    saved: 'Saved',
+    curateJourney: 'Book a Tour',
+    saved: 'Saved Tours',
 
     // Hero
-    liveIndicator: 'Addis Ababa • Gateway to 3,000 Years of Heritage',
+    liveIndicator: 'Addis Ababa • Gateway to 3,000 Years of Living Culture',
     heroEyebrow: 'Cultural Tours in Ethiopia',
     heroTitle1: 'Beyond the',
     heroTitle2: 'Expected.',
     heroSubtitle:
-      'Thoughtful, private journeys through 3,000 years of living history, soaring alpine highlands, and the spiritual soul of the Horn of Africa.',
-    exploreJourneysBtn: 'Explore Curated Journeys',
-    discoverRegionsBtn: 'Discover Regions',
+      'Thoughtful, private cultural journeys through 3,000 years of living history, soaring alpine highlands, and the spiritual soul of Ethiopia.',
+    exploreJourneysBtn: 'Explore Tours',
+    discoverRegionsBtn: 'Discover Destinations',
     signatureRoutes: 'Signature Routes:',
 
-    // Ethos
-    ethosEyebrow: 'The Unbroken Continuum',
+    // Ethos / About Us
+    ethosEyebrow: 'Living Ethiopian Heritage',
     ethosTitle1: 'Not a museum of ruins.',
     ethosTitle2: 'An unbroken, living civilization.',
     ethosBody:
@@ -48,27 +50,27 @@ export const translations = {
     ethosQuote:
       '"When you stand inside a rock-hewn sanctuary in Lalibela, the priest chanting before you is singing the same Ge\'ez prayers his ancestors chanted eight hundred years ago. The flame was lit in the 12th century and has never been extinguished."',
     ethosAuthor: 'Abenezer Sisay',
-    ethosRole: 'Founder, Ancient Path Ethiopia',
-    thoughtfulBadge: 'Thoughtful Travel',
+    ethosRole: 'Founder, The Tourist (ጎብኚው)',
+    thoughtfulBadge: 'Thoughtful Cultural Travel',
     thoughtfulBadgeDesc:
       'Every expedition directly funds local highland heritage conservation and family-run micro-enterprises.',
 
-    // Curated Journeys
-    curatedEyebrow: 'Curated Expeditions',
-    curatedTitle: 'Journeys Crafted for',
+    // Tours
+    curatedEyebrow: 'Cultural Expeditions',
+    curatedTitle: 'Tours Crafted for',
     curatedTitleHighlight: 'Depth',
-    allJourneys: 'All Journeys',
+    allJourneys: 'All Tours',
     historical: 'Historical',
     wildlife: 'Wildlife',
     cultural: 'Cultural',
     spiritual: 'Spiritual',
-    viewAllJourneys: 'View All 9 Curated Journeys',
+    viewAllJourneys: 'View All 9 Tours',
     exploreItinerary: 'Explore Itinerary',
     explore: 'Explore',
 
     // Destinations
     destEyebrow: 'Destination Discovery',
-    destTitle: 'The Landscapes of',
+    destTitle: 'The Diverse Landscapes of',
     destTitleHighlight: 'Ethiopia',
     destSubtitle:
       'From 4,500-meter afro-alpine summits to salt depressions 120 meters below sea level, explore ten distinct geographical and cultural regions across the country.',
@@ -94,51 +96,51 @@ export const translations = {
     readBunaEssay: 'Read Essay: The Buna Ritual',
 
     // Journal
-    journalEyebrow: 'Field Journal',
+    journalEyebrow: 'Travel Journal',
     journalTitle: 'Dispatches from the',
-    journalTitleHighlight: 'Path',
-    exploreAllEssays: 'Explore All Field Essays',
-    readFullEssay: 'Read Full Essay',
+    journalTitleHighlight: 'Field',
+    exploreAllEssays: 'Explore All Articles',
+    readFullEssay: 'Read Full Article',
 
     // Guest Perspectives
-    guestEyebrow: 'Guest Perspectives',
-    guestTitle: 'Voices from the',
-    guestTitleHighlight: 'Path',
+    guestEyebrow: 'Traveler Perspectives',
+    guestTitle: 'Voices from',
+    guestTitleHighlight: 'Our Guests',
     guestSubtitle:
-      'Reflections from travelers who experienced the private bespoke journeys of Ancient Path.',
+      'Reflections from travelers who explored Ethiopia on private cultural journeys with The Tourist (ጎብኚው).',
 
     // Bespoke CTA
-    ctaEyebrow: 'Bespoke Curation',
+    ctaEyebrow: 'Tailor-Made Planning',
     ctaTitle: 'No two journeys should ever be identical.',
     ctaTitleHighlight: 'Let us design yours.',
     ctaSubtitle:
       'Whether you envision helicopter flights over the Danakil volcanic craters, private dawn liturgical viewings in Lalibela, or trekking the high plateau of the Bale Mountains, our travel designers will craft an itinerary matched precisely to your pace and passions.',
-    startPlanBtn: 'Start Your Custom Plan',
+    startPlanBtn: 'Start Your Custom Tour Plan',
     speakConciergeBtn: 'Speak with a Concierge',
 
     // Common
     altitude: 'Altitude',
     bestSeason: 'Best Season',
-    pricingGuidance: 'Custom Luxury Quotation',
+    pricingGuidance: 'Custom Tour Quotation',
     privateTailorMade: '100% Private',
-    bookThisJourney: 'Book This Journey',
+    bookThisJourney: 'Book This Tour',
 
     // Wishlist Drawer
-    wishlistTitle: 'Saved Journeys',
+    wishlistTitle: 'Saved Tours',
     shortlistEmpty: 'Your shortlist is empty',
-    shortlistEmptyDesc: 'Explore our curated journeys and click the heart icon on any itinerary to save and compare your favorites.',
-    browseAllJourneys: 'Browse All Journeys',
-    planWithSaved: 'Plan Trip With Saved',
+    shortlistEmptyDesc: 'Explore our cultural tours and click the heart icon on any itinerary to save and compare your favorites.',
+    browseAllJourneys: 'Browse All Tours',
+    planWithSaved: 'Plan Tour With Saved',
     bespokeSummary: 'Our travel designers will weave your selected highlights into one bespoke itinerary.',
 
     // Tours Page
-    toursHeaderEyebrow: 'Curated Expeditions',
-    toursHeaderTitle: 'Journeys of Wonder & Distinction',
+    toursHeaderEyebrow: 'Cultural Expeditions',
+    toursHeaderTitle: 'Cultural Tours of Wonder & Distinction',
     toursHeaderDesc: 'Each route is privately guided, thoughtfully paced, and customizable to your passions.',
     searchPlaceholder: 'Search by destination, highlight, or route...',
     allStyles: 'All Styles',
     anyDuration: 'Any Duration',
-    noToursFound: 'No journeys match your filters',
+    noToursFound: 'No tours match your filters',
     resetFilters: 'Reset Filters',
 
     // Destinations Page
@@ -147,64 +149,66 @@ export const translations = {
     destHeaderDesc: 'From volcanic salt plains to ancient walled sanctuaries and afro-alpine peaks.',
 
     // About Page
-    aboutHeaderEyebrow: 'Our Philosophy',
-    aboutHeaderTitle: 'Stewards of an Unbroken Heritage',
+    aboutHeaderEyebrow: 'About Us',
+    aboutHeaderTitle: 'Stewards of Ethiopia’s Living Heritage',
     aboutFoundersNote: "Founder's Note",
 
     // Journal Page
-    journalHeaderEyebrow: 'Field Notes & Dispatches',
-    journalHeaderTitle: 'Stories from the Ancient Path',
+    journalHeaderEyebrow: 'Field Notes & Articles',
+    journalHeaderTitle: 'Stories from The Tourist (ጎብኚው)',
 
     // FAQs Page
-    faqsHeaderEyebrow: 'Essential Practicalities',
-    faqsHeaderTitle: 'Everything You Need to Know Before You Travel',
+    faqsHeaderEyebrow: 'Travel Guide & FAQs',
+    faqsHeaderTitle: 'Everything You Need to Know Before Traveling to Ethiopia',
 
     // Contact & Book
-    contactHeaderEyebrow: 'Begin the Conversation',
-    contactHeaderTitle: 'Craft Your Ethiopian Odyssey',
-    bookHeaderEyebrow: 'Private Journey Curation',
-    bookHeaderTitle: 'Design Your Bespoke Expedition',
+    contactHeaderEyebrow: 'Contact Us',
+    contactHeaderTitle: 'Connect with The Tourist Concierge',
+    bookHeaderEyebrow: 'Bespoke Tour Planning',
+    bookHeaderTitle: 'Design Your Custom Ethiopian Tour',
     fullName: 'Full Name',
     emailAddress: 'Email Address',
     phoneNumber: 'Phone Number (Optional)',
-    preferredDates: 'Preferred Travel Window',
+    preferredDates: 'Preferred Travel Dates',
     travelerCount: 'Number of Travelers',
     travelStyle: 'Travel Style / Desired Focus',
     additionalNotes: 'Tell us about your passions, pace, or special requests...',
-    submitInquiry: 'Submit Bespoke Inquiry',
+    submitInquiry: 'Submit Tour Inquiry',
     inquirySuccess: 'Thank you. Our travel concierge will reach out within 24 hours.',
   },
 
   am: {
-    // Header & Nav
-    brandName: 'ጥንታዊ ጎዳና',
+    // Header & Nav - Real, Clear Amharic Names
+    brandName: 'ጎብኚው',
     brandTagline: 'የኢትዮጵያ ባህላዊ ጉዞዎች',
-    navCulturalTours: 'ባህላዊ ጉዞዎች',
+    navTours: 'ጉዞዎች',
     navDestinations: 'መዳረሻዎች',
-    navLivingCulture: 'ሕያው ባህል',
-    navJournal: 'የመስክ ማስታወሻ',
+    navAbout: 'ስለ እኛ',
+    navJournal: 'የጉዞ ማስታወሻ',
     navGuide: 'የጉዞ መመሪያ',
-    navInquire: 'ያግኙን',
-    navJourneys: 'ባህላዊ ጉዞዎች',
-    navEthos: 'ሕያው ባህል',
-    navStories: 'የመስክ ማስታወሻ',
-    navPracticalities: 'የጉዞ መመሪያ',
     navContact: 'ያግኙን',
-    curateJourney: 'ጉዞ ይንደፉ',
+    // Aliases to guarantee backwards compatibility
+    navCulturalTours: 'ጉዞዎች',
+    navJourneys: 'ጉዞዎች',
+    navLivingCulture: 'ስለ እኛ',
+    navEthos: 'ስለ እኛ',
+    navStories: 'የጉዞ ማስታወሻ',
+    navPracticalities: 'የጉዞ መመሪያ',
+    curateJourney: 'ጉዞ ይጀምሩ',
     saved: 'የተመረጡ',
 
     // Hero
-    liveIndicator: 'አዲስ አበባ • የ3,000 ዓመታት ታሪክ መግቢያ',
+    liveIndicator: 'አዲስ አበባ • የ3,000 ዓመታት ሕያው ታሪክ መግቢያ',
     heroEyebrow: 'የኢትዮጵያ ባህላዊ ጉዞዎች',
     heroTitle1: 'ከተጠበቀው',
     heroTitle2: 'በላይ።',
     heroSubtitle:
       'በ3,000 ዓመታት ሕያው ታሪክ፣ አስደናቂ የተራራ ሰንሰለቶች እና በአፍሪካ ቀንድ መንፈሳዊ ድምቀት ውስጥ የሚደረጉ ጥንቃቄ የተሞላባቸው የቅንጦት ጉዞዎች።',
-    exploreJourneysBtn: 'ልዩ ጉዞዎችን ያስሱ',
-    discoverRegionsBtn: 'ክልሎችን ይመርምሩ',
+    exploreJourneysBtn: 'ጉዞዎችን ያስሱ',
+    discoverRegionsBtn: 'መዳረሻዎችን ይመርምሩ',
     signatureRoutes: 'ዋና ዋና መስመሮች:',
 
-    // Ethos
+    // Ethos / About Us
     ethosEyebrow: 'የማይቋረጥ የሥልጣኔ ሰንሰለት',
     ethosTitle1: 'የፈራረሰ ቅርስ ሳይሆን፤',
     ethosTitle2: 'ሕያው እና ዘላቂ ሥልጣኔ።',
@@ -213,12 +217,12 @@ export const translations = {
     ethosQuote:
       '"በላሊበላ ፍልፍል አብያተ ክርስቲያናት ውስጥ ሲቆሙ ካህናት የሚያሰሙት የግዕዝ ዜማ አባቶቻቸው ከስምንት መቶ ዓመታት በፊት ያሰሙት ያው ዜማ ነው። በ12ኛው ክፍለ ዘመን የተለኮሰው ሻማ እስካሁን አልጠፋም።"',
     ethosAuthor: 'አበነዘር ሲሳይ',
-    ethosRole: 'የጥንታዊ ጎዳና ኢትዮጵያ መሥራች',
+    ethosRole: 'የጎብኚው (The Tourist) መሥራች',
     thoughtfulBadge: 'ኃላፊነት የተሞላበት ጉዞ',
     thoughtfulBadgeDesc:
       'እያንዳንዱ ጉዞ የአካባቢውን ባህላዊ ቅርሶች ለመንከባከብ እና የማህበረሰቡን ኑሮ ለማሻሻል በቀጥታ ይደግፋል።',
 
-    // Curated Journeys
+    // Tours
     curatedEyebrow: 'የተመረጡ ጉዞዎች',
     curatedTitle: 'ለጥልቅ ልምድ',
     curatedTitleHighlight: 'የተነደፉ',
@@ -228,15 +232,15 @@ export const translations = {
     cultural: 'ባህላዊ',
     spiritual: 'መንፈሳዊ',
     viewAllJourneys: 'ሁሉንም 9 ጉዞዎች ይመልከቱ',
-    exploreItinerary: 'የጉዞውን ዝርዝር ያስሱ',
+    exploreItinerary: 'የጉዞ ፕሮግራሙን ይመልከቱ',
     explore: 'ያስሱ',
 
     // Destinations
-    destEyebrow: 'የመዳረሻዎች ግኝት',
-    destTitle: 'የኢትዮጵያ ድንቅ',
-    destTitleHighlight: 'መልክዓ ምድሮች',
+    destEyebrow: 'የመዳረሻዎች ዳሰሳ',
+    destTitle: 'አስደናቂው የኢትዮጵያ',
+    destTitleHighlight: 'መልክዓ-ምድር',
     destSubtitle:
-      'ከ4,500 ሜትር ከፍታ ካላቸው የስሜን ተራሮች አንስቶ እስከ 120 ሜትር ከባህር ወለል በታች እስካለው የዳሎል ጨው ምድር ድረስ አስደናቂ የተፈጥሮ ውበት።',
+      'ከ4,500 ሜትር ከፍታ ካላቸው አፍሮ-አልፓይን የተራራ ጫፎች አንስቶ ከባህር ወለል በታች 120 ሜትር ጥልቀት ወዳለው የጨው በርሃ ድረስ አስር የተለያዩ ክልሎችን ይጎብኙ።',
     allRegions: 'ሁሉም ክልሎች',
     theNorth: 'ሰሜኑ',
     theSouth: 'ደቡቡ',
@@ -245,86 +249,89 @@ export const translations = {
     exploreAllDestinations: 'ሁሉንም 10 መዳረሻዎች እና ካርታዎች ያስሱ',
 
     // Living Rituals (Buna & Mesob)
-    bunaEyebrow: 'ባህላዊ ቅርርብ',
-    bunaTitle: 'መሶብ፡ ጉዞ በአንድነት ወደሚቋረስ',
-    bunaTitleHighlight: 'ማዕድ ሲቀየር።',
+    bunaEyebrow: 'ባህላዊ መቀራረብ',
+    bunaTitle: 'መሶብ፡ ጉዞ የጋራ ማዕድ',
+    bunaTitleHighlight: 'የሚሆንበት ቦታ።',
     bunaBody:
-      'በኢትዮጵያ ባህል ምግብ ብቻውን አይበላም። ምግቡ የሚቀርበው ከሣር በተሠራው ውብ መሶብ ውስጥ ነው። የመሶቡ ክዳን ሲነሳ እንጀራ ከጣፋጭ ወጦች ጋር ተዘጋጅቶ እንግዶች በአንድነት እንዲቋደሱ ይጋብዛል።',
+      'በኢትዮጵያ ባህል ምግብ መመገብ በፍጹም የብቻ ተግባር አይደለም። ምግቡ የሚቀርበው ከደማቅ ሣር በተሠራ ክዳን ባለው መሶብ ውስጥ ነው። ሾጣጣው ክዳን ሲነሳ በመዓዛ በተሞሉ ወጦች የተከበበ የእንጀራ ማዕድ ይገለጣል፤ ሁሉም ሰው ከአንድ የጋራ ማዕድ አብሮ ይመገባል።',
     gurshaTitle: 'የጉርሻ ክብር',
-    gurshaDesc: 'ምግብን በእጅ አንስቶ ለሌላው ማጉረስ — የታላቅ ፍቅር፣ አክብሮትና የወዳጅነት መግለጫ ነው።',
+    gurshaDesc:
+      'ምግብን በጥንቃቄ አንስቶ ለሌላው ሰው በአክብሮት ማጉረስ—የጥልቅ ፍቅርና ወዳጅነት መግለጫ።',
     threeRoundsTitle: 'ሦስቱ የቡና ጽዋዎች',
-    threeRoundsDesc: 'አቦል (የመጀመሪያው)፣ ቶና (ሁለተኛው)፣ እና በረካ (በረከት) — ውይይትን ወደ ጥልቅ ደረጃ የሚያደርሱ።',
-    readBunaEssay: 'ጽሑፉን ያንብቡ: የቡና ሥነ-ሥርዓት',
+    threeRoundsDesc:
+      'አቦል (የመጀመሪያው ጽዋ)፣ ቶና (ሁለተኛው ነጸብራቅ) እና በረካ (የመጨረሻው ምርቃት)—ውይይቱን ወደ ጥልቅ ደረጃ ያደርሱታል።',
+    readBunaEssay: 'ጽሑፉን ያንብቡ፡ የቡና ሥነ-ሥርዓት',
 
     // Journal
-    journalEyebrow: 'የመስክ ማስታወሻ',
-    journalTitle: 'ከጉዞው መስመር',
-    journalTitleHighlight: 'የተገኙ ታሪኮች',
+    journalEyebrow: 'የጉዞ ማስታወሻ',
+    journalTitle: 'ከመስክ የተሰበሰቡ',
+    journalTitleHighlight: 'ታሪኮች',
     exploreAllEssays: 'ሁሉንም ጽሑፎች ያስሱ',
     readFullEssay: 'ሙሉውን ጽሑፍ ያንብቡ',
 
     // Guest Perspectives
-    guestEyebrow: 'የተጓዦች አስተያየት',
-    guestTitle: 'የተጓዦች',
-    guestTitleHighlight: 'ምስክርነት',
-    guestSubtitle: 'ከጥንታዊ ጎዳና ጋር የቅንጦት እና ጥልቅ የግል ጉዞ ያደረጉ እንግዶች አስተያየት።',
+    guestEyebrow: 'የጎብኚዎች አስተያየት',
+    guestTitle: 'ከተጓዦቻችን',
+    guestTitleHighlight: 'አንደበት',
+    guestSubtitle:
+      'ከጎብኚው (The Tourist) ጋር በግል የተጓዙ እንግዶች ያካፈሉት የማይረሳ ልምድ።',
 
     // Bespoke CTA
-    ctaEyebrow: 'ብጁ የጉዞ ዝግጅት',
-    ctaTitle: 'ሁለት ጉዞዎች በፍጹም ተመሳሳይ ሊሆኑ አይገባም።',
-    ctaTitleHighlight: 'የእርስዎን ጉዞ እኛ እንንደፈው።',
+    ctaEyebrow: 'የግል ጉዞ ማዘጋጀት',
+    ctaTitle: 'ሁለት ተመሳሳይ ጉዞዎች በፍጹም ሊኖሩ አይገባም።',
+    ctaTitleHighlight: 'የእርስዎን እንንደፍልዎ።',
     ctaSubtitle:
-      'በዳናኪል እሳተ ጎመራ ላይ በሄሊኮፕተር መብረር፣ በላሊበላ የንጋት ጸሎት ማዳመጥ፣ ወይም በባሌ ተራሮች የእግር ጉዞ ማድረግ ቢፈልጉ፣ የጉዞ ባለሙያዎቻችን ለፍላጎትዎ ተስማሚ የሆነ ጉዞ ያዘጋጁልዎታል።',
-    startPlanBtn: 'ብጁ ጉዞዎን ይጀምሩ',
-    speakConciergeBtn: 'ከጉዞ አማካሪያችን ጋር ይነጋገሩ',
+      'በዳናኪል የእሳተ ገሞራ ጉድጓዶች ላይ በሄሊኮፕተር መብረር ቢፈልጉ፣ በላሊበላ የማለዳ ጸሎትን ለመካፈል ቢሹ፣ ወይም በባሌ ተራሮች ለመጓዝ ቢያስቡ፣ የጉዞ ባለሙያዎቻችን እንደ ፍላጎትዎ ያዘጋጁልዎታል።',
+    startPlanBtn: 'የግል ጉዞዎን ማዘጋጀት ይጀምሩ',
+    speakConciergeBtn: 'የጉዞ አማካሪ ያነጋግሩ',
 
     // Common
     altitude: 'ከፍታ',
     bestSeason: 'ምርጥ የጉዞ ወቅት',
-    pricingGuidance: 'ብጁ የቅንጦት ዋጋ',
-    privateTailorMade: '100% የግል ጉዞ',
-    bookThisJourney: 'ይህንን ጉዞ ያስይዙ',
+    pricingGuidance: 'የጉዞ ዋጋ መመሪያ',
+    privateTailorMade: '100% የግል',
+    bookThisJourney: 'ይህንን ጉዞ ይያዙ',
 
     // Wishlist Drawer
     wishlistTitle: 'የተመረጡ ጉዞዎች',
     shortlistEmpty: 'ምንም የተመረጠ ጉዞ የለም',
-    shortlistEmptyDesc: 'የተመረጡ ጉዞዎችን ይጎብኙና የሚወዷቸውን ጉዞዎች ለማስቀመጥ የልብ ምልክቱን ይጫኑ።',
-    browseAllJourneys: 'ሁሉንም ጉዞዎች ያስሱ',
-    planWithSaved: 'በተመረጡት ጉዞ ይጀምሩ',
-    bespokeSummary: 'የጉዞ ባለሙያዎቻችን የመረጧቸውን መዳረሻዎች በማቀናጀት ልዩ የጉዞ ፕሮግራም ያዘጋጁልዎታል።',
+    shortlistEmptyDesc: 'የቀረቡትን ባህላዊ ጉዞዎች ይመልከቱ እና የልብ ቅርጽ ምልክቷን በመጫን የሚወዷቸውን ጉዞዎች ይምረጡ።',
+    browseAllJourneys: 'ሁሉንም ጉዞዎች ይመልከቱ',
+    planWithSaved: 'ከተመረጡት ጋር ጉዞ ይንደፉ',
+    bespokeSummary: 'የጉዞ ባለሙያዎቻችን የመረጧቸውን ቦታዎች በማካተት ልዩ የግል ጉዞ ያዘጋጁልዎታል።',
 
     // Tours Page
-    toursHeaderEyebrow: 'የተመረጡ ልዩ ጉዞዎች',
-    toursHeaderTitle: 'አስደናቂ እና ልዩ የጉዞ ፕሮግራሞች',
-    toursHeaderDesc: 'እያንዳንዱ ጉዞ በግል መሪ የሚመራ፣ ምቹ እና እንደ ፍላጎትዎ የሚዘጋጅ ነው።',
-    searchPlaceholder: 'በመዳረሻ፣ በቦታ ወይም በስም ይፈልጉ...',
+    toursHeaderEyebrow: 'ባህላዊ ጉዞዎች',
+    toursHeaderTitle: 'ልዩ እና ጥንቃቄ የተሞላባቸው የኢትዮጵያ ጉዞዎች',
+    toursHeaderDesc: 'እያንዳንዱ ጉዞ በግል አስጎብኚ የሚመራና እንደ ፍላጎትዎ የሚስተካከል ነው።',
+    searchPlaceholder: 'በመዳረሻ፣ በልዩ ቦታ ወይም በጉዞ መስመር ይፈልጉ...',
     allStyles: 'ሁሉም ዓይነቶች',
     anyDuration: 'ማንኛውም ቆይታ',
-    noToursFound: 'በዚህ ምርጫ የተገኘ ጉዞ የለም',
-    resetFilters: 'ምርጫዎችን አጽዳ',
+    noToursFound: 'የመረጡትን መስፈርት የሚያሟላ ጉዞ አልተገኘም',
+    resetFilters: 'ማጣሪያውን አጽዳ',
 
     // Destinations Page
-    destHeaderEyebrow: 'የመልክዓ ምድር እና የባህል መስመሮች',
-    destHeaderTitle: 'አስሩ አስደናቂ ዓለማት',
-    destHeaderDesc: 'ከዳሎል ጨዋማ እሳተ ጎመራ እስከ ጥንታዊ ቅጥር ከተሞች እና አስደናቂ ተራሮች።',
+    destHeaderEyebrow: 'ክልላዊ እና ባህላዊ መስመሮች',
+    destHeaderTitle: 'አስር የተለያዩ ዓለማት',
+    destHeaderDesc: 'ከእሳተ ገሞራ የጨው ሜዳዎች አንስቶ እስከ ጥንታዊ ቅጥር ከተሞችና የተራራ ጫፎች ድረስ።',
 
     // About Page
-    aboutHeaderEyebrow: 'ፍልስፍናችን',
-    aboutHeaderTitle: 'የማይቋረጥ የታሪክና የቅርስ ጠባቂዎች',
+    aboutHeaderEyebrow: 'ስለ እኛ',
+    aboutHeaderTitle: 'የኢትዮጵያ ሕያው ቅርስ ጠባቂዎች',
     aboutFoundersNote: 'የመሥራቹ መልእክት',
 
     // Journal Page
     journalHeaderEyebrow: 'የመስክ ማስታወሻዎች',
-    journalHeaderTitle: 'ከጥንታዊው ጎዳና የተገኙ ታሪኮች',
+    journalHeaderTitle: 'ከጎብኚው (The Tourist) የተሰነዱ ታሪኮች',
 
     // FAQs Page
-    faqsHeaderEyebrow: 'አስፈላጊ መረጃዎች',
-    faqsHeaderTitle: 'ከጉዞዎ በፊት ማወቅ የሚገቡዎት ነገሮች',
+    faqsHeaderEyebrow: 'የጉዞ መመሪያ እና ጥያቄዎች',
+    faqsHeaderTitle: 'ወደ ኢትዮጵያ ከመጓዝዎ በፊት ማወቅ የሚገቡዎት ነገሮች',
 
     // Contact & Book
-    contactHeaderEyebrow: 'ውይይቱን ይጀምሩ',
-    contactHeaderTitle: 'የግል የጉዞ ፕሮግራምዎን ያዘጋጁ',
-    bookHeaderEyebrow: 'የግል የቅንጦት ጉዞ ማዘጋጃ',
+    contactHeaderEyebrow: 'ያግኙን',
+    contactHeaderTitle: 'የጎብኚው የጉዞ አማካሪዎችን ያነጋግሩ',
+    bookHeaderEyebrow: 'የግል ጉዞ ማዘጋጃ',
     bookHeaderTitle: 'የህልም ጉዞዎን ይንደፉ',
     fullName: 'ሙሉ ስም',
     emailAddress: 'ኢሜይል አድራሻ',
@@ -339,26 +346,37 @@ export const translations = {
 }
 
 export function LanguageProvider({ children }) {
-  const [language, setLanguage] = useState(() => {
+  const [language, setLanguageState] = useState(() => {
     try {
-      return localStorage.getItem('ancient_path_lang') || 'en'
+      const saved = localStorage.getItem('the_tourist_lang')
+      return saved === 'am' ? 'am' : 'en'
     } catch {
       return 'en'
     }
   })
 
+  const setLanguage = (lang) => {
+    const nextLang = lang === 'am' ? 'am' : 'en'
+    setLanguageState(nextLang)
+    try {
+      localStorage.setItem('the_tourist_lang', nextLang)
+      document.documentElement.lang = nextLang
+    } catch (e) {
+      console.warn(e)
+    }
+  }
+
+  const toggleLanguage = () => {
+    setLanguage(language === 'en' ? 'am' : 'en')
+  }
+
   useEffect(() => {
     try {
-      localStorage.setItem('ancient_path_lang', language)
       document.documentElement.lang = language
     } catch (e) {
       console.warn(e)
     }
   }, [language])
-
-  const toggleLanguage = () => {
-    setLanguage((prev) => (prev === 'en' ? 'am' : 'en'))
-  }
 
   const t = (key) => {
     const langDict = translations[language] || translations.en

@@ -44,7 +44,7 @@ export default function JournalDetail() {
           </h1>
 
           <div className="flex items-center justify-center gap-3 text-xs text-[#302B24]/60 dark:text-[#E8E2D5]/60 pt-2">
-            <span>{language === 'am' ? 'ጸሐፊ' : 'By'} <strong className="text-[#1A1713] dark:text-[#F5F2EB]">{post.author || 'Ancient Path'}</strong></span>
+            <span>{language === 'am' ? 'ጸሐፊ' : 'By'} <strong className="text-[#1A1713] dark:text-[#F5F2EB]">{post.author || (language === 'am' ? 'ጎብኚው' : 'The Tourist')}</strong></span>
             <span>•</span>
             <span>{post.date}</span>
             <span>•</span>
@@ -80,7 +80,7 @@ export default function JournalDetail() {
             </div>
             <div>
               <span className="block font-serif text-lg font-semibold text-[#1A1713] dark:text-[#F5F2EB]">
-                {post.author || 'Ancient Path Editorial'}
+                {post.author || (language === 'am' ? 'የጎብኚው ዝግጅት ክፍል' : 'The Tourist Editorial')}
               </span>
               <span className="block text-xs text-[#302B24]/60 dark:text-[#E8E2D5]/60 font-light">
                 {post.authorRole || (language === 'am' ? 'የመስክ ጸሐፊ፣ ኢትዮጵያ' : 'Field Contributor, Ethiopia')}

@@ -24,9 +24,9 @@ export default function Journal() {
           </div>
 
           <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-normal text-[#1A1713] dark:text-[#F5F2EB] tracking-tight">
-            {language === 'am' ? 'የጥንታዊ ጎዳና' : 'The Field'}{' '}
+            {language === 'am' ? 'የጎብኚው' : 'The Tourist'}{' '}
             <span className="italic font-light text-[#B58A43]">
-              {language === 'am' ? 'የመስክ ማስታወሻዎች' : 'Journal'}
+              {language === 'am' ? 'የጉዞ ማስታወሻዎች' : 'Travel Journal'}
             </span>
           </h1>
 
@@ -80,7 +80,7 @@ export default function Journal() {
               <div className="pt-6 border-t border-[#B58A43]/15 flex items-center justify-between">
                 <div>
                   <span className="block text-[10px] uppercase text-[#302B24]/60 dark:text-[#E8E2D5]/60 font-semibold">{language === 'am' ? 'ጸሐፊ' : 'Written By'}</span>
-                  <span className="text-xs font-semibold text-[#1A1713] dark:text-[#F5F2EB]">{featuredPost.author || 'Ancient Path Editorial'}</span>
+                  <span className="text-xs font-semibold text-[#1A1713] dark:text-[#F5F2EB]">{featuredPost.author || (language === 'am' ? 'የጎብኚው ዝግጅት ክፍል' : 'The Tourist Editorial')}</span>
                 </div>
 
                 <span className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-[#B58A43] group-hover:translate-x-1 transition-transform">
