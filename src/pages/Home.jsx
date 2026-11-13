@@ -25,14 +25,14 @@ const HERO_CLIPS = [
   {
     id: 1,
     num: '01',
-    name: 'Addis Ababa',
+    name: 'Addis City',
     amName: 'አዲስ አበባ',
-    title: 'Modern Addis Ababa & Skylines',
-    amTitle: 'ዘመናዊቷ አዲስ አበባ እና ሰማይ-ጠቀስ እይታ',
-    angle: 'Aerial Cityscape & Contemporary Capital',
-    amAngle: 'የአየር ላይ እይታ እና ዘመናዊ መዲና',
-    tag: 'Capital Metropolis • Skylines',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/cld-sample-video.mp4',
+    title: 'Modern Addis Ababa City & Life',
+    amTitle: 'ዘመናዊቷ አዲስ አበባ እና የከተማው ሕይወት',
+    angle: 'Capital Metropolis & Vibrant Urban Market',
+    amAngle: 'የመዲናይቱ የጎዳናና የገበያ ድምቀት',
+    tag: 'Addis Ababa • Capital Life',
+    video: '/videos/addis_city.webm',
     poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1787780651/wsusxdpkh0zrwseqeovu.webp',
   },
   {
@@ -42,89 +42,89 @@ const HERO_CLIPS = [
     amName: 'ላሊበላ',
     title: 'Sacred Rock Sanctuaries of Lalibela',
     amTitle: 'የላሊበላ ፍልፍል ቅዱሳን አብያተ-ክርስቲያናት',
-    angle: 'Subterranean Monolithic Architecture',
+    angle: '12th Century Monolithic Architecture',
     amAngle: 'የመሬት ውስጥ ፍልፍል ድንቅ ህንፃዎች',
     tag: '12th Century • UNESCO Living Faith',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/snow_horses.mp4',
+    video: '/videos/lalibela_monolithic.webm',
     poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044760/uaxjuqytkud5kywfxamz.jpg',
   },
   {
     id: 3,
     num: '03',
-    name: 'Simien Peaks',
-    amName: 'ስሜን ተራሮች',
-    title: 'Simien Alpine Escarpments',
-    amTitle: 'የስሜን ተራሮች ግርማና ገደላማ ሸለቆዎች',
-    angle: '4,500m Highland Canyons & Geladas',
+    name: 'Simien Geladas',
+    amName: 'ስሜን ጭላዳ',
+    title: 'Simien Alpine Wildlife & Geladas',
+    amTitle: 'የስሜን ደጋማ የዱር አራዊትና ጭላዳ ዝንጀሮዎች',
+    angle: '4,500m Highland Escarpments & Endemic Fauna',
     amAngle: 'የደጋማ ገደላማ ሸለቆዎችና ጭላዳ ዝንጀሮዎች',
-    tag: 'Roof of Africa • Highland Peaks',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/mountains.mp4',
+    tag: 'Simien Highlands • Gelada Sanctuary',
+    video: '/videos/wildlife_gelada.webm',
     poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784105008/im1uicc6wrntebbhqmpt.jpg',
   },
   {
     id: 4,
     num: '04',
-    name: 'Bale Wildlife',
-    amName: 'ባሌ አራዊት',
-    title: 'Afro-Alpine Endemic Wildlife',
-    amTitle: 'የባሌ ደጋማ ብርቅዬ አራዊትና ተኩላዎች',
-    angle: 'Sanetti Plateau & Rare Ethiopian Wolf',
-    amAngle: 'የሳኔቲ ሜዳና ብርቅዬው ቀይ ቀበሮ',
-    tag: 'Endemic Wilderness • Red Fox Habitat',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/marmots.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784492255/a3eewtmcpuy861vaemtj.jpg',
+    name: 'Erta Ale',
+    amName: 'ኤርታሌ',
+    title: 'Danakil Depression & Erta Ale Volcano',
+    amTitle: 'ዳሎልና የኤርታሌ ንቁ እሳተ-ጎመራ',
+    angle: 'Bubbling Caldera & Glowing Lava Lake',
+    amAngle: 'የእሳተ-ጎመራ ወላፈንና የፈሳሽ ድንጋይ ወንዝ',
+    tag: '-125m • Active Volcanic Glow',
+    video: '/videos/danakil_erta_ale.webm',
+    poster: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1600&q=80',
   },
   {
     id: 5,
     num: '05',
-    name: 'Rift Lakes',
-    amName: 'ስምጥ ሸለቆ',
-    title: 'Great Rift Valley Waters & Safari',
-    amTitle: 'የስምጥ ሸለቆ ሐይቆችና የውሃ ድንቆች',
-    angle: 'Lake Chamo Boat Safari & Waterfalls',
-    amAngle: 'የጫሞ ሐይቅ የጀልባ ሳፋሪና ፏፏቴዎች',
-    tag: 'Lake Chamo & Awassa • Aquatic Safari',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/rafting.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786277684/ejs4hjczvizttiqkkvcm.jpg',
+    name: 'Harar Jugol',
+    amName: 'ሐረር ጁጎል',
+    title: 'Harar Jugol Ancient Walled City',
+    amTitle: 'የሐረር ጁጎል የሺ ዓመት ታሪካዊ ግንብ',
+    angle: 'Living Cultural Alleys & Historic Citadel Gates',
+    amAngle: 'የጥንት የመንደር መንገዶችና ቅርሶች',
+    tag: 'UNESCO Citadel • Historic Living Streets',
+    video: '/videos/harar_street.ogv',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784496024/ywsf1mxm5sdpsb8znls6.jpg',
   },
   {
     id: 6,
     num: '06',
-    name: 'Danakil',
-    amName: 'ዳናኪል',
-    title: 'Danakil & Erta Ale Lava Lake',
-    amTitle: 'ዳሎልና የኤርታሌ ንቁ እሳተ-ጎመራ',
-    angle: 'Lava Lake Glow & Geothermal Salt Plains',
-    amAngle: 'የእሳተ-ጎመራ ወላፈንና የጨው ምድር',
-    tag: '-125m • Active Volcanic Glow',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/elephants.mp4',
-    poster: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1600&q=80',
+    name: 'Coffee Ritual',
+    amName: 'ባህላዊ ቡና',
+    title: 'Traditional Coffee Ceremony & Heritage',
+    amTitle: 'የኢትዮጵያ ባህላዊ ቡና ማፍላት ሥነ-ሥርዓት',
+    angle: 'Bahir Dar, Lake Tana & Artisan Ritual',
+    amAngle: 'የጣና ሐይቅ ዳርቻና የቡና ባህል',
+    tag: 'Lake Tana & Bahir Dar • Living Ritual',
+    video: '/videos/culture_coffee.webm',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786277684/ejs4hjczvizttiqkkvcm.jpg',
   },
   {
     id: 7,
     num: '07',
-    name: 'Gondar',
-    amName: 'ጎንደር',
-    title: 'Gondar 17th-Century Royal Castles',
-    amTitle: 'የፋሲል ግቢ 17ኛው ክ/ዘመን ቤተ-መንግሥታት',
-    angle: 'Imperial Stone Citadel Architecture',
-    amAngle: 'የጥንታዊ የድንጋይ ግንቦች ጥበብ',
-    tag: 'Imperial Citadel • Camelot of Africa',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/walking.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786286004/zmtnjnikbbfhqz06ea5j.jpg',
+    name: 'Meskel Feast',
+    amName: 'መስቀል ደመራ',
+    title: 'Sacred Meskel Living Christian Festival',
+    amTitle: 'የመስቀል ደመራ ሃይማኖታዊ በዓል ሥነ-ሥርዓት',
+    angle: 'Ancient Demera Procession & Living Faith',
+    amAngle: 'የደመራ በዓልና የጥንታዊ ሥርዓተ-አምልኮ',
+    tag: 'UNESCO Heritage • Sacred Festival',
+    video: '/videos/meskel_festival.ogv',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044758/ohuohsbdy66wnnbgc6zw.jpg',
   },
   {
     id: 8,
     num: '08',
-    name: 'Harar',
-    amName: 'ሐረር ጁጎል',
-    title: 'Harar Jugol Ancient Walled City',
-    amTitle: 'የሐረር ጁጎል የሺ ዓመት ታሪካዊ ግንብ',
-    angle: 'Living Cultural Alleys & Historic Gates',
-    amAngle: 'የጥንት የመንደር መንገዶችና ቅርሶች',
-    tag: 'UNESCO Citadel • Cultural Living Streets',
-    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/ship.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784496024/ywsf1mxm5sdpsb8znls6.jpg',
+    name: 'Rift Waters',
+    amName: 'ስምጥ ሸለቆ',
+    title: 'Great Rift Valley Landscapes & Waters',
+    amTitle: 'የስምጥ ሸለቆ ሐይቆችና የተፈጥሮ መስህቦች',
+    angle: 'Southern Highlands, Rivers & Valley Vistas',
+    amAngle: 'የደቡብ ወንዞችና የስምጥ ሸለቆ ውበት',
+    tag: 'Rift Valley • Waterways & Landscapes',
+    video: '/videos/rift_waters.webm',
+    poster: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=1600&q=80',
   },
 ]
 
@@ -181,6 +181,7 @@ export default function Home({
               >
                 {shouldRenderVideo ? (
                   <video
+                    key={clip.video}
                     autoPlay
                     muted
                     loop
@@ -190,7 +191,9 @@ export default function Home({
                       isActive ? 'scale-105' : 'scale-100'
                     }`}
                     src={clip.video}
-                  />
+                  >
+                    <source src={clip.video} type={clip.video.endsWith('.ogv') ? 'video/ogg' : 'video/webm'} />
+                  </video>
                 ) : (
                   <img
                     src={clip.poster}
@@ -213,7 +216,7 @@ export default function Home({
           {/* Live Heritage Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#B58A43]/70 text-[#E5C378] text-[10px] sm:text-xs font-sans uppercase tracking-[0.25em] mb-6 shadow-xl font-bold">
             <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-ping" />
-            <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
+          <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
           </div>
 
           {/* Main Editorial Headline with High Contrast Shadow */}
