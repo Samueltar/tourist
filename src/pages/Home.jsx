@@ -63,12 +63,6 @@ export default function Home({
 
         {/* Hero Content Container */}
         <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 text-center flex flex-col items-center">
-          {/* Live Heritage Pill */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#B58A43]/70 text-[#E5C378] text-[10px] sm:text-xs font-sans uppercase tracking-[0.25em] mb-6 shadow-xl font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-ping" />
-            <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
-          </div>
-
           {/* Main Editorial Headline with High Contrast Shadow */}
           <div className="space-y-2">
             <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white tracking-tight leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
