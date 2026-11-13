@@ -11,8 +11,9 @@ import {
   Eye,
   Heart,
   Check,
+  Flame,
 } from 'lucide-react'
-import { tours, destinations, journalPosts } from '../data/tours'
+import { tours } from '../data/tours'
 import { useMesob } from '../components/MesobTransition'
 import { useLanguage } from '../context/LanguageContext'
 import {
@@ -22,6 +23,105 @@ import {
 } from '../components/TiletPatterns'
 import ethiopiaTourVideo from '../assets/ethiopia_tour.mp4'
 
+// Authentic Ethiopian Coffee Bean Emblem
+export function CoffeeBeanIcon({ className = 'w-4 h-4', color = 'currentColor' }) {
+  return (
+    <svg viewBox="0 0 24 24" fill="none" className={className} xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <path
+        d="M18.8 6.2C16.8 3.5 12.8 2.2 9.2 3.6C5.6 5 3.4 8.8 4.2 12.6C5 16.4 8.6 19.8 12.4 20.4C16.2 21 19.8 18.6 20.6 14.8C21.4 11 20.8 8.9 18.8 6.2Z"
+        fill={color}
+        fillOpacity="0.25"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+      <path
+        d="M8.8 4.8C10.5 7.8 13.2 9.8 11.8 13C10.4 16.2 13 18.2 14.8 19.2"
+        stroke={color}
+        strokeWidth="1.6"
+        strokeLinecap="round"
+      />
+    </svg>
+  )
+}
+
+// Traditional Ethiopian Coffee Ceremony (የኢትዮጵያ ቡና ሥነ-ሥርዓት) Stages
+const BUNA_CEREMONY_STEPS = [
+  {
+    id: 'roast',
+    beanCount: 1,
+    num: '01',
+    title: 'Washing & Charcoal Roasting',
+    amTitle: 'ማጠብ፣ ማመስ እና ዕጣን',
+    eyebrow: 'The Aromatic Awakening',
+    amEyebrow: 'የመዓዛው መነቃቃት',
+    image: 'https://images.unsplash.com/photo-1509785307050-d4066910ec1e?auto=format&fit=crop&w=1200&q=80',
+    description:
+      'Green highland Arabica beans (ቡና ጥሬ) are washed in clear water, then gently roasted in a flat iron pan (menkeshkensh) over glowing charcoal coals. Frankincense resin (ዕጣን) is ignited on a clay burner, releasing sacred fragrant white smoke.',
+    amDescription:
+      'ጥሬው የሀበሻ ቡና በጥንቃቄ ታጥቦ በብረት ምጣድ ላይ በከሰል ፍም ይቆላል። በጭሱ መካከል ነጭ ዕጣን በግርግሬ ላይ ተደርጎ ቤቱን በጣፋጭ መዓዛ ይሞላል።',
+    quote: 'The host carries the smoking pan to each guest, who wafts the sweet aroma toward their face with both hands as a sign of welcome and respect.',
+    amQuote: 'እመቤቲቱ የቡናውን ጢስ ወደ እንግዶቿ ይዛ በመዞር እንግዶች መዓዛውን በእጆቻቸው ወደ ፊታቸው እንዲስቡ ታደርጋለች፤ ይህም የክብር ሰላምታ ነው።',
+    ritualItem: 'Menkeshkensh & Frankincense (ምጣድ እና ዕጣን)',
+  },
+  {
+    id: 'brew',
+    beanCount: 2,
+    num: '02',
+    title: 'Mortar Pounding & The Clay Jebena',
+    amTitle: 'መውቀጥ እና የጀበና ፍላት',
+    eyebrow: 'The Ancient Vessel',
+    amEyebrow: 'ጥንታዊቷ ጀበና',
+    image: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786277684/ejs4hjczvizttiqkkvcm.jpg',
+    description:
+      'The dark, glistening beans are hand-crushed in a heavy wooden mortar (mukecha) with a pestle (zenezena). The fragrant grinds are poured with spring water into the spherical black clay Jebena (ጀበና) and brought to a slow, bubbling boil on charcoal embers.',
+    amDescription:
+      'የተቆላው ቡና በሙቀጫና በዘነዘና ተወቅጦ በሸክላ ጀበና ከውሃ ጋር ይፈላል። ጀበናዋ አተላው ወደ ታች እንዲቀመጥ ተደርጋ በጥንቃቄ እንድታረግፍ ትቀመጣለች።',
+    quote: 'The handcrafted clay Jebena has brewed Ethiopia’s mountain coffee for over a thousand years, filtering the grinds naturally without paper or metal.',
+    amQuote: 'የሸክላ ጀበና ለሺህ ዓመታት የኢትዮጵያን ተፈጥሯዊ ቡና ያለ ምንም ማጣሪያ አጣርታ የምታፈላ ድንቅ ባህላዊ ዕቃ ናት።',
+    ritualItem: 'Mukecha & Black Clay Jebena (ሙቀጫና ጥቁር ጀበና)',
+  },
+  {
+    id: 'rounds',
+    beanCount: 3,
+    num: '03',
+    title: 'The Three Sacred Rounds',
+    amTitle: 'ሦስቱ ዙሮች፡ አቦል፣ ቶና፣ በረካ',
+    eyebrow: 'Abol, Tona & Bereka',
+    amEyebrow: 'አቦል፣ ቶና እና በረካ',
+    image: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?auto=format&fit=crop&w=1200&q=80',
+    description:
+      'Coffee is poured from high above in an unbroken golden stream into handleless ceramic cups (cini) arranged on a wooden table (rekebot) over freshly strewn river grass (ketema), accompanied by freshly popped corn (fendisha).',
+    amDescription:
+      'ቡናው ከከፍታ ላይ በረጅሙ ተንቆርቁሮ በቄጠማ ላይ በተዘረጋው ረከቦት ላይ ባሉ ሲኒዎች ውስጥ ይቀዳል። ከፈንድሻና ከቆሎ ጋር በሦስት ዙር ይቀርባል።',
+    rounds: [
+      { name: '01. አቦል (Abol)', desc: 'The First & Strongest: awakens the mind and establishes respect.' },
+      { name: '02. ቶና (Tona)', desc: 'The Second: deepens fellowship, laughter, and storytelling.' },
+      { name: '03. በረካ (Bereka)', desc: 'The Final Cup of Blessing: confers peace and safe journeys.' },
+    ],
+    quote: 'Drinking all three rounds signifies that you have arrived as a stranger and leave as part of the family.',
+    amQuote: 'ሦስቱንም ዙሮች አጠናቆ መጠጣት ባይተዋር ሆኖ ገብቶ የቤተሰብ አባል ሆኖ የመውጣት ምሳሌ ነው።',
+    ritualItem: 'Rekebot, Cini Cups & Fresh Ketema Grass (ረከቦት፣ ሲኒ እና ቄጠማ)',
+  },
+  {
+    id: 'mesob',
+    beanCount: 4,
+    num: '04',
+    title: 'The Shared Mesob & Sacred Gursha',
+    amTitle: 'የመሶብ ማዕድ እና የጉርሻ ፍቅር',
+    eyebrow: 'Communal Communion',
+    amEyebrow: 'የጋራ ማዕድ',
+    image: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=1200&q=80',
+    description:
+      'In Ethiopia, coffee flows naturally into communal dining around the handwoven straw Mesob. Breaking teff injera together and offering Gursha—placing food directly into another person’s mouth—cements bonds that transcend words.',
+    amDescription:
+      'በኢትዮጵያ ቡናና የመሶብ ማዕድ የማይነጣጠሉ ናቸው። በመሶብ ዙሪያ ተሰብስቦ እንጀራ መቆረስና ጉርሻ መጉረስ የልብ ፍቅርና የመተሳሰብ ከፍተኛ መገለጫ ነው።',
+    quote: '“Those who share from the same Mesob are bound by honor and peace for a lifetime.”',
+    amQuote: '«ከአንድ መሶብ የበላና የጠጣ ለዘላለም በሰላምና በክብር የተሳሰረ ነው» — የሀበሻ አባባል',
+    ritualItem: 'Woven Straw Mesob & Teff Injera (ባህላዊ መሶብ እና የጤፍ እንጀራ)',
+  },
+]
+
 export default function Home({
   savedTourIds = [],
   onToggleSaveTour = () => {},
@@ -30,16 +130,12 @@ export default function Home({
   const { navigateWithMesob } = useMesob()
   const { t, language } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
-  const [activeRegionTab, setActiveRegionTab] = useState('all')
   const [activeTourIndex, setActiveTourIndex] = useState(0)
+  const [activeBunaStep, setActiveBunaStep] = useState(0)
 
   const filteredTours = activeCategory === 'all'
     ? tours.slice(0, 4)
     : tours.filter((t) => t.category === activeCategory).slice(0, 4)
-
-  const regionDestinations = activeRegionTab === 'all'
-    ? destinations.slice(0, 6)
-    : destinations.filter((d) => d.region.toLowerCase() === activeRegionTab.toLowerCase())
 
   return (
     <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
@@ -549,165 +645,220 @@ export default function Home({
       {/* Fine Ornamental Tilet Divider */}
       <TiletDivider className="py-2" />
 
-      {/* ── 3. DESTINATIONS PANORAMA ──────────────────────────────────────── */}
-      <section className="py-20 sm:py-24 bg-white dark:bg-[#0E0D0B]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
-              {language === 'am' ? 'መዳረሻዎች' : 'Destinations'}
-            </span>
-            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#1A1713] dark:text-[#F5F2EB] mt-1">
-              {language === 'am' ? 'ልዩ ልዩ' : 'Ten Distinct'}{' '}
-              <span className="italic font-normal text-[#B58A43]">
-                {language === 'am' ? 'የኢትዮጵያ ዓለማት' : 'Ethiopian Landscapes'}
-              </span>
-            </h2>
-            <p className="font-sans text-xs sm:text-sm text-[#302B24]/75 dark:text-[#D1C7BA] mt-2 font-light">
-              {language === 'am'
-                ? 'ከተራራ ጫፎች አንስቶ እስከ ጥንታዊ ቅጥር ከተሞችና የጨው ሜዳዎች ድረስ።'
-                : 'From 4,500m afro-alpine summits to salt depressions below sea level.'}
-            </p>
-
-            {/* Region Tabs */}
-            <div className="mt-6 inline-flex p-1 rounded-full bg-[#FAF8F5] dark:bg-[#1A1814] border border-[#B58A43]/30">
-              {[
-                { id: 'all', label: language === 'am' ? 'ሁሉም' : 'All' },
-                { id: 'north', label: language === 'am' ? 'ሰሜን' : 'North' },
-                { id: 'south', label: language === 'am' ? 'ደቡብ' : 'South' },
-                { id: 'east', label: language === 'am' ? 'ምሥራቅ' : 'East' },
-                { id: 'central', label: language === 'am' ? 'መካከለኛ' : 'Central' },
-              ].map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveRegionTab(tab.id)}
-                  className={`px-3.5 py-1 rounded-full text-xs font-sans uppercase tracking-wider font-semibold transition-all ${
-                    activeRegionTab === tab.id
-                      ? 'bg-[#B58A43] text-white shadow-xs'
-                      : 'text-[#302B24]/70 dark:text-[#D1C7BA] hover:text-[#B58A43]'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-          </div>
-
-          {/* Cards Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {regionDestinations.map((dest) => (
-              <div
-                key={dest.id}
-                onClick={() => navigateWithMesob(`/destinations/${dest.id}`)}
-                className="group relative rounded-2xl overflow-hidden cursor-pointer h-80 shadow-sm hover:shadow-xl transition-all duration-500 transform hover:-translate-y-1 border border-[#B58A43]/30 bg-white dark:bg-[#161410]"
-              >
-                <img
-                  src={dest.image}
-                  alt={dest.name}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/10 group-hover:from-black/90 transition-colors" />
-
-                <div className="absolute top-3.5 left-3.5">
-                  <span className="px-2.5 py-0.5 rounded-full bg-white/95 dark:bg-[#1A1814]/95 text-[#B58A43] text-[10px] font-bold uppercase tracking-wider border border-[#B58A43]/40">
-                    {dest.region}
-                  </span>
-                </div>
-
-                <div className="absolute bottom-5 left-5 right-5 text-white">
-                  <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-medium">
-                    {dest.tagline}
-                  </span>
-                  <h3 className="font-serif text-2xl font-medium text-white group-hover:text-[#DDC28D] transition-colors mt-0.5">
-                    {dest.name}
-                  </h3>
-                  <div className="mt-3 pt-2.5 border-t border-white/20 flex items-center justify-between text-xs text-[#DDC28D]">
-                    <span className="font-sans font-light">{dest.altitude}</span>
-                    <span className="flex items-center gap-1 group-hover:translate-x-1 transition-transform font-bold">
-                      <span>{language === 'am' ? 'ተመልከት' : 'Explore'}</span>
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-12 text-center">
-            <button
-              onClick={() => navigateWithMesob('/destinations')}
-              className="inline-flex items-center gap-2 px-7 py-3 rounded-full border border-[#B58A43] hover:bg-[#B58A43] hover:text-white text-[#B58A43] text-xs font-bold uppercase tracking-wider transition-colors shadow-xs"
-            >
-              <span>{language === 'am' ? 'ሁሉንም 10 መዳረሻዎች እና ካርታ ተመልከት' : 'Explore All 10 Destinations'}</span>
-              <ArrowRight className="w-3.5 h-3.5" />
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Prominent Repeating Tilet Border */}
-      <TiletBorderPrimary height={16} className="border-y border-[#B58A43]/30 bg-[#FAF8F5] dark:bg-[#161410]" />
-
-      {/* ── 4. LIVING RITUAL SPOTLIGHT (BUNA & HOSPITALITY) ───────────────── */}
-      <section className="py-20 sm:py-24 bg-[#F8F5EE] dark:bg-[#12110E] relative overflow-hidden">
+      {/* ── 3. LIVING RITUAL SPOTLIGHT: THE SACRED BUNA & MESOB CEREMONY ── */}
+      <section className="py-20 sm:py-28 bg-[#F8F5EE] dark:bg-[#12110E] relative overflow-hidden">
         <TiletBackgroundPattern className="opacity-[0.035]" />
 
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-            {/* Visual Left */}
-            <div className="lg:col-span-6 relative">
-              <div className="rounded-3xl overflow-hidden shadow-xl border-2 border-[#B58A43]/40 p-1 bg-white dark:bg-[#161410]">
-                <div className="rounded-2xl overflow-hidden relative">
-                  <img
-                    src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?auto=format&fit=crop&w=800&q=80"
-                    alt="Traditional Ethiopian Coffee Ceremony with Frankincense"
-                    className="w-full h-80 sm:h-[420px] object-cover"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                  <div className="absolute bottom-5 left-5 right-5 text-white">
-                    <span className="text-[10px] uppercase tracking-widest text-[#DDC28D] font-bold">
-                      {language === 'am' ? 'የክብር አቀባበል' : 'The Sacred Welcome'}
-                    </span>
-                    <p className="font-serif text-lg text-white font-medium mt-0.5">
-                      {language === 'am'
-                        ? 'ቡና እና ዕጣን፡ የኢትዮጵያ የልብ እንግዳ ተቀባይነት ጥንታዊ ጥበብ።'
-                        : 'Buna & Frankincense: The Ancient Art of Ethiopian Hospitality.'}
+        {/* Floating Coffee Bean Signs Watermark */}
+        <div className="absolute -top-10 -right-10 opacity-5 pointer-events-none select-none text-[#B58A43]">
+          <CoffeeBeanIcon className="w-96 h-96 transform rotate-45" />
+        </div>
+        <div className="absolute -bottom-10 -left-10 opacity-5 pointer-events-none select-none text-[#B58A43]">
+          <CoffeeBeanIcon className="w-80 h-80 transform -rotate-12" />
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          {/* Section Header */}
+          <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16 space-y-3">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white dark:bg-[#1A1814] border border-[#B58A43]/35 shadow-xs">
+              <CoffeeBeanIcon className="w-3.5 h-3.5 text-[#B58A43]" />
+              <span className="font-sans text-[11px] uppercase tracking-[0.25em] text-[#B58A43] font-bold">
+                {language === 'am' ? 'ሕያው ቅርስ • የኢትዮጵያ ቡና ሥነ-ሥርዓት' : 'LIVING HERITAGE • ETHIOPIAN COFFEE CEREMONY'}
+              </span>
+              <CoffeeBeanIcon className="w-3.5 h-3.5 text-[#B58A43]" />
+            </div>
+
+            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-light text-[#1A1713] dark:text-[#F5F2EB] leading-tight">
+              {language === 'am' ? 'የመሶብ እና የቡና' : 'The Sacred Mesob & Buna'}{' '}
+              <span className="italic font-normal text-[#B58A43]">
+                {language === 'am' ? 'ማዕድ ፍሰት' : 'Ceremony Flow'}
+              </span>
+            </h2>
+
+            <p className="font-sans text-xs sm:text-base text-[#302B24]/80 dark:text-[#D1C7BA] max-w-2xl mx-auto font-light leading-relaxed">
+              {language === 'am'
+                ? 'ከከሰል ፍም ማመስ አንስቶ እስከ ሦስቱ ዙሮች (አቦል፣ ቶና፣ በረካ) እና የጋራ መሶብ ማዕድ ድረስ፡ ለ3,000 ዓመታት ያልተቋረጠው የክብር አቀባበል።'
+                : 'From the fragrant charcoal roast and clay Jebena to the three sacred cups (Abol, Tona, Bereka) and the shared Mesob table.'}
+            </p>
+
+            {/* Interactive Stage Selector Tabs with Coffee Bean Signs */}
+            <div className="pt-4 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+              {BUNA_CEREMONY_STEPS.map((step, sIdx) => {
+                const isCurrent = sIdx === activeBunaStep
+                return (
+                  <button
+                    key={step.id}
+                    onClick={() => setActiveBunaStep(sIdx)}
+                    className={`group relative px-4 py-2.5 rounded-full text-xs font-sans uppercase tracking-wider font-semibold transition-all flex items-center gap-2 ${
+                      isCurrent
+                        ? 'bg-[#B58A43] text-white shadow-lg border border-[#E5C378]'
+                        : 'bg-white dark:bg-[#1A1814] text-[#302B24]/75 dark:text-[#D1C7BA] border border-[#B58A43]/25 hover:border-[#B58A43] hover:text-[#B58A43]'
+                    }`}
+                  >
+                    {/* Coffee Bean Sign */}
+                    <div className="flex items-center gap-0.5">
+                      {Array.from({ length: step.beanCount }).map((_, bI) => (
+                        <CoffeeBeanIcon
+                          key={bI}
+                          className={`w-3 h-3 ${isCurrent ? 'text-white' : 'text-[#B58A43]'}`}
+                        />
+                      ))}
+                    </div>
+                    <span>{step.num}. {language === 'am' ? step.amTitle.split(' ')[0] : step.title.split(' ')[0]}</span>
+                  </button>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Dynamic Interactive Stage Card */}
+          {(() => {
+            const currentStep = BUNA_CEREMONY_STEPS[activeBunaStep]
+            return (
+              <div className="rounded-3xl bg-white dark:bg-[#161410] border border-[#B58A43]/35 shadow-2xl p-4 sm:p-8 lg:p-10 relative overflow-hidden transition-all duration-700">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+                  {/* Left Column: Authentic Photography with Dynamic Glow Frame */}
+                  <div className="lg:col-span-6 relative">
+                    <div className="relative rounded-2xl overflow-hidden shadow-2xl border-2 border-[#B58A43]/40 aspect-[4/3] sm:h-[420px] bg-black">
+                      <img
+                        key={currentStep.image}
+                        src={currentStep.image}
+                        alt={currentStep.title}
+                        className="w-full h-full object-cover transform scale-100 hover:scale-105 transition-transform duration-1000 ease-out"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/20" />
+
+                      {/* Top Overlay Badges */}
+                      <div className="absolute top-4 left-4 right-4 flex items-center justify-between">
+                        <div className="flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/65 backdrop-blur-md border border-[#E5C378]/60 text-white text-xs">
+                          <span className="font-mono font-bold text-[#E5C378]">{currentStep.num}</span>
+                          <span className="text-white/40">•</span>
+                          <span className="font-semibold">{language === 'am' ? currentStep.amEyebrow : currentStep.eyebrow}</span>
+                        </div>
+
+                        {/* Coffee Bean Signs Cluster */}
+                        <div className="flex items-center gap-1 px-3 py-1 rounded-full bg-black/65 backdrop-blur-md border border-white/20">
+                          {Array.from({ length: currentStep.beanCount }).map((_, bIdx) => (
+                            <CoffeeBeanIcon key={bIdx} className="w-3.5 h-3.5 text-[#E5C378]" />
+                          ))}
+                        </div>
+                      </div>
+
+                      {/* Bottom Caption on Image */}
+                      <div className="absolute bottom-4 left-4 right-4 text-white">
+                        <span className="text-[10px] font-mono uppercase tracking-[0.2em] text-[#E5C378] font-bold block mb-1">
+                          {language === 'am' ? 'የሥነ-ሥርዓቱ መገለጫ' : 'RITUAL VESSEL & ELEMENTS'}
+                        </span>
+                        <p className="font-sans text-xs sm:text-sm font-medium text-white/95 drop-shadow-md">
+                          {currentStep.ritualItem}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Right Column: Dynamic Narrative & Cultural Details */}
+                  <div className="lg:col-span-6 space-y-5">
+                    <div>
+                      <div className="flex items-center gap-2 mb-2">
+                        <div className="flex items-center gap-1 text-[#B58A43]">
+                          {Array.from({ length: currentStep.beanCount }).map((_, bI) => (
+                            <CoffeeBeanIcon key={bI} className="w-4 h-4 text-[#B58A43]" />
+                          ))}
+                        </div>
+                        <span className="text-xs uppercase tracking-[0.25em] text-[#B58A43] font-bold">
+                          {language === 'am' ? currentStep.amEyebrow : currentStep.eyebrow}
+                        </span>
+                      </div>
+
+                      <h3 className="font-serif text-3xl sm:text-4xl text-[#1A1713] dark:text-[#F5F2EB] font-light leading-tight">
+                        {language === 'am' ? currentStep.amTitle : currentStep.title}
+                      </h3>
+                    </div>
+
+                    <p className="font-sans text-xs sm:text-sm text-[#302B24]/85 dark:text-[#D1C7BA] leading-relaxed font-light">
+                      {language === 'am' ? currentStep.amDescription : currentStep.description}
                     </p>
+
+                    {/* Step 3 Special: The Three Sacred Rounds Cards */}
+                    {currentStep.rounds && (
+                      <div className="space-y-2 pt-1">
+                        <span className="text-[11px] font-bold uppercase tracking-wider text-[#B58A43] block">
+                          {language === 'am' ? 'ሦስቱ ዙሮች (የመጠጣት ቅደም ተከተል)' : 'The Three Consecutive Cups:'}
+                        </span>
+                        <div className="grid grid-cols-1 sm:grid-cols-3 gap-2.5">
+                          {currentStep.rounds.map((rnd, rIdx) => (
+                            <div
+                              key={rIdx}
+                              className="p-3 rounded-xl bg-[#FAF8F5] dark:bg-[#1E1B16] border border-[#B58A43]/30 flex flex-col justify-between"
+                            >
+                              <div className="flex items-center gap-1 text-[#B58A43] mb-1">
+                                {Array.from({ length: rIdx + 1 }).map((_, cbI) => (
+                                  <CoffeeBeanIcon key={cbI} className="w-3 h-3" />
+                                ))}
+                              </div>
+                              <span className="font-serif font-bold text-sm text-[#1A1713] dark:text-[#F5F2EB]">
+                                {rnd.name}
+                              </span>
+                              <p className="text-[11px] text-[#302B24]/75 dark:text-[#D1C7BA] mt-1 leading-snug">
+                                {rnd.desc}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
+                    )}
+
+                    {/* Proverb / Wisdom Quote Card */}
+                    <div className="p-4 rounded-2xl bg-[#FAF8F5] dark:bg-[#1A1814] border-l-4 border-[#B58A43] space-y-1 shadow-xs">
+                      <div className="flex items-center gap-1.5 text-[#B58A43]">
+                        <CoffeeBeanIcon className="w-3.5 h-3.5" />
+                        <span className="text-[10px] font-mono uppercase tracking-widest font-bold">
+                          {language === 'am' ? 'የሀበሻ ጥበብና ፍልስፍና' : 'Cultural Etiquette & Wisdom'}
+                        </span>
+                      </div>
+                      <p className="font-serif text-sm sm:text-base italic text-[#1A1713] dark:text-[#F5F2EB] leading-relaxed">
+                        {language === 'am' ? currentStep.amQuote : currentStep.quote}
+                      </p>
+                    </div>
+
+                    {/* Step Navigation & Action Buttons */}
+                    <div className="pt-2 flex flex-wrap items-center justify-between gap-4 border-t border-[#B58A43]/20">
+                      {/* Prev / Next Step Buttons */}
+                      <div className="flex items-center gap-2">
+                        <button
+                          onClick={() => setActiveBunaStep((prev) => (prev - 1 + BUNA_CEREMONY_STEPS.length) % BUNA_CEREMONY_STEPS.length)}
+                          className="p-2 rounded-full border border-[#B58A43]/30 hover:border-[#B58A43] hover:bg-[#B58A43] hover:text-white transition-colors text-[#302B24] dark:text-[#F5F2EB]"
+                          aria-label="Previous step"
+                        >
+                          <ChevronLeft className="w-4 h-4" />
+                        </button>
+                        <span className="text-xs font-mono font-bold text-[#B58A43]">
+                          {String(activeBunaStep + 1).padStart(2, '0')} / {String(BUNA_CEREMONY_STEPS.length).padStart(2, '0')}
+                        </span>
+                        <button
+                          onClick={() => setActiveBunaStep((prev) => (prev + 1) % BUNA_CEREMONY_STEPS.length)}
+                          className="p-2 rounded-full border border-[#B58A43]/30 hover:border-[#B58A43] hover:bg-[#B58A43] hover:text-white transition-colors text-[#302B24] dark:text-[#F5F2EB]"
+                          aria-label="Next step"
+                        >
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {/* Read Full Buna Guide CTA */}
+                      <button
+                        onClick={() => navigateWithMesob('/journal/coffee-ceremony')}
+                        className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-[#B58A43] hover:bg-[#9E7432] text-white text-xs font-bold uppercase tracking-widest shadow-md transition-all transform hover:-translate-y-0.5"
+                      >
+                        <CoffeeBeanIcon className="w-3.5 h-3.5 text-white" />
+                        <span>{language === 'am' ? 'የቡና ሥነ-ሥርዓት መመሪያን አንብቡ' : 'Read Full Buna Guide'}</span>
+                        <ArrowRight className="w-3.5 h-3.5 text-[#FFF0D0]" />
+                      </button>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
-
-            {/* Narrative Right */}
-            <div className="lg:col-span-6 space-y-4">
-              <span className="font-sans text-xs uppercase tracking-[0.3em] text-[#B58A43] font-bold">
-                {language === 'am' ? 'ሕያው ባህል' : 'Living Culture'}
-              </span>
-
-              <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-light text-[#1A1713] dark:text-[#F5F2EB] leading-tight">
-                {language === 'am' ? 'የመሶብ እና የቡና' : 'The Mesob & Buna'}{' '}
-                <span className="italic font-normal text-[#B58A43]">
-                  {language === 'am' ? 'ማዕድ' : 'Tradition'}
-                </span>
-              </h2>
-
-              <p className="font-sans text-xs sm:text-sm text-[#302B24]/85 dark:text-[#D1C7BA] leading-relaxed font-light">
-                {language === 'am'
-                  ? 'በኢትዮጵያ ምግብ መመገብ ማህበራዊ ትስስር ነው። በመሶብ ዙሪያ አንድ ላይ መቀመጥ፣ ጉርሻ መጋራት እና የተጠበሰውን ቡና መዓዛ ማጣጣም ለዘመናት የቆየው የክብር አቀባበል ምልክት ነው።'
-                  : 'In Ethiopia, dining is an act of communion. Sitting around the woven Mesob, sharing Gursha, and savoring freshly roasted coffee with frankincense is a three-millennia ritual of unconditional welcome.'}
-              </p>
-
-              <div className="pt-2">
-                <button
-                  onClick={() => navigateWithMesob('/journal/coffee-ceremony')}
-                  className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-[#B58A43] hover:bg-[#9E7432] text-white text-xs font-bold uppercase tracking-widest shadow-md transition-all"
-                >
-                  <span>{language === 'am' ? 'ስለ ቡና ሥነ-ሥርዓት አንብብ' : 'Read Buna Story'}</span>
-                  <ArrowRight className="w-3.5 h-3.5 text-[#DDC28D]" />
-                </button>
-              </div>
-            </div>
-          </div>
+            )
+          })()}
         </div>
       </section>
 
