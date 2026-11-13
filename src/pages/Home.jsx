@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import {
   ArrowRight,
   Compass,
@@ -6,10 +6,7 @@ import {
   MapPin,
   Clock,
   ChevronDown,
-  ChevronLeft,
-  ChevronRight,
   Play,
-  Pause,
 } from 'lucide-react'
 import { tours, destinations, journalPosts } from '../data/tours'
 import TourCard from '../components/TourCard'
@@ -21,112 +18,8 @@ import {
   TiletBackgroundPattern,
 } from '../components/TiletPatterns'
 
-const HERO_CLIPS = [
-  {
-    id: 1,
-    num: '01',
-    name: 'Addis City',
-    amName: 'አዲስ አበባ',
-    title: 'Modern Addis Ababa City & Life',
-    amTitle: 'ዘመናዊቷ አዲስ አበባ እና የከተማው ሕይወት',
-    angle: 'Capital Metropolis & Vibrant Urban Market',
-    amAngle: 'የመዲናይቱ የጎዳናና የገበያ ድምቀት',
-    tag: 'Addis Ababa • Capital Life',
-    video: '/videos/addis_city.webm',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1787780651/wsusxdpkh0zrwseqeovu.webp',
-  },
-  {
-    id: 2,
-    num: '02',
-    name: 'Lalibela',
-    amName: 'ላሊበላ',
-    title: 'Sacred Rock Sanctuaries of Lalibela',
-    amTitle: 'የላሊበላ ፍልፍል ቅዱሳን አብያተ-ክርስቲያናት',
-    angle: '12th Century Monolithic Architecture',
-    amAngle: 'የመሬት ውስጥ ፍልፍል ድንቅ ህንፃዎች',
-    tag: '12th Century • UNESCO Living Faith',
-    video: '/videos/lalibela_monolithic.webm',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044760/uaxjuqytkud5kywfxamz.jpg',
-  },
-  {
-    id: 3,
-    num: '03',
-    name: 'Simien Geladas',
-    amName: 'ስሜን ጭላዳ',
-    title: 'Simien Alpine Wildlife & Geladas',
-    amTitle: 'የስሜን ደጋማ የዱር አራዊትና ጭላዳ ዝንጀሮዎች',
-    angle: '4,500m Highland Escarpments & Endemic Fauna',
-    amAngle: 'የደጋማ ገደላማ ሸለቆዎችና ጭላዳ ዝንጀሮዎች',
-    tag: 'Simien Highlands • Gelada Sanctuary',
-    video: '/videos/wildlife_gelada.webm',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784105008/im1uicc6wrntebbhqmpt.jpg',
-  },
-  {
-    id: 4,
-    num: '04',
-    name: 'Erta Ale',
-    amName: 'ኤርታሌ',
-    title: 'Danakil Depression & Erta Ale Volcano',
-    amTitle: 'ዳሎልና የኤርታሌ ንቁ እሳተ-ጎመራ',
-    angle: 'Bubbling Caldera & Glowing Lava Lake',
-    amAngle: 'የእሳተ-ጎመራ ወላፈንና የፈሳሽ ድንጋይ ወንዝ',
-    tag: '-125m • Active Volcanic Glow',
-    video: '/videos/danakil_erta_ale.webm',
-    poster: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1600&q=80',
-  },
-  {
-    id: 5,
-    num: '05',
-    name: 'Harar Jugol',
-    amName: 'ሐረር ጁጎል',
-    title: 'Harar Jugol Ancient Walled City',
-    amTitle: 'የሐረር ጁጎል የሺ ዓመት ታሪካዊ ግንብ',
-    angle: 'Living Cultural Alleys & Historic Citadel Gates',
-    amAngle: 'የጥንት የመንደር መንገዶችና ቅርሶች',
-    tag: 'UNESCO Citadel • Historic Living Streets',
-    video: '/videos/harar_street.ogv',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784496024/ywsf1mxm5sdpsb8znls6.jpg',
-  },
-  {
-    id: 6,
-    num: '06',
-    name: 'Coffee Ritual',
-    amName: 'ባህላዊ ቡና',
-    title: 'Traditional Coffee Ceremony & Heritage',
-    amTitle: 'የኢትዮጵያ ባህላዊ ቡና ማፍላት ሥነ-ሥርዓት',
-    angle: 'Bahir Dar, Lake Tana & Artisan Ritual',
-    amAngle: 'የጣና ሐይቅ ዳርቻና የቡና ባህል',
-    tag: 'Lake Tana & Bahir Dar • Living Ritual',
-    video: '/videos/culture_coffee.webm',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786277684/ejs4hjczvizttiqkkvcm.jpg',
-  },
-  {
-    id: 7,
-    num: '07',
-    name: 'Meskel Feast',
-    amName: 'መስቀል ደመራ',
-    title: 'Sacred Meskel Living Christian Festival',
-    amTitle: 'የመስቀል ደመራ ሃይማኖታዊ በዓል ሥነ-ሥርዓት',
-    angle: 'Ancient Demera Procession & Living Faith',
-    amAngle: 'የደመራ በዓልና የጥንታዊ ሥርዓተ-አምልኮ',
-    tag: 'UNESCO Heritage • Sacred Festival',
-    video: '/videos/meskel_festival.ogv',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044758/ohuohsbdy66wnnbgc6zw.jpg',
-  },
-  {
-    id: 8,
-    num: '08',
-    name: 'Rift Waters',
-    amName: 'ስምጥ ሸለቆ',
-    title: 'Great Rift Valley Landscapes & Waters',
-    amTitle: 'የስምጥ ሸለቆ ሐይቆችና የተፈጥሮ መስህቦች',
-    angle: 'Southern Highlands, Rivers & Valley Vistas',
-    amAngle: 'የደቡብ ወንዞችና የስምጥ ሸለቆ ውበት',
-    tag: 'Rift Valley • Waterways & Landscapes',
-    video: '/videos/rift_waters.webm',
-    poster: 'https://images.unsplash.com/photo-1528164344705-475426879c0d?auto=format&fit=crop&w=1600&q=80',
-  },
-]
+// Curated 4K Ethiopian Tour Film (Scenic Relaxation: Lalibela, Simien, Danakil, Omo, Harar)
+const YOUTUBE_TOUR_ID = '2AocxT8KurU'
 
 export default function Home({
   savedTourIds = [],
@@ -137,17 +30,6 @@ export default function Home({
   const { t, language } = useLanguage()
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeRegionTab, setActiveRegionTab] = useState('all')
-  const [currentClipIndex, setCurrentClipIndex] = useState(0)
-  const [isPlaying, setIsPlaying] = useState(true)
-
-  // Auto-advance video clips every 7.5 seconds when playing
-  useEffect(() => {
-    if (!isPlaying) return
-    const timer = setInterval(() => {
-      setCurrentClipIndex((prev) => (prev + 1) % HERO_CLIPS.length)
-    }, 7500)
-    return () => clearInterval(timer)
-  }, [isPlaying])
 
   const filteredTours = activeCategory === 'all'
     ? tours.slice(0, 4)
@@ -160,63 +42,37 @@ export default function Home({
   return (
     <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
 
-      {/* ── 1. CINEMATIC MULTI-VIDEO HERO ─────────────────────────────────── */}
+      {/* ── 1. CINEMATIC SINGLE YOUTUBE TOUR HERO ───────────────────────── */}
       <section className="relative min-h-[96vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0908]">
-        {/* Dynamic Video Crossfade Layer */}
-        <div className="absolute inset-0 z-0 overflow-hidden">
-          {HERO_CLIPS.map((clip, idx) => {
-            const isActive = idx === currentClipIndex
-            // Render video for active and adjacent clips for optimal memory & bandwidth
-            const shouldRenderVideo =
-              isActive ||
-              idx === (currentClipIndex + 1) % HERO_CLIPS.length ||
-              idx === (currentClipIndex - 1 + HERO_CLIPS.length) % HERO_CLIPS.length
+        {/* Full-bleed YouTube Video Layer */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+          {/* High-resolution fallback Ethiopian photography poster */}
+          <img
+            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2000&q=85"
+            alt="Ethiopia Tour"
+            className="absolute inset-0 w-full h-full object-cover"
+          />
 
-            return (
-              <div
-                key={clip.id}
-                className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
-                  isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
-                }`}
-              >
-                {shouldRenderVideo ? (
-                  <video
-                    key={clip.video}
-                    autoPlay
-                    muted
-                    loop
-                    playsInline
-                    poster={clip.poster}
-                    className={`w-full h-full object-cover transform transition-transform duration-[7500ms] ease-out ${
-                      isActive ? 'scale-105' : 'scale-100'
-                    }`}
-                    src={clip.video}
-                  >
-                    <source src={clip.video} type={clip.video.endsWith('.ogv') ? 'video/ogg' : 'video/webm'} />
-                  </video>
-                ) : (
-                  <img
-                    src={clip.poster}
-                    alt={clip.title}
-                    className="w-full h-full object-cover"
-                  />
-                )}
-              </div>
-            )
-          })}
+          {/* 16:9 Full Bleed YouTube Embed */}
+          <iframe
+            className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2 object-cover scale-[1.35] sm:scale-125 md:scale-110 pointer-events-none"
+            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_TOUR_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_TOUR_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1`}
+            title="Tour of Ethiopia 4K"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          />
 
           {/* Balanced Cinematic Scrims - Vivid Video Clarity with High Legibility */}
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/25 to-black/40 pointer-events-none" />
-          <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/55 via-transparent to-black/40 pointer-events-none" />
-          <div className="absolute inset-0 z-20 bg-black/15 pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-black/45 pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-gradient-to-r from-black/60 via-transparent to-black/40 pointer-events-none" />
+          <div className="absolute inset-0 z-10 bg-black/15 pointer-events-none" />
         </div>
 
         {/* Hero Content Container */}
-        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-36 sm:pt-36 sm:pb-40 text-center flex flex-col items-center">
+        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-32 sm:pt-36 sm:pb-36 text-center flex flex-col items-center">
           {/* Live Heritage Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#B58A43]/70 text-[#E5C378] text-[10px] sm:text-xs font-sans uppercase tracking-[0.25em] mb-6 shadow-xl font-bold">
             <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-ping" />
-          <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
+            <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
           </div>
 
           {/* Main Editorial Headline with High Contrast Shadow */}
@@ -259,74 +115,31 @@ export default function Home({
           </div>
         </div>
 
-        {/* ── 8-VIDEO PLAYLIST & ANGLE CONTROLS ── */}
-        <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-30 px-3 sm:px-8 max-w-7xl mx-auto flex flex-col gap-2 pointer-events-auto">
-          {/* Active Clip Status Bar */}
-          <div className="flex items-center justify-between gap-3 text-xs">
-            <div className="flex items-center gap-2 sm:gap-3 bg-black/65 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-md">
-              <span className="text-[#E5C378] font-mono font-bold text-xs">
-                {HERO_CLIPS[currentClipIndex].num} / 08
-              </span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378] animate-pulse" />
-              <span className="font-semibold tracking-wide text-white text-[11px] sm:text-xs">
-                {language === 'am' ? HERO_CLIPS[currentClipIndex].amTitle : HERO_CLIPS[currentClipIndex].title}
-              </span>
-              <span className="hidden md:inline text-white/40">•</span>
-              <span className="hidden md:inline text-white/70 text-[11px] italic">
-                {language === 'am' ? HERO_CLIPS[currentClipIndex].amAngle : HERO_CLIPS[currentClipIndex].angle}
-              </span>
-            </div>
-
-            {/* Prev / Play-Pause / Next Controls */}
-            <div className="flex items-center gap-1 bg-black/65 backdrop-blur-md px-2 py-1 rounded-full border border-white/15 shadow-md">
-              <button
-                onClick={() => setCurrentClipIndex((prev) => (prev - 1 + HERO_CLIPS.length) % HERO_CLIPS.length)}
-                aria-label="Previous video angle"
-                className="p-1 rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-colors"
-              >
-                <ChevronLeft className="w-3.5 h-3.5" />
-              </button>
-              <button
-                onClick={() => setIsPlaying((p) => !p)}
-                aria-label={isPlaying ? 'Pause auto-cycle' : 'Play auto-cycle'}
-                className="p-1 rounded-full text-[#E5C378] hover:text-white hover:bg-white/15 transition-colors"
-              >
-                {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
-              </button>
-              <button
-                onClick={() => setCurrentClipIndex((prev) => (prev + 1) % HERO_CLIPS.length)}
-                aria-label="Next video angle"
-                className="p-1 rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-colors"
-              >
-                <ChevronRight className="w-3.5 h-3.5" />
-              </button>
-            </div>
+        {/* ── SINGLE YOUTUBE VIDEO BADGE & EXTERNAL LINK ── */}
+        <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-30 px-4 sm:px-8 max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
+          <div className="flex items-center gap-2.5 bg-black/65 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-md text-xs">
+            <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-pulse" />
+            <span className="font-semibold tracking-wide text-white text-[11px] sm:text-xs">
+              {language === 'am' ? 'የኢትዮጵያ ዙረት • 4ኬ ቪዲዮ' : 'Tour of Ethiopia • 4K Film'}
+            </span>
+            <span className="hidden sm:inline text-white/40">•</span>
+            <span className="hidden sm:inline text-white/70 text-[11px] italic">
+              {language === 'am' ? 'ላሊበላ • ስሜን • ዳሎል • ኦሞ' : 'Lalibela • Simien • Danakil • Omo'}
+            </span>
           </div>
 
-          {/* 8 Compact Interactive Selector Pills */}
-          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none py-1">
-            {HERO_CLIPS.map((clip, idx) => {
-              const isActive = idx === currentClipIndex
-              return (
-                <button
-                  key={clip.id}
-                  onClick={() => {
-                    setCurrentClipIndex(idx)
-                  }}
-                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-md text-left transition-all shrink-0 ${
-                    isActive
-                      ? 'bg-gradient-to-r from-[#B58A43] to-[#9E7432] text-white border border-[#E5C378] shadow-lg scale-[1.02]'
-                      : 'bg-black/55 hover:bg-black/80 text-white/80 hover:text-white border border-white/20 hover:border-white/40'
-                  }`}
-                >
-                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#FFE2A4]' : 'bg-white/50'}`} />
-                  <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-wider font-bold">
-                    {clip.num} {language === 'am' ? clip.amName : clip.name}
-                  </span>
-                </button>
-              )
-            })}
-          </div>
+          <a
+            href={`https://www.youtube.com/watch?v=${YOUTUBE_TOUR_ID}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-1.5 bg-black/65 hover:bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 hover:border-[#E5C378] text-white/80 hover:text-white text-xs transition-colors shadow-md"
+            title="Watch full film on YouTube"
+          >
+            <Play className="w-3.5 h-3.5 text-[#E5C378] fill-[#E5C378]" />
+            <span className="text-[11px] font-medium hidden sm:inline">
+              {language === 'am' ? 'በዩቲዩብ ይመልከቱ' : 'Watch on YouTube'}
+            </span>
+          </a>
         </div>
       </section>
 
