@@ -1,5 +1,16 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Compass, Sparkles, MapPin, Clock, ChevronDown } from 'lucide-react'
+import {
+  ArrowRight,
+  Compass,
+  Sparkles,
+  MapPin,
+  Clock,
+  ChevronDown,
+  ChevronLeft,
+  ChevronRight,
+  Play,
+  Pause,
+} from 'lucide-react'
 import { tours, destinations, journalPosts } from '../data/tours'
 import TourCard from '../components/TourCard'
 import { useMesob } from '../components/MesobTransition'
@@ -13,27 +24,107 @@ import {
 const HERO_CLIPS = [
   {
     id: 1,
-    title: 'Simien Alpine Escarpments',
-    amTitle: 'የስሜን ተራሮች ግርማ',
-    tag: '4,500m • Highland Peaks',
-    video: 'https://res.cloudinary.com/demo/video/upload/rafting.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784105008/im1uicc6wrntebbhqmpt.jpg',
+    num: '01',
+    name: 'Addis Ababa',
+    amName: 'አዲስ አበባ',
+    title: 'Modern Addis Ababa & Skylines',
+    amTitle: 'ዘመናዊቷ አዲስ አበባ እና ሰማይ-ጠቀስ እይታ',
+    angle: 'Aerial Cityscape & Contemporary Capital',
+    amAngle: 'የአየር ላይ እይታ እና ዘመናዊ መዲና',
+    tag: 'Capital Metropolis • Skylines',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/cld-sample-video.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1787780651/wsusxdpkh0zrwseqeovu.webp',
   },
   {
     id: 2,
-    title: 'Sacred Rock Sanctuaries',
-    amTitle: 'የላሊበላ ፍልፍል ቅርሶች',
-    tag: '12th Century • Living Heritage',
-    video: 'https://res.cloudinary.com/demo/video/upload/snow_horses.mp4',
-    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044758/ohuohsbdy66wnnbgc6zw.jpg',
+    num: '02',
+    name: 'Lalibela',
+    amName: 'ላሊበላ',
+    title: 'Sacred Rock Sanctuaries of Lalibela',
+    amTitle: 'የላሊበላ ፍልፍል ቅዱሳን አብያተ-ክርስቲያናት',
+    angle: 'Subterranean Monolithic Architecture',
+    amAngle: 'የመሬት ውስጥ ፍልፍል ድንቅ ህንፃዎች',
+    tag: '12th Century • UNESCO Living Faith',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/snow_horses.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784044760/uaxjuqytkud5kywfxamz.jpg',
   },
   {
     id: 3,
-    title: 'Highland Wildlife of Bale',
-    amTitle: 'የባሌ ደጋማ የዱር አራዊት',
-    tag: 'Afro-Alpine • Endemic Wilderness',
-    video: 'https://res.cloudinary.com/demo/video/upload/elephants.mp4',
+    num: '03',
+    name: 'Simien Peaks',
+    amName: 'ስሜን ተራሮች',
+    title: 'Simien Alpine Escarpments',
+    amTitle: 'የስሜን ተራሮች ግርማና ገደላማ ሸለቆዎች',
+    angle: '4,500m Highland Canyons & Geladas',
+    amAngle: 'የደጋማ ገደላማ ሸለቆዎችና ጭላዳ ዝንጀሮዎች',
+    tag: 'Roof of Africa • Highland Peaks',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/mountains.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784105008/im1uicc6wrntebbhqmpt.jpg',
+  },
+  {
+    id: 4,
+    num: '04',
+    name: 'Bale Wildlife',
+    amName: 'ባሌ አራዊት',
+    title: 'Afro-Alpine Endemic Wildlife',
+    amTitle: 'የባሌ ደጋማ ብርቅዬ አራዊትና ተኩላዎች',
+    angle: 'Sanetti Plateau & Rare Ethiopian Wolf',
+    amAngle: 'የሳኔቲ ሜዳና ብርቅዬው ቀይ ቀበሮ',
+    tag: 'Endemic Wilderness • Red Fox Habitat',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/marmots.mp4',
     poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784492255/a3eewtmcpuy861vaemtj.jpg',
+  },
+  {
+    id: 5,
+    num: '05',
+    name: 'Rift Lakes',
+    amName: 'ስምጥ ሸለቆ',
+    title: 'Great Rift Valley Waters & Safari',
+    amTitle: 'የስምጥ ሸለቆ ሐይቆችና የውሃ ድንቆች',
+    angle: 'Lake Chamo Boat Safari & Waterfalls',
+    amAngle: 'የጫሞ ሐይቅ የጀልባ ሳፋሪና ፏፏቴዎች',
+    tag: 'Lake Chamo & Awassa • Aquatic Safari',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/rafting.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786277684/ejs4hjczvizttiqkkvcm.jpg',
+  },
+  {
+    id: 6,
+    num: '06',
+    name: 'Danakil',
+    amName: 'ዳናኪል',
+    title: 'Danakil & Erta Ale Lava Lake',
+    amTitle: 'ዳሎልና የኤርታሌ ንቁ እሳተ-ጎመራ',
+    angle: 'Lava Lake Glow & Geothermal Salt Plains',
+    amAngle: 'የእሳተ-ጎመራ ወላፈንና የጨው ምድር',
+    tag: '-125m • Active Volcanic Glow',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/elephants.mp4',
+    poster: 'https://images.unsplash.com/photo-1584646098378-0874589d76b1?auto=format&fit=crop&w=1600&q=80',
+  },
+  {
+    id: 7,
+    num: '07',
+    name: 'Gondar',
+    amName: 'ጎንደር',
+    title: 'Gondar 17th-Century Royal Castles',
+    amTitle: 'የፋሲል ግቢ 17ኛው ክ/ዘመን ቤተ-መንግሥታት',
+    angle: 'Imperial Stone Citadel Architecture',
+    amAngle: 'የጥንታዊ የድንጋይ ግንቦች ጥበብ',
+    tag: 'Imperial Citadel • Camelot of Africa',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/walking.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1786286004/zmtnjnikbbfhqz06ea5j.jpg',
+  },
+  {
+    id: 8,
+    num: '08',
+    name: 'Harar',
+    amName: 'ሐረር ጁጎል',
+    title: 'Harar Jugol Ancient Walled City',
+    amTitle: 'የሐረር ጁጎል የሺ ዓመት ታሪካዊ ግንብ',
+    angle: 'Living Cultural Alleys & Historic Gates',
+    amAngle: 'የጥንት የመንደር መንገዶችና ቅርሶች',
+    tag: 'UNESCO Citadel • Cultural Living Streets',
+    video: 'https://res.cloudinary.com/demo/video/upload/w_1280,q_auto/ship.mp4',
+    poster: 'https://res.cloudinary.com/dw1ohipim/image/upload/v1784496024/ywsf1mxm5sdpsb8znls6.jpg',
   },
 ]
 
@@ -47,14 +138,16 @@ export default function Home({
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeRegionTab, setActiveRegionTab] = useState('all')
   const [currentClipIndex, setCurrentClipIndex] = useState(0)
+  const [isPlaying, setIsPlaying] = useState(true)
 
-  // Auto-advance video clips every 7.5 seconds
+  // Auto-advance video clips every 7.5 seconds when playing
   useEffect(() => {
+    if (!isPlaying) return
     const timer = setInterval(() => {
       setCurrentClipIndex((prev) => (prev + 1) % HERO_CLIPS.length)
     }, 7500)
     return () => clearInterval(timer)
-  }, [])
+  }, [isPlaying])
 
   const filteredTours = activeCategory === 'all'
     ? tours.slice(0, 4)
@@ -68,11 +161,17 @@ export default function Home({
     <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
 
       {/* ── 1. CINEMATIC MULTI-VIDEO HERO ─────────────────────────────────── */}
-      <section className="relative min-h-[94vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0E0D0B]">
+      <section className="relative min-h-[96vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0908]">
         {/* Dynamic Video Crossfade Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden">
           {HERO_CLIPS.map((clip, idx) => {
             const isActive = idx === currentClipIndex
+            // Render video for active and adjacent clips for optimal memory & bandwidth
+            const shouldRenderVideo =
+              isActive ||
+              idx === (currentClipIndex + 1) % HERO_CLIPS.length ||
+              idx === (currentClipIndex - 1 + HERO_CLIPS.length) % HERO_CLIPS.length
+
             return (
               <div
                 key={clip.id}
@@ -80,49 +179,58 @@ export default function Home({
                   isActive ? 'opacity-100 z-10' : 'opacity-0 z-0 pointer-events-none'
                 }`}
               >
-                <video
-                  autoPlay
-                  muted
-                  loop
-                  playsInline
-                  poster={clip.poster}
-                  className={`w-full h-full object-cover transform transition-transform duration-[7500ms] ease-out ${
-                    isActive ? 'scale-105' : 'scale-100'
-                  }`}
-                  src={clip.video}
-                />
+                {shouldRenderVideo ? (
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    poster={clip.poster}
+                    className={`w-full h-full object-cover transform transition-transform duration-[7500ms] ease-out ${
+                      isActive ? 'scale-105' : 'scale-100'
+                    }`}
+                    src={clip.video}
+                  />
+                ) : (
+                  <img
+                    src={clip.poster}
+                    alt={clip.title}
+                    className="w-full h-full object-cover"
+                  />
+                )}
               </div>
             )
           })}
 
-          {/* Luxury Editorial Overlay Scrims */}
-          <div className="absolute inset-0 z-20 bg-gradient-to-t from-white dark:from-[#0E0D0B] via-white/50 dark:via-[#0E0D0B]/60 to-black/35 pointer-events-none" />
-          <div className="absolute inset-0 z-20 bg-gradient-to-r from-white/75 dark:from-[#0E0D0B]/85 via-transparent to-white/65 dark:to-[#0E0D0B]/75 pointer-events-none" />
+          {/* Balanced Cinematic Scrims - Vivid Video Clarity with High Legibility */}
+          <div className="absolute inset-0 z-20 bg-gradient-to-t from-black/90 via-black/25 to-black/40 pointer-events-none" />
+          <div className="absolute inset-0 z-20 bg-gradient-to-r from-black/55 via-transparent to-black/40 pointer-events-none" />
+          <div className="absolute inset-0 z-20 bg-black/15 pointer-events-none" />
         </div>
 
         {/* Hero Content Container */}
-        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 text-center flex flex-col items-center">
+        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-36 sm:pt-36 sm:pb-40 text-center flex flex-col items-center">
           {/* Live Heritage Pill */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/95 dark:bg-[#1A1814]/95 backdrop-blur-md border border-[#B58A43]/40 text-[#B58A43] text-[10px] font-sans uppercase tracking-[0.25em] mb-6 shadow-sm font-bold">
-            <span className="w-2 h-2 rounded-full bg-[#B58A43] animate-ping" />
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#B58A43]/70 text-[#E5C378] text-[10px] sm:text-xs font-sans uppercase tracking-[0.25em] mb-6 shadow-xl font-bold">
+            <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-ping" />
             <span>{language === 'am' ? 'የኢትዮጵያ ባህላዊ ጉዞዎች' : 'CULTURAL TOURS IN ETHIOPIA'}</span>
           </div>
 
-          {/* Main Editorial Headline */}
+          {/* Main Editorial Headline with High Contrast Shadow */}
           <div className="space-y-2">
-            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-[#1A1713] dark:text-[#F5F2EB] tracking-tight leading-[1.05]">
+            <h1 className="font-serif text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-light text-white tracking-tight leading-[1.05] drop-shadow-[0_4px_24px_rgba(0,0,0,0.85)]">
               {language === 'am' ? 'ከተጠበቀው' : 'Beyond the'}{' '}
-              <span className="italic font-normal text-[#B58A43]">
+              <span className="italic font-normal text-[#E5C378]">
                 {language === 'am' ? 'በላይ።' : 'Expected.'}
               </span>
             </h1>
           </div>
 
           {/* Fine Ornamental Tilet Divider */}
-          <TiletDivider className="py-3 max-w-xs w-full text-[#B58A43]" />
+          <TiletDivider className="py-3 max-w-xs w-full text-[#E5C378] drop-shadow-[0_2px_8px_rgba(0,0,0,0.7)]" />
 
           {/* Clean, Jargon-free Subtitle */}
-          <p className="max-w-xl font-sans text-xs sm:text-base text-[#302B24]/85 dark:text-[#D1C7BA] font-light leading-relaxed">
+          <p className="max-w-2xl font-sans text-sm sm:text-lg text-white/95 font-light leading-relaxed drop-shadow-[0_2px_12px_rgba(0,0,0,0.9)]">
             {language === 'am'
               ? 'በግል መሪ የሚመሩ፣ በጥንቃቄ የተዘጋጁ ታሪካዊና ተፈጥሯዊ የኢትዮጵያ ጉዞዎች።'
               : 'Thoughtfully paced, private cultural journeys through 3,000 years of living history and alpine highlands.'}
@@ -132,50 +240,90 @@ export default function Home({
           <div className="mt-8 flex flex-col sm:flex-row items-center gap-3.5 w-full sm:w-auto">
             <button
               onClick={() => navigateWithMesob('/tours')}
-              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#B58A43] to-[#9E7432] hover:from-[#c49a50] hover:to-[#B58A43] text-white font-sans text-xs uppercase tracking-widest font-bold shadow-md hover:shadow-xl transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-3.5 rounded-full bg-gradient-to-r from-[#B58A43] via-[#C99C4E] to-[#9E7432] hover:from-[#d4a856] hover:to-[#B58A43] text-white font-sans text-xs uppercase tracking-widest font-bold shadow-xl hover:shadow-2xl transition-all flex items-center justify-center gap-2 transform hover:-translate-y-0.5"
             >
               <span>{language === 'am' ? 'ጉዞዎችን ይመልከቱ' : 'Explore Tours'}</span>
-              <ArrowRight className="w-4 h-4 text-[#DDC28D]" />
+              <ArrowRight className="w-4 h-4 text-[#FFF0D0]" />
             </button>
 
             <button
               onClick={() => navigateWithMesob('/about')}
-              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-white/90 dark:bg-[#1A1814]/90 backdrop-blur-md border border-[#B58A43]/40 text-[#1A1713] dark:text-[#F5F2EB] font-sans text-xs uppercase tracking-widest font-semibold hover:border-[#B58A43] transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-black/45 hover:bg-black/65 backdrop-blur-md border border-white/35 hover:border-[#E5C378] text-white font-sans text-xs uppercase tracking-widest font-semibold transition-all flex items-center justify-center gap-2 shadow-lg"
             >
-              <Compass className="w-4 h-4 text-[#B58A43]" />
+              <Compass className="w-4 h-4 text-[#E5C378]" />
               <span>{language === 'am' ? 'ስለ እኛ' : 'Our Story'}</span>
             </button>
           </div>
         </div>
 
-        {/* Video Timeframe Indicators (Interactive Switcher) */}
-        <div className="absolute bottom-8 left-4 sm:left-8 z-30 flex items-center gap-2">
-          {HERO_CLIPS.map((clip, idx) => {
-            const isActive = idx === currentClipIndex
-            return (
-              <button
-                key={clip.id}
-                onClick={() => setCurrentClipIndex(idx)}
-                className={`flex items-center gap-2 px-3 py-1.5 rounded-full backdrop-blur-md text-left transition-all ${
-                  isActive
-                    ? 'bg-white/90 dark:bg-[#1A1814]/90 border border-[#B58A43] shadow-sm'
-                    : 'bg-black/30 border border-white/20 hover:border-white/40'
-                }`}
-              >
-                <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#B58A43]' : 'bg-white/60'}`} />
-                <span className={`text-[10px] font-sans uppercase tracking-wider font-semibold ${
-                  isActive ? 'text-[#1A1713] dark:text-[#F5F2EB]' : 'text-white/80'
-                }`}>
-                  {language === 'am' ? clip.amTitle : clip.title}
-                </span>
-              </button>
-            )
-          })}
-        </div>
+        {/* ── 8-VIDEO PLAYLIST & ANGLE CONTROLS ── */}
+        <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-30 px-3 sm:px-8 max-w-7xl mx-auto flex flex-col gap-2 pointer-events-auto">
+          {/* Active Clip Status Bar */}
+          <div className="flex items-center justify-between gap-3 text-xs">
+            <div className="flex items-center gap-2 sm:gap-3 bg-black/65 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-md">
+              <span className="text-[#E5C378] font-mono font-bold text-xs">
+                {HERO_CLIPS[currentClipIndex].num} / 08
+              </span>
+              <span className="w-1.5 h-1.5 rounded-full bg-[#E5C378] animate-pulse" />
+              <span className="font-semibold tracking-wide text-white text-[11px] sm:text-xs">
+                {language === 'am' ? HERO_CLIPS[currentClipIndex].amTitle : HERO_CLIPS[currentClipIndex].title}
+              </span>
+              <span className="hidden md:inline text-white/40">•</span>
+              <span className="hidden md:inline text-white/70 text-[11px] italic">
+                {language === 'am' ? HERO_CLIPS[currentClipIndex].amAngle : HERO_CLIPS[currentClipIndex].angle}
+              </span>
+            </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-6 right-6 z-30 hidden sm:flex flex-col items-center text-[#302B24]/60 dark:text-[#D1C7BA]/60">
-          <ChevronDown className="w-4 h-4 animate-bounce text-[#B58A43]" />
+            {/* Prev / Play-Pause / Next Controls */}
+            <div className="flex items-center gap-1 bg-black/65 backdrop-blur-md px-2 py-1 rounded-full border border-white/15 shadow-md">
+              <button
+                onClick={() => setCurrentClipIndex((prev) => (prev - 1 + HERO_CLIPS.length) % HERO_CLIPS.length)}
+                aria-label="Previous video angle"
+                className="p-1 rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-colors"
+              >
+                <ChevronLeft className="w-3.5 h-3.5" />
+              </button>
+              <button
+                onClick={() => setIsPlaying((p) => !p)}
+                aria-label={isPlaying ? 'Pause auto-cycle' : 'Play auto-cycle'}
+                className="p-1 rounded-full text-[#E5C378] hover:text-white hover:bg-white/15 transition-colors"
+              >
+                {isPlaying ? <Pause className="w-3.5 h-3.5" /> : <Play className="w-3.5 h-3.5" />}
+              </button>
+              <button
+                onClick={() => setCurrentClipIndex((prev) => (prev + 1) % HERO_CLIPS.length)}
+                aria-label="Next video angle"
+                className="p-1 rounded-full text-white/80 hover:text-white hover:bg-white/15 transition-colors"
+              >
+                <ChevronRight className="w-3.5 h-3.5" />
+              </button>
+            </div>
+          </div>
+
+          {/* 8 Compact Interactive Selector Pills */}
+          <div className="flex items-center gap-1.5 sm:gap-2 overflow-x-auto scrollbar-none py-1">
+            {HERO_CLIPS.map((clip, idx) => {
+              const isActive = idx === currentClipIndex
+              return (
+                <button
+                  key={clip.id}
+                  onClick={() => {
+                    setCurrentClipIndex(idx)
+                  }}
+                  className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full backdrop-blur-md text-left transition-all shrink-0 ${
+                    isActive
+                      ? 'bg-gradient-to-r from-[#B58A43] to-[#9E7432] text-white border border-[#E5C378] shadow-lg scale-[1.02]'
+                      : 'bg-black/55 hover:bg-black/80 text-white/80 hover:text-white border border-white/20 hover:border-white/40'
+                  }`}
+                >
+                  <span className={`w-1.5 h-1.5 rounded-full ${isActive ? 'bg-[#FFE2A4]' : 'bg-white/50'}`} />
+                  <span className="text-[10px] sm:text-[11px] font-sans uppercase tracking-wider font-bold">
+                    {clip.num} {language === 'am' ? clip.amName : clip.name}
+                  </span>
+                </button>
+              )
+            })}
+          </div>
         </div>
       </section>
 
