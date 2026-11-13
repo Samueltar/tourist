@@ -16,9 +16,7 @@ import {
   TiletDivider,
   TiletBackgroundPattern,
 } from '../components/TiletPatterns'
-
-// Curated 4K Ethiopian Tour Film: https://www.youtube.com/watch?v=2AocxT8KurU
-const YOUTUBE_TOUR_ID = '2AocxT8KurU'
+import ethiopiaTourVideo from '../assets/ethiopia_tour.mp4'
 
 export default function Home({
   savedTourIds = [],
@@ -41,28 +39,21 @@ export default function Home({
   return (
     <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
 
-      {/* ── 1. CINEMATIC SINGLE YOUTUBE TOUR HERO (ZERO BUTTONS / CHROME) ── */}
+      {/* ── 1. CINEMATIC TOUR HERO (LOCAL OFFLINE VIDEO, ZERO BUTTONS) ───── */}
       <section className="relative min-h-[96vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0908]">
-        {/* Full-bleed YouTube Video Layer with Edge Crop to Conceal All Player Chrome */}
+        {/* Full-bleed Native HTML5 Video Layer */}
         <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
-          {/* High-resolution fallback Ethiopian photography poster */}
-          <img
-            src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2000&q=85"
-            alt="Ethiopia Tour"
-            className="absolute inset-0 w-full h-full object-cover"
-          />
-
-          {/* 16:9 Full Bleed YouTube Embed (Zero Controls, Zero Annotations, No UI Chrome) */}
-          <div className="absolute inset-[-40px] sm:inset-[-60px] overflow-hidden pointer-events-none">
-            <iframe
-              className="absolute top-1/2 left-1/2 w-[180vh] min-w-[115%] h-[60vw] min-h-[115%] -translate-x-1/2 -translate-y-1/2 object-cover scale-[1.3] sm:scale-120 pointer-events-none"
-              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_TOUR_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_TOUR_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0`}
-              title="Tour of Ethiopia 4K"
-              tabIndex="-1"
-              aria-hidden="true"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            />
-          </div>
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            poster="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2000&q=85"
+            className="w-full h-full object-cover transform scale-105 pointer-events-none"
+            src={ethiopiaTourVideo}
+          >
+            <source src={ethiopiaTourVideo} type="video/mp4" />
+          </video>
 
           {/* Balanced Cinematic Scrims - Vivid Video Clarity with High Legibility */}
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-black/45 pointer-events-none" />
