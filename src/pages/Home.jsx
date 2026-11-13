@@ -6,7 +6,6 @@ import {
   MapPin,
   Clock,
   ChevronDown,
-  Play,
 } from 'lucide-react'
 import { tours, destinations, journalPosts } from '../data/tours'
 import TourCard from '../components/TourCard'
@@ -18,7 +17,7 @@ import {
   TiletBackgroundPattern,
 } from '../components/TiletPatterns'
 
-// Curated 4K Ethiopian Tour Film (Scenic Relaxation: Lalibela, Simien, Danakil, Omo, Harar)
+// Curated 4K Ethiopian Tour Film: https://www.youtube.com/watch?v=2AocxT8KurU
 const YOUTUBE_TOUR_ID = '2AocxT8KurU'
 
 export default function Home({
@@ -42,10 +41,10 @@ export default function Home({
   return (
     <div className="min-h-screen bg-white dark:bg-[#0E0D0B] text-[#302B24] dark:text-[#F5F2EB] overflow-x-hidden selection:bg-[#B58A43] selection:text-white transition-colors duration-300">
 
-      {/* ── 1. CINEMATIC SINGLE YOUTUBE TOUR HERO ───────────────────────── */}
+      {/* ── 1. CINEMATIC SINGLE YOUTUBE TOUR HERO (ZERO BUTTONS / CHROME) ── */}
       <section className="relative min-h-[96vh] sm:min-h-screen flex items-center justify-center overflow-hidden bg-[#0A0908]">
-        {/* Full-bleed YouTube Video Layer */}
-        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
+        {/* Full-bleed YouTube Video Layer with Edge Crop to Conceal All Player Chrome */}
+        <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none select-none">
           {/* High-resolution fallback Ethiopian photography poster */}
           <img
             src="https://images.unsplash.com/photo-1547471080-7cc2caa01a7e?auto=format&fit=crop&w=2000&q=85"
@@ -53,13 +52,17 @@ export default function Home({
             className="absolute inset-0 w-full h-full object-cover"
           />
 
-          {/* 16:9 Full Bleed YouTube Embed */}
-          <iframe
-            className="absolute top-1/2 left-1/2 w-[177.78vh] min-w-full h-[56.25vw] min-h-full -translate-x-1/2 -translate-y-1/2 object-cover scale-[1.35] sm:scale-125 md:scale-110 pointer-events-none"
-            src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_TOUR_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_TOUR_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&enablejsapi=1`}
-            title="Tour of Ethiopia 4K"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          />
+          {/* 16:9 Full Bleed YouTube Embed (Zero Controls, Zero Annotations, No UI Chrome) */}
+          <div className="absolute inset-[-40px] sm:inset-[-60px] overflow-hidden pointer-events-none">
+            <iframe
+              className="absolute top-1/2 left-1/2 w-[180vh] min-w-[115%] h-[60vw] min-h-[115%] -translate-x-1/2 -translate-y-1/2 object-cover scale-[1.3] sm:scale-120 pointer-events-none"
+              src={`https://www.youtube-nocookie.com/embed/${YOUTUBE_TOUR_ID}?autoplay=1&mute=1&loop=1&playlist=${YOUTUBE_TOUR_ID}&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1&iv_load_policy=3&disablekb=1&fs=0`}
+              title="Tour of Ethiopia 4K"
+              tabIndex="-1"
+              aria-hidden="true"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            />
+          </div>
 
           {/* Balanced Cinematic Scrims - Vivid Video Clarity with High Legibility */}
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-black/90 via-black/30 to-black/45 pointer-events-none" />
@@ -68,7 +71,7 @@ export default function Home({
         </div>
 
         {/* Hero Content Container */}
-        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-32 sm:pt-36 sm:pb-36 text-center flex flex-col items-center">
+        <div className="relative z-30 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-32 sm:py-40 text-center flex flex-col items-center">
           {/* Live Heritage Pill */}
           <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-black/60 backdrop-blur-md border border-[#B58A43]/70 text-[#E5C378] text-[10px] sm:text-xs font-sans uppercase tracking-[0.25em] mb-6 shadow-xl font-bold">
             <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-ping" />
@@ -113,33 +116,6 @@ export default function Home({
               <span>{language === 'am' ? 'ስለ እኛ' : 'Our Story'}</span>
             </button>
           </div>
-        </div>
-
-        {/* ── SINGLE YOUTUBE VIDEO BADGE & EXTERNAL LINK ── */}
-        <div className="absolute bottom-5 sm:bottom-7 inset-x-0 z-30 px-4 sm:px-8 max-w-7xl mx-auto flex items-center justify-between pointer-events-auto">
-          <div className="flex items-center gap-2.5 bg-black/65 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/15 shadow-md text-xs">
-            <span className="w-2 h-2 rounded-full bg-[#E5C378] animate-pulse" />
-            <span className="font-semibold tracking-wide text-white text-[11px] sm:text-xs">
-              {language === 'am' ? 'የኢትዮጵያ ዙረት • 4ኬ ቪዲዮ' : 'Tour of Ethiopia • 4K Film'}
-            </span>
-            <span className="hidden sm:inline text-white/40">•</span>
-            <span className="hidden sm:inline text-white/70 text-[11px] italic">
-              {language === 'am' ? 'ላሊበላ • ስሜን • ዳሎል • ኦሞ' : 'Lalibela • Simien • Danakil • Omo'}
-            </span>
-          </div>
-
-          <a
-            href={`https://www.youtube.com/watch?v=${YOUTUBE_TOUR_ID}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-1.5 bg-black/65 hover:bg-black/85 backdrop-blur-md px-3.5 py-1.5 rounded-full border border-white/20 hover:border-[#E5C378] text-white/80 hover:text-white text-xs transition-colors shadow-md"
-            title="Watch full film on YouTube"
-          >
-            <Play className="w-3.5 h-3.5 text-[#E5C378] fill-[#E5C378]" />
-            <span className="text-[11px] font-medium hidden sm:inline">
-              {language === 'am' ? 'በዩቲዩብ ይመልከቱ' : 'Watch on YouTube'}
-            </span>
-          </a>
         </div>
       </section>
 
