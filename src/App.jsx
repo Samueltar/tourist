@@ -61,7 +61,7 @@ export default function App() {
   const savedToursList = tours.filter((t) => savedTourIds.includes(t.id))
 
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <ThemeProvider>
         <LanguageProvider>
           <MesobProvider>
