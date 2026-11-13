@@ -26,13 +26,12 @@ export default function Navbar({ savedCount = 0, onOpenWishlist = () => {} }) {
     setMobileMenuOpen(false)
   }, [location.pathname])
 
-  // Real, related, intuitive navbar names
+  // Streamlined, design-led primary navigation
   const navLinks = [
     { label: t('navTours'), href: '/tours' },
     { label: t('navDestinations'), href: '/destinations' },
     { label: t('navAbout'), href: '/about' },
     { label: t('navJournal'), href: '/journal' },
-    { label: t('navGuide'), href: '/faqs' },
     { label: t('navContact'), href: '/contact' },
   ]
 
